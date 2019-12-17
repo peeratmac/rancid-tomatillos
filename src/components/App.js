@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import NavigationBar from '../containers/NavigationBar';
 
 export class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Rancid Tomatillos</h1>
-      </div>
+      <main>
+        <NavigationBar />
+      </main>
     );
   }
 }

@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-button,
+.logout-button,
+.back-button  {
+  width: 8%;
+  font-size: 1.1em;
+  height: 50%;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+.back-button {
+  width: 10%;
+}
