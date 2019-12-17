@@ -21,6 +21,7 @@ const MovieCard = props => {
         src={poster_path}
         alt={`Poster Picture of ${title}`}
       />
+      <p>Average Rating: {average_rating}</p>
       <NavLink to={`/movies/${id}`}>
         <div>View Movie</div>
       </NavLink>
