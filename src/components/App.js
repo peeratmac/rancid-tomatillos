@@ -4,10 +4,10 @@ import { fetchAllMovies } from '../apiCalls';
 import { addMovies } from '../actions/index';
 import NavigationBar from '../containers/NavigationBar';
 
-
 export class App extends Component {
   componentDidMount() {
-    fetchAllMovies().then(data => this.props.addMovies(data.movies));
+    const { addMovies } = this.props;
+    fetchAllMovies().then(data => addMovies(data.movies));
   }
 
   render() {
