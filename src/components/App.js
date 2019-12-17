@@ -18,11 +18,7 @@ export class App extends Component {
       <main>
         <NavigationBar />
 
-        <Route
-          exact
-          path='/'
-          render={props => <MovieContainer allMovies={this.props.allMovies} />}
-        />
+        <Route exact path='/' render={props => <MovieContainer {...props} />} />
 
         <Route
           exact
