@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchAllMovies } from '../apiCalls';
 import { addMovies } from '../actions/index';
+import NavigationBar from '../containers/NavigationBar';
+
 
 export class App extends Component {
   componentDidMount() {
@@ -10,9 +12,9 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Rancid Tomatillos</h1>
-      </div>
+      <main>
+        <NavigationBar />
+      </main>
     );
   }
 }
