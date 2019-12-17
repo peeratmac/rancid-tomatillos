@@ -4,6 +4,7 @@ import { fetchAllMovies } from '../apiCalls';
 import { addMovies } from '../actions/index';
 import { Route } from 'react-router-dom';
 import NavigationBar from '../containers/NavigationBar';
+import MovieContainer from '../containers/MovieContainer';
 import MovieShowPage from '../components/MovieShowPage';
 
 export class App extends Component {
@@ -16,6 +17,9 @@ export class App extends Component {
     return (
       <main>
         <NavigationBar />
+
+        <Route exact path='/' render={props => <MovieContainer {...props} />} />
+
         <Route
           exact
           path='/movie/:id'
