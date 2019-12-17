@@ -18,7 +18,11 @@ export class App extends Component {
       <main>
         <NavigationBar />
 
-        <Route exact path='/' render={props => <MovieContainer {...props} />} />
+        <Route
+          exact
+          path='/'
+          render={props => <MovieContainer allMovies={this.props.allMovies} />}
+        />
 
         <Route
           exact
@@ -33,8 +37,12 @@ export class App extends Component {
   };
 }
 
+const mapStateToProps = state => ({
+  allMovies: state.movies
+});
+
 const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch(addMovies(movies))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
