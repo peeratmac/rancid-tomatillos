@@ -31,13 +31,14 @@ const MovieCard = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  allMovies: state.movies
-});
-
-export default connect(mapStateToProps, null)(MovieCard);
+export default MovieCard;
 
 MovieCard.propTypes = {
-allMovies: PropTypes.array,
-
+  id: PropTypes.number,
+  title: PropTypes.string,
+  poster_path: PropTypes.string,
+  backdrop_path: PropTypes.string,
+  release_date: PropTypes.string,
+  overview: PropTypes.string,
+  average_rating: PropTypes.number
 }
