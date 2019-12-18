@@ -29,8 +29,4 @@ const MovieCard = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  allMovies: state.movies
-});
-
-export default connect(mapStateToProps, null)(MovieCard);
+export default MovieCard;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAllMovies } from '../apiCalls';
+import { fetchAllMovies, fetchUserLogin } from '../apiCalls';
 import { addMovies } from '../actions/index';
 import { Route } from 'react-router-dom';
 import NavigationBar from '../containers/NavigationBar';
@@ -18,7 +18,7 @@ export class App extends Component {
       <main>
         <NavigationBar />
 
-        <Route exact path='/' render={props => <MovieContainer {...props} />} />
+        <Route exact path='/' render={()=> <MovieContainer />} />
 
         <Route
           exact
