@@ -27,7 +27,7 @@ class LoginForm extends Component {
             <label for="password-input">Password:</label>
             <input id="password-input" type="text" placeholder="Password" value={this.state.password} name="password" onChange={event => this.handleInputChange(event)} />
           </div>
-          <button className="submit-btn" type="submit"></button>
+          <button className="submit-btn"></button>
         </form>
       </section>
     );
