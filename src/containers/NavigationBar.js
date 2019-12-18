@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './NavigationBar.css'
+import './NavigationBar.css';
 
-const NavigationBar = (props) => {
+const NavigationBar = props => {
   const { id, name, email } = props;
 
   return (
@@ -13,7 +13,9 @@ const NavigationBar = (props) => {
       <Link to='/login'>
         <button className='login-button'>Log In</button>
       </Link>
+      <Link to='/'>
         <button className='logout-button'>Log Out</button>
+      </Link>
     </header>
   );
 };
