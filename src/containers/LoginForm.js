@@ -17,6 +17,7 @@ class LoginForm extends Component {
   render() {
     return (
       <section className="login-section">
+        <h1>Login Form</h1>
         <form>
           <div className="input-container">
             <label for="email-input">Email:</label>
@@ -26,9 +27,9 @@ class LoginForm extends Component {
             <label for="password-input">Password:</label>
             <input id="password-input" type="text" placeholder="Password" value={this.state.password} name="password" onChange={event => this.handleInputChange(event)} />
           </div>
+          <button className="submit-btn" type="submit"></button>
         </form>
-        <h1>LoginForm</h1>
-      </div>
+      </section>
     );
   }
 }
