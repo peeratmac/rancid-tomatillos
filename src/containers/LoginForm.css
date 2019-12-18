@@ -1,0 +1,24 @@
+/* ALL STYLING CAN/SHOULD BE REPLACED/DISCARDED (merely placeholder styling) -Austen */
+.login-section {
+  align-items: center;
+  background-color: yellow;
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  width: 100%;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-around;
+}
+
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
