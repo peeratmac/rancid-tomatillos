@@ -22,9 +22,10 @@ const fetchUserLogin = (options) => {
     // The .then()s below here won't stay in this file, we will chain them on
     // wherever we invoke this fetch function
     // .then(data => console.log(`Number ${data.user.id} is ${data.user.name}`))
-    .then(data => {
+    .then(data => updateUser(data.user))
+      // const user = { id: data.user.id, name: data.user.name, email: data.user.email}
+      // FOR THE LINE ABOVE - isn't data.user exactly the obj i want????
       // here we would want to send the data.user.id and data.user.name to the store
-    })
 }
 fetchUserLogin(options);
 
