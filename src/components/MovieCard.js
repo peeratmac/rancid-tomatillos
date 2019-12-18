@@ -38,11 +38,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, null)(MovieCard);
 
 MovieCard.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string,
-  poster_path: PropTypes.string,
-  backdrop_path: PropTypes.string,
-  release_date: PropTypes.string,
-  overview: PropTypes.string,
-  average_rating: PropTypes.number
+allMovies: PropTypes.array,
+
 }
