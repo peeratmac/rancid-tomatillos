@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
+import PropTypes from 'prop-types';
 
 const MovieContainer = props => {
   const { allMovies } = props;
@@ -28,3 +29,8 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(MovieContainer);
+
+
+MovieContainer.propTypes = {
+  allMovies: PropTypes.array,
+}
