@@ -27,3 +27,10 @@ const fetchUserLogin = (options) => {
     })
 }
 fetchUserLogin(options);
+
+const mapDispatchToProps = dispatch => ({
+  updateUser: user => dispatch(updateUser(user))
+});
+
+// will need to add the about mapDispatchToProps to the FORM to submit the USER
+// when it gets the user obj back
