@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './NavigationBar.css'
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
+  const { id, name, email } = props;
+
   return (
     <header className='header'>
       <button className='back-button'>Back to Home</button>
-      <h1>Welcome maybe-user-name?</h1>
+      <h1>`Welcome ${props.user.name}`</h1>
       <Link to='/login'>
         <button className='login-button'>Log In</button>
       </Link>
@@ -16,4 +18,9 @@ const NavigationBar = () => {
   );
 };
 
-export default connect(null, null)(NavigationBar);
+const mapStateToProps = state => ({
+  allMovies: state.movies,
+  user: state.user
+});
+
+export default connect(mapStateToProps, null)(NavigationBar);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAllMovies } from '../apiCalls';
+import { fetchAllMovies, fetchUserLogin } from '../apiCalls';
 import { addMovies } from '../actions/index';
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
