@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { fetchAllMovies, fetchUserLogin } from '../apiCalls';
 import { addMovies } from '../actions/index';
 import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavigationBar from '../containers/NavigationBar';
 import MovieContainer from '../containers/MovieContainer';
 import MovieShowPage from '../components/MovieShowPage';
+import LoginForm from '../containers/LoginForm';
 
 export class App extends Component {
   componentDidMount() {
@@ -18,7 +20,9 @@ export class App extends Component {
       <main>
         <NavigationBar />
 
-        <Route exact path='/' render={()=> <MovieContainer />} />
+        <Route exact path='/' render={() => <MovieContainer />} />
+
+        <Route exact path='/login' render={() => <LoginForm />} />
 
         <Route
           exact

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './MovieCard.css';
 
 const MovieCard = props => {
@@ -13,6 +14,7 @@ const MovieCard = props => {
     overview,
     average_rating
   } = props;
+
   return (
     <div>
       <h1>{title}</h1>
@@ -29,4 +31,13 @@ const MovieCard = props => {
   );
 };
 
-export default MovieCard;
+const mapStateToProps = state => ({
+  allMovies: state.movies
+});
+
+export default connect(mapStateToProps, null)(MovieCard);
+
+MovieCard.propTypes = {
+allMovies: PropTypes.array,
+
+}

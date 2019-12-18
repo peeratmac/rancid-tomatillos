@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './NavigationBar.css'
 
 const NavigationBar = (props) => {
@@ -9,8 +10,10 @@ const NavigationBar = (props) => {
     <header className='header'>
       <button className='back-button'>Back to Home</button>
       <h1>`Welcome ${props.user.name}`</h1>
-      <button className='login-button'>Log In</button>
-      <button className='logout-button'>Log Out</button>
+      <Link to='/login'>
+        <button className='login-button'>Log In</button>
+      </Link>
+        <button className='logout-button'>Log Out</button>
     </header>
   );
 };
