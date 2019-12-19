@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const MovieShowPage = () => {
+const MovieShowPage = props => {
+  console.log(props);
   return (
     <div>
-      <h1>MovieShowPage</h1>
+      <h1>x</h1>
     </div>
   );
 };
 
-export default MovieShowPage;
+const mapStateToProps = state => ({
+  allMovies: state.movies
+});
+
+export default connect(mapStateToProps, null)(MovieShowPage);
