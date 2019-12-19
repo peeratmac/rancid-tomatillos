@@ -19,22 +19,10 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const body = { email: this.state.email, password: this.state.password };
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
-    fetchUserLogin(options)
+    fetchUserLogin(this.state.email, this.state.password)
       .then(data => {
         const { updateUser } = this.props;
-        console.log('before: ', data);
         updateUser({ ...data.user });
-        console.log('after: ', data);
       })
       .catch(error => console.log('error: ', error));
   }
