@@ -35,5 +35,36 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   })
 
+  it ('should have a type of UPDATE_USER', () => {
+    const user = {
+        id: 1,
+        name: 'placeholder',
+        email: 'placeholder'
+      };
+    const expectedAction = {
+      type: 'UPDATE_USER',
+      user: {
+        id: 1,
+        name: 'placeholder',
+        email: 'placeholder'
+      }
+    };
+
+    const result = actions.updateUser(user);
+
+    expect(result).toEqual(expectedAction);
+  })
+
+  it ('should have a type of HANDLE_ERROR', () => {
+    const errorMessage = 'placeholder';
+    const expectedAction = {
+      type: 'HANDLE_ERROR',
+      errorMessage: 'placeholder'
+    };
+
+    const result = actions.updateUser(errorMessage);
+
+    expect(result).toEqual(expectedAction);
+  })
 
 })
