@@ -10,7 +10,7 @@ import MovieShowPage from '../components/MovieShowPage';
 import LoginForm from '../containers/LoginForm';
 import { handleError, isLoading } from '../actions';
 
-export class App extends Component {
+class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies().then(data => addMovies(data.movies));
@@ -36,11 +36,11 @@ export class App extends Component {
   };
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allMovies: state.movies
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch(addMovies(movies))
 });
 

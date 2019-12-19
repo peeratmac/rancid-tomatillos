@@ -20,7 +20,7 @@ const MovieContainer = props => {
       />
     );
   });
-  
+
   let loader;
   if (displayMovies.length > 1) {
     loader = displayMovies
@@ -39,7 +39,7 @@ const MovieContainer = props => {
     </div>
 )};
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allMovies: state.movies
 });
 
