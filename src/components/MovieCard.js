@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './MovieCard.css';
 
-const MovieCard = props => {
+export const MovieCard = props => {
   const {
     id,
     title,
@@ -41,4 +41,4 @@ MovieCard.propTypes = {
   release_date: PropTypes.string,
   overview: PropTypes.string,
   average_rating: PropTypes.number
-}
+};
