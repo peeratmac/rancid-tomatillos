@@ -9,8 +9,10 @@ const NavigationBar = props => {
 
   return (
     <header className='header'>
-      <Route path={['/login', '/movies/:id']} render={ () =>
-        <button className='backButton'>Back to Home</button>} />
+      <Link to='/'>
+        <Route path={['/login', '/movies/:id']} render={ () =>
+          <button className='backButton'>Back to Home</button>} />
+      </Link>
       <h1>Welcome {user.name}</h1>
       {!isLoggedIn &&
       <Link to='/login'>
