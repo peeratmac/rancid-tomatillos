@@ -8,11 +8,13 @@ import NavigationBar from '../containers/NavigationBar';
 import MovieContainer from '../containers/MovieContainer';
 import MovieShowPage from '../components/MovieShowPage';
 import LoginForm from '../containers/LoginForm';
+import { handleError, isLoading } from '../actions';
 
 export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies().then(data => addMovies(data.movies));
+    //add a catch statement error => fireMethodSends 
   }
 
   render = () => {

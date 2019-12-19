@@ -4,6 +4,7 @@ import './LoginForm.css';
 import { updateUser } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
 
+//Error handling in this file utilizes JUST local state?
 class LoginForm extends Component {
   constructor() {
     super();
@@ -36,7 +37,12 @@ class LoginForm extends Component {
         updateUser({ ...data.user });
         console.log('after: ', data);
       })
-      .catch(error => console.log('error: ', error));
+      .catch(error => {
+        //write error functionality where, display message (set error state true, paired with
+      // conditional rendering logic within RENDER))
+      });
+      //display error - replace console.log();
+      //
   }
 
   render() {
