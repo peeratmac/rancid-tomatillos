@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import './LoginForm.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
-
+import { Redirect } from 'react-router'
 
 class LoginForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: ''
@@ -22,15 +22,18 @@ class LoginForm extends Component {
     event.preventDefault();
     fetchUserLogin(this.state.email, this.state.password)
       .then(data => {
-        const { updateUser } = this.props;
+        const { updateUser, updateLoggedInStatus } = this.props;
         updateUser({ ...data.user });
+        updateLoggedInStatus(true);
       })
       .catch(error => console.log('error: ', error));
   }
 
   render() {
     return (
-      <section className='login-section'>
+      (this.props.isLoggedIn)
+        ? <Redirect to='/'/>
+        : <section className='login-section'>
         <div className='form-container'>
           <h1>Login Form</h1>
           <form onSubmit={event => this.handleSubmit(event)}>
@@ -64,9 +67,13 @@ class LoginForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn
+})
+
 const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
   updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
