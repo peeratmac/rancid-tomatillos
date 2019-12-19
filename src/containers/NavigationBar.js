@@ -8,7 +8,9 @@ const NavigationBar = props => {
 
   return (
     <header className='header'>
-      <button className='back-button'>Back to Home</button>
+      <Link to='/'>
+        <button className='back-button'>Back to Home</button>
+      </Link>
       <h1>Welcome {props.user.name}</h1>
       <Link to='/login'>
         <button className='login-button'>Log In</button>
