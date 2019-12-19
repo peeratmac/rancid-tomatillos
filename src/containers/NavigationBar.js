@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import './NavigationBar.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
 
@@ -9,7 +9,8 @@ const NavigationBar = props => {
 
   return (
     <header className='header'>
-      <button className='back-button'>Back to Home</button>
+      <Route path={['/login', '/movies/:id']} render={ () =>
+        <button className='backButton'>Back to Home</button>} />
       <h1>Welcome {user.name}</h1>
       {!isLoggedIn &&
       <Link to='/login'>
