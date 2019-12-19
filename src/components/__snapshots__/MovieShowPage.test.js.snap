@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieShowPage should match the MovieShowPage Snapshot 1`] = `
+<div>
+  <img
+    className="backdrop"
+  />
+  <h1 />
+  <p />
+  <p />
+  <p>
+    Average Rating: 
+  </p>
+</div>
+`;
