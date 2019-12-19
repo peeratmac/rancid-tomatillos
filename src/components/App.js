@@ -25,7 +25,7 @@ class App extends Component {
         <Route exact path='/login' component={LoginForm} />
         <Route
           exact
-          path='/movie/:id'
+          path='/movies/:id'
           render={({ match }) => {
             let moviesData = [...this.props.movies];
             return <MovieShowPage {...moviesData} />;
