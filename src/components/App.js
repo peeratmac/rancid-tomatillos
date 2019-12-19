@@ -9,12 +9,13 @@ import MovieContainer from '../containers/MovieContainer';
 import MovieShowPage from '../components/MovieShowPage';
 import LoginForm from '../containers/LoginForm';
 import { handleError, isLoading } from '../actions';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies().then(data => addMovies(data.movies));
-    //add a catch statement error => fireMethodSends 
+    //add a catch statement error => fireMethodSends
   }
 
   render = () => {
@@ -48,3 +49,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  allMovies: PropTypes.array.isRequired,
+  addMovies: PropTypes.func.isRequired
+};
