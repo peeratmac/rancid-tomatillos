@@ -9,6 +9,7 @@ import MovieContainer from '../containers/MovieContainer';
 import MovieShowPage from '../components/MovieShowPage';
 import LoginForm from '../containers/LoginForm';
 import { handleError, isLoading } from '../actions';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   componentDidMount() {
@@ -48,3 +49,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  allMovies: PropTypes.array,
+  addMovies: PropTypes.func
+};

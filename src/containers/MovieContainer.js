@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
 
-const MovieContainer = props => {
+export const MovieContainer = props => {
   const { allMovies } = props;
 
   const displayMovies = allMovies.map(movie => {
@@ -23,21 +23,22 @@ const MovieContainer = props => {
 
   let loader;
   if (displayMovies.length > 1) {
-    loader = displayMovies
-
+    loader = displayMovies;
   } else {
-    loader = <img src="https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif" alt="loading screen depicting a running film spool"/>
+    loader = (
+      <img
+        src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
+        alt='loading screen depicting a running film spool'
+      />
+    );
     //Alternative GIF URLS for loading icon
     //https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif
     //https://media.giphy.com/media/AITymLVsG2v2U/giphy.gif
     //https://media.giphy.com/media/DvVTVeqPc5qEM/giphy.gif
   }
 
-  return (
-    <div className="movie-container">
-      {loader}
-    </div>
-)};
+  return <div className='movie-container'>{loader}</div>;
+};
 
 export const mapStateToProps = state => ({
   allMovies: state.movies
@@ -45,7 +46,6 @@ export const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, null)(MovieContainer);
 
-
 MovieContainer.propTypes = {
-  allMovies: PropTypes.array,
-}
+  allMovies: PropTypes.array
+};

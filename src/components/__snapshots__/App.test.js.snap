@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the App Snapshot 1`] = `
+<main>
+  <Connect(NavigationBar) />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(MovieContainer)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(LoginForm)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/login"
+  />
+  <Route
+    exact={true}
+    path="/movies/:id"
+    render={[Function]}
+  />
+</main>
+`;
