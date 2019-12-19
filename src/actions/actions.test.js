@@ -67,4 +67,15 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   })
 
+  it ('should have a type of IS_LOADING', () => {
+    const loadingStatus = true;
+    const expectedAction = {
+      type: 'IS_LOADING',
+      errorMessage: true
+    };
+
+    const result = actions.updateUser(loadingStatus);
+
+    expect(result).toEqual(expectedAction);
+  })
 })
