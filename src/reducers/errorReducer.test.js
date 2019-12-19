@@ -2,7 +2,7 @@ import { errorReducer } from '../reducers/errorReducer';
 
 describe('errorReducer', () => {
   it('should return the initial state', () => {
-    const expected = [];
+    const expected = '';
     const result = errorReducer(undefined, {});
 
     expect(result).toEqual(expected);

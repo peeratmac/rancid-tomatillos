@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MovieContainer from './MovieContainer';
+import MovieContainer  from './MovieContainer';
 
 describe('MovieContainer', () => {
   it.skip('should match the snapshot with all data successfully passed', () => {

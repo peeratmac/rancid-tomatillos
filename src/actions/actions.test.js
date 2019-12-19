@@ -27,7 +27,7 @@ describe('actions', () => {
           overview: 'placeholder',
           average_rating: 1
         }
-      ];
+      ]
     }
 
     const result = actions.addMovies(movies);
@@ -62,7 +62,7 @@ describe('actions', () => {
       errorMessage: 'placeholder'
     };
 
-    const result = actions.updateUser(errorMessage);
+    const result = actions.handleError(errorMessage);
 
     expect(result).toEqual(expectedAction);
   })
@@ -71,10 +71,10 @@ describe('actions', () => {
     const loadingStatus = true;
     const expectedAction = {
       type: 'IS_LOADING',
-      errorMessage: true
+      loadingStatus: true
     };
 
-    const result = actions.updateUser(loadingStatus);
+    const result = actions.isLoading(loadingStatus);
 
     expect(result).toEqual(expectedAction);
   })

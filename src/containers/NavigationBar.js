@@ -22,7 +22,7 @@ const NavigationBar = props => {
   );
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allMovies: state.movies,
   user: state.user
 });

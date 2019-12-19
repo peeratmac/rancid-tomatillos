@@ -14,7 +14,7 @@ export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies().then(data => addMovies(data.movies));
-    //add a catch statement error => fireMethodSends 
+    //add a catch statement error => fireMethodSends
   }
 
   render = () => {

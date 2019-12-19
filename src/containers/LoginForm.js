@@ -81,7 +81,7 @@ class LoginForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user))
 });
 
