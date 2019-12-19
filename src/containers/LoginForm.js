@@ -4,6 +4,7 @@ import './LoginForm.css';
 import { updateUser } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
 
+//Error handling in this file utilizes JUST local state?
 class LoginForm extends Component {
   constructor() {
     super();
