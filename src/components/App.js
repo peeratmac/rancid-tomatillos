@@ -19,8 +19,8 @@ export class App extends Component {
     return (
       <main>
         <NavigationBar />
-        <Route exact path="/" component={MovieContainer} />
-        <Route exact path="/login" component={LoginForm} />
+        <Route exact path='/' component={MovieContainer} />
+        <Route exact path='/login' component={LoginForm} />
         <Route
           exact
           path='/movie/:id'

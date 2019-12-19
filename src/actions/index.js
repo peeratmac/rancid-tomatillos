@@ -4,6 +4,6 @@ export const addMovies = movies => ({
 });
 
 export const updateUser = user => ({
-  type: 'UPDATE-USER',
+  type: 'UPDATE_USER',
   user: user
 });
