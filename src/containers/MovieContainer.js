@@ -40,7 +40,7 @@ export const MovieContainer = props => {
   return <div className='movie-container'>{loader}</div>;
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allMovies: state.movies
 });
 

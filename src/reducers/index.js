@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { moviesReducer } from './moviesReducer';
 import { userReducer } from './userReducer';
 import { errorReducer } from './errorReducer';
-import { loadingStatusReducer } from './loadingReducer';
+import { loadingStatusReducer } from './loadingStatusReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
