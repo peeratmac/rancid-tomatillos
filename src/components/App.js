@@ -14,7 +14,7 @@ export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies().then(data => addMovies(data.movies));
-    //add a catch statement error => fireMethodSends 
+    //add a catch statement error => fireMethodSends Up to store
   }
 
   render = () => {
@@ -25,12 +25,9 @@ export class App extends Component {
         <Route exact path='/login' component={LoginForm} />
         <Route
           exact
-          path='/movies/:id'
+          path='/movie/:id'
           render={({ match }) => {
-            const { id } = match.params;
-            let moviesData = this.props.allMovies.find(
-              movie => movie.id === parseInt(id)
-            );
+            let moviesData = [...this.props.movies];
             return <MovieShowPage {...moviesData} />;
           }}
         />
