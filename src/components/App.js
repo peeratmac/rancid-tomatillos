@@ -10,11 +10,11 @@ import MovieShowPage from '../components/MovieShowPage';
 import LoginForm from '../containers/LoginForm';
 import { handleError, isLoading } from '../actions';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies().then(data => addMovies(data.movies));
-    //add a catch statement error => fireMethodSends Up to store
+    //add a catch statement error => fireMethodSends
   }
 
   render = () => {
@@ -27,7 +27,10 @@ class App extends Component {
           exact
           path='/movies/:id'
           render={({ match }) => {
-            let moviesData = [...this.props.movies];
+            const { id } = match.params;
+            let moviesData = this.props.allMovies.find(
+              movie => movie.id === parseInt(id)
+            );
             return <MovieShowPage {...moviesData} />;
           }}
         />
@@ -36,11 +39,11 @@ class App extends Component {
   };
 }
 
-export const mapStateToProps = state => ({
+const mapStateToProps = state => ({
   allMovies: state.movies
 });
 
-export const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch(addMovies(movies))
 });
 
