@@ -20,9 +20,24 @@ const MovieContainer = props => {
       />
     );
   });
+  
+  let loader;
+  if (displayMovies.length > 1) {
+    loader = displayMovies
 
-  return <div>{displayMovies}</div>;
-};
+  } else {
+    loader = <img src="https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif" alt="loading screen depicting a running film spool"/>
+    //Alternative GIF URLS for loading icon
+    //https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif
+    //https://media.giphy.com/media/AITymLVsG2v2U/giphy.gif
+    //https://media.giphy.com/media/DvVTVeqPc5qEM/giphy.gif
+  }
+
+  return (
+    <div className="movie-container">
+      {loader}
+    </div>
+)};
 
 const mapStateToProps = state => ({
   allMovies: state.movies
