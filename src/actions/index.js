@@ -7,3 +7,8 @@ export const updateUser = user => ({
   type: 'UPDATE_USER',
   user: user
 });
+
+export const handleError = errorMessage => ({
+  type: 'HANDLE_ERROR',
+  errorMessage
+});
