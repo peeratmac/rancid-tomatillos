@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
-import { updateUser } from '../actions/index';
+import { updateUser, updateLoggedInStatus } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
+
 
 class LoginForm extends Component {
   constructor() {
@@ -64,7 +65,8 @@ class LoginForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateUser: user => dispatch(updateUser(user))
+  updateUser: user => dispatch(updateUser(user)),
+  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);

@@ -7,3 +7,8 @@ export const updateUser = user => ({
   type: 'UPDATE_USER',
   user: user
 });
+
+export const updateLoggedInStatus = status => ({
+  type: 'UPDATE_LOGGEDIN_STATUS',
+  status: status
+});
