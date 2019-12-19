@@ -23,9 +23,12 @@ export class App extends Component {
         <Route exact path='/login' component={LoginForm} />
         <Route
           exact
-          path='/movie/:id'
+          path='/movies/:id'
           render={({ match }) => {
-            let moviesData = [...this.props.movies];
+            const { id } = match.params;
+            let moviesData = this.props.allMovies.find(
+              movie => movie.id === parseInt(id)
+            );
             return <MovieShowPage {...moviesData} />;
           }}
         />
