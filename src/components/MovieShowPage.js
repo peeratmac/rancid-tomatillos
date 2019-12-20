@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './MovieShowPage.css'
 
 export const MovieShowPage = props => {
   const {
@@ -13,11 +14,11 @@ export const MovieShowPage = props => {
   } = props;
 
   return (
-    <div>
+    <div className="movie-page">
       <img className='backdrop' src={backdrop_path} alt={title} />
       <h1>{title}</h1>
       <p>{release_date}</p>
-      <p>{overview}</p>
+      <p className="overview">{overview}</p>
       <p>Average Rating: {average_rating}</p>
     </div>
   );

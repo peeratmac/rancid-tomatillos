@@ -17,9 +17,9 @@ main {
 }
 
 .inner-container {
-  border: 2px inset #c654dd;
+  border: 10px ridge #c654dd;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 700px;
+  width: 750px;
 }
