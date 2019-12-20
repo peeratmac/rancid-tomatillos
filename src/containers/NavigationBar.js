@@ -29,12 +29,12 @@ const NavigationBar = props => {
   );
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   isLoggedIn: state.isLoggedIn
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
   updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
 });

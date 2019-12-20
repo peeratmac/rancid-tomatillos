@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const MovieShowPage = props => {
+export const MovieShowPage = props => {
   const {
     id,
     title,
@@ -22,8 +23,12 @@ const MovieShowPage = props => {
   );
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allMovies: state.movies
 });
 
 export default connect(mapStateToProps, null)(MovieShowPage);
+
+MovieShowPage.propTypes = {
+  allMovies: PropTypes.array
+};

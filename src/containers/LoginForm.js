@@ -5,6 +5,7 @@ import { updateUser, updateLoggedInStatus } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
 import { Redirect } from 'react-router'
 
+//Error handling in this file utilizes JUST local state?
 class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,12 @@ class LoginForm extends Component {
         updateUser({ ...data.user });
         updateLoggedInStatus(true);
       })
-      .catch(error => console.log('error: ', error));
+      .catch(error => {
+        //write error functionality where, display message (set error state true, paired with
+      // conditional rendering logic within RENDER))
+      });
+      //display error - replace console.log();
+      //
   }
 
   render() {
@@ -67,11 +73,11 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   isLoggedIn: state.isLoggedIn
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
   updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
 });
