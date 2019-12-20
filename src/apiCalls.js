@@ -22,4 +22,14 @@ export const fetchUserLogin = (email, password) => {
       }
       return response.json()
     })
-}
+};
+
+export const fetchRatings = (userId) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Something went wrong')
+      }
+      return response.json()
+    })
+};

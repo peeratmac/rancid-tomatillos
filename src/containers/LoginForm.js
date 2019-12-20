@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
-import { updateUser, updateLoggedInStatus } from '../actions/index';
-import { fetchUserLogin } from '../apiCalls';
+import { updateUser, updateLoggedInStatus, addRatings } from '../actions/index';
+import { fetchUserLogin, fetchRatings } from '../apiCalls';
 import { Redirect } from 'react-router'
 
 //Error handling in this file utilizes JUST local state?
@@ -23,9 +23,13 @@ class LoginForm extends Component {
     event.preventDefault();
     fetchUserLogin(this.state.email, this.state.password)
       .then(data => {
-        const { updateUser, updateLoggedInStatus } = this.props;
+        const { updateUser, updateLoggedInStatus, addRatings } = this.props;
         updateUser({ ...data.user });
         updateLoggedInStatus(true);
+        fetchRatings(data.user.id)
+          .then(ratingData => {
+            addRatings(ratingData.ratings);
+          })
       })
       .catch(error => {
         //write error functionality where, display message (set error state true, paired with
@@ -33,7 +37,7 @@ class LoginForm extends Component {
       });
       //display error - replace console.log();
       //
-  }
+}
 
   render() {
     return (
@@ -79,7 +83,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
-  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
+  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status)),
+  addRatings: ratings => dispatch(addRatings(ratings))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

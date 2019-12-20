@@ -24,7 +24,7 @@ export const isLoading = loadingStatus => ({
   loadingStatus
 });
 
-export const addRankings = rankings => ({
-  type: 'ADD_RANKINGS',
-  rankings: rankings
+export const addRatings = ratings => ({
+  type: 'ADD_RATINGS',
+  ratings: ratings
 });
