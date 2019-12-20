@@ -8,6 +8,11 @@ export const updateUser = user => ({
   user: user
 });
 
+export const updateLoggedInStatus = status => ({
+  type: 'UPDATE_LOGGEDIN_STATUS',
+  status: status
+});
+
 export const handleError = errorMessage => ({
   type: 'HANDLE_ERROR',
   errorMessage

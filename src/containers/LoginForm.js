@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
-import { updateUser } from '../actions/index';
+import { updateUser, updateLoggedInStatus } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
+import { Redirect } from 'react-router'
 
 //Error handling in this file utilizes JUST local state?
 class LoginForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: ''
@@ -20,22 +21,11 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const body = { email: this.state.email, password: this.state.password };
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
-    fetchUserLogin(options)
+    fetchUserLogin(this.state.email, this.state.password)
       .then(data => {
-        const { updateUser } = this.props;
-        console.log('before: ', data);
+        const { updateUser, updateLoggedInStatus } = this.props;
         updateUser({ ...data.user });
-        console.log('after: ', data);
+        updateLoggedInStatus(true);
       })
       .catch(error => {
         //write error functionality where, display message (set error state true, paired with
@@ -47,7 +37,9 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <section className='login-section'>
+      (this.props.isLoggedIn)
+        ? <Redirect to='/'/>
+        : <section className='login-section'>
         <div className='form-container'>
           <h1>Login Form</h1>
           <form onSubmit={event => this.handleSubmit(event)}>
@@ -81,8 +73,13 @@ class LoginForm extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn
+})
+
 export const mapDispatchToProps = dispatch => ({
-  updateUser: user => dispatch(updateUser(user))
+  updateUser: user => dispatch(updateUser(user)),
+  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
