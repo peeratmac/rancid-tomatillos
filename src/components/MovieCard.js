@@ -16,16 +16,16 @@ export const MovieCard = props => {
   } = props;
 
   return (
-    <div>
-      <h1>{title}</h1>
+    <div className="movie-card">
+      <h1 className="poster-title">{title}</h1>
       <img
         className='poster'
         src={poster_path}
         alt={`Poster Picture of ${title}`}
       />
-      <p>Average Rating: {average_rating}</p>
+      <p className="average-rating">Average Rating: {average_rating}</p>
       <NavLink to={`/movies/${id}`}>
-        <div>View Movie</div>
+        <div className="view-name">View Movie</div>
       </NavLink>
     </div>
   );
