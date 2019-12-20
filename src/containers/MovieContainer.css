@@ -1,0 +1,25 @@
+body {
+  height: 100vh;
+}
+
+main {
+  height: 160vh;
+}
+
+.movie-container {
+  align-items: center;
+  background-color: #3b397f;
+  display: flex;
+  /* height: 160vh; */
+  justify-content: center;
+  overflow: scroll;
+  width: 100%;
+}
+
+.inner-container {
+  border: 2px inset #c654dd;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 700px;
+}
