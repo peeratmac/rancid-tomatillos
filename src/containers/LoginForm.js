@@ -22,15 +22,29 @@ class LoginForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     fetchUserLogin(this.state.email, this.state.password)
-      .then(data => {
-        const { updateUser, updateLoggedInStatus, addRatings } = this.props;
-        updateUser({ ...data.user });
-        updateLoggedInStatus(true);
-        fetchRatings(data.user.id)
-          .then(ratingData => {
-            addRatings(ratingData.ratings);
-          })
-      })
+    .then(data => {
+      const { updateUser, updateLoggedInStatus, addRatings } = this.props;
+      fetchRatings(data.user.id)
+        .then(ratingData => {
+          updateLoggedInStatus(true);
+          console.log('checkUserOBJ: ', { ...data.user, ratings: ratingData.ratings })
+          // updateUser({ ...data.user, ratings: ratingData.ratings });
+          // addRatings(ratingData.ratings);
+        })
+    })
+
+
+
+
+      // .then(data => {
+      //   const { updateUser, updateLoggedInStatus, addRatings } = this.props;
+      //   updateUser({ ...data.user });
+      //   updateLoggedInStatus(true);
+      //   fetchRatings(data.user.id)
+      //     .then(ratingData => {
+      //       addRatings(ratingData.ratings);
+      //     })
+      // })
       .catch(error => {
         //write error functionality where, display message (set error state true, paired with
       // conditional rendering logic within RENDER))
@@ -38,6 +52,24 @@ class LoginForm extends Component {
       //display error - replace console.log();
       //
 }
+
+// i could fetchRatings right away fireMethodSendsupdate user with rankings as key of users
+// .then(data => {
+//   const { updateUser, updateLoggedInStatus, addRatings } = this.props;
+//   fetchRatings(data.user.id)
+//     .then(ratingData => {
+//       updateLoggedInStatus(true);
+//       console.log('checkUserOBJ: ', { ...data.user, ratings: ratingData.ratings })
+//       // updateUser({ ...data.user, ratings: ratingData.ratings });
+//
+//
+//       // addRatings(ratingData.ratings);
+//     })
+// })
+
+
+
+
 
   render() {
     return (
