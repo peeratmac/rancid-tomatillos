@@ -7,14 +7,9 @@
 
 .login-button,
 .logout-button,
-.back-button  {
-  width: 8%;
-  font-size: 1.1em;
-  height: 50%;
-  padding: 8px;
+.home-button  {
+  font-size: 20px;
+  height: 30px;
   border-radius: 3px;
-}
-
-.back-button {
-  width: 10%;
+  width: 80px;
 }
