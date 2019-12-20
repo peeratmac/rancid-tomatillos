@@ -23,3 +23,8 @@ export const isLoading = loadingStatus => ({
   type: 'IS_LOADING',
   loadingStatus
 });
+
+export const addRankings = rankings => ({
+  type: 'ADD_RANKINGS',
+  rankings: rankings
+});

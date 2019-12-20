@@ -4,6 +4,7 @@ import { userReducer } from './userReducer';
 import { isLoggedInReducer } from './isLoggedInReducer';
 import { errorReducer } from './errorReducer';
 import { loadingStatusReducer } from './loadingStatusReducer';
+import { rankingsReducer } from './rankingsReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   isLoggedIn: isLoggedInReducer,
   //Error and loading naming conventions need to be approved by teammates. Whatever offers most clarity
   errorMessage: errorReducer,
-  loadingStatus: loadingStatusReducer
+  loadingStatus: loadingStatusReducer,
+  rankings: rankingsReducer
 });
 
 export default rootReducer;
