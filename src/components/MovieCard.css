@@ -1,3 +1,29 @@
+.movie-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px
+}
+
 .poster {
-  width: 300px;
+  width: 350px;
+}
+
+.poster-title {
+  color: #c654dd;
+  font-size: 25px;
+  padding: 0;
+  text-align: center;
+  width: 350px;
+}
+
+.average-rating {
+  color: #EAB837
+}
+
+.view-name {
+  background-color: #4442a3;
+  color: #c654dd;
+  border-radius: 5px;
 }
