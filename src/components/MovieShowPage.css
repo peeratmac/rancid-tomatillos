@@ -2,7 +2,8 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  margin: 10px;
 }
 
 .backdrop {
@@ -12,4 +13,33 @@
 
 .overview {
   text-align: center;
+}
+
+.rating-bar {
+}
+
+.rating-scale {
+}
+
+.rating-description {
+  text-align: center;
+}
+
+.rating-btn {
+  box-shadow: 0 0 1px black;
+  color: black;
+  font-size: 8px;
+  font-weight: bold;
+  height: 45px;
+  text-align: center;
+  width: 21px;
+}
+
+.rating-btn:hover {
+  background-color: gold;
+  border: 1px solid black;
+}
+
+.rating-btn:active {
+  background-color: gold;
 }
