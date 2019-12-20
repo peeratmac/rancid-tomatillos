@@ -2,7 +2,7 @@
 
 :root {
   --neon-text-color: purple;
-  --neon-border-color: black;
+  --neon-border-color: #2D2D2F;
 }
 
 .poster-title  {
@@ -16,7 +16,6 @@
   text-align: center;
   text-transform: uppercase;
   width: 330px;
-
 }
 
 @keyframes flicker {

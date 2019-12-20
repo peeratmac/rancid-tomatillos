@@ -1,25 +1,19 @@
-body {
-  height: 100vh;
-}
-
-main {
-  height: 160vh;
-}
-
 .movie-container {
-  align-items: center;
   background-color: #3b397f;
   display: flex;
-  /* height: 160vh; */
+  /* height: 100vh; */
   justify-content: center;
-  overflow: scroll;
   width: 100%;
 }
 
 .inner-container {
   border: 10px ridge #c654dd;
+  box-shadow: 0 0 20px 10px black;
   display: flex;
   flex-wrap: wrap;
+  /* height: 380px; */
   justify-content: center;
+  margin-top: 20px;
+  overflow: scroll;
   width: 750px;
 }

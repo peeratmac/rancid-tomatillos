@@ -1,15 +1,17 @@
 .header {
+  align-items: center;
+  background-color: #2D2D2F;
   display: flex;
   height: 35px;
   justify-content: space-around;
-  align-items: center;
 }
 
 .login-button,
 .logout-button,
 .home-button  {
-  font-size: 20px;
-  height: 30px;
   border-radius: 3px;
+  font-size: 20px;
+  height: 25px;
+  line-height: 5px;
   width: 80px;
 }
