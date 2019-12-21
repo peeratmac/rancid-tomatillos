@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import './LoginForm.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
+import PropTypes from 'prop-types';
 
 //Error handling in this file utilizes JUST local state?
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,17 +30,17 @@ class LoginForm extends Component {
       })
       .catch(error => {
         //write error functionality where, display message (set error state true, paired with
-      // conditional rendering logic within RENDER))
+        // conditional rendering logic within RENDER))
       });
-      //display error - replace console.log();
-      //
+    //display error - replace console.log();
+    //
   }
 
   render() {
-    return (
-      (this.props.isLoggedIn)
-        ? <Redirect to='/'/>
-        : <section className='login-section'>
+    return this.props.isLoggedIn ? (
+      <Redirect to='/' />
+    ) : (
+      <section className='login-section'>
         <div className='form-container'>
           <h1>Login Form</h1>
           <form onSubmit={event => this.handleSubmit(event)}>
@@ -75,7 +76,7 @@ class LoginForm extends Component {
 
 export const mapStateToProps = state => ({
   isLoggedIn: state.isLoggedIn
-})
+});
 
 export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
@@ -83,3 +84,9 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  updateUser: PropTypes.func,
+  updateLoggedInStatus: PropTypes.func
+};
