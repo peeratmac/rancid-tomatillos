@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
 import './MovieContainer.css';
-import { handleError} from '../actions/index';
+import { handleError, isLoading} from '../actions/index';
 
 export const MovieContainer = props => {
   const { allMovies } = props;

@@ -6,6 +6,3 @@ export const loadingStatusReducer = (state = true, action) => {
       return state;
   }
 };
-
-
-//adding a .then (and .catch) to the initial fetch statement to trigger the boolean flip
