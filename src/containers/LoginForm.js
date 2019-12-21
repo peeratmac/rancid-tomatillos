@@ -11,28 +11,39 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: '',
     };
   }
 
+  validateInputs = () => {
+    if (this.state.email === '' || this.state.password === '') {
+      this.setState({error: 'All input fields required'})
+    }
+  }
+
   handleInputChange(event) {
+    this.setState({error: ''});
     this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    fetchUserLogin(this.state.email, this.state.password)
-      .then(data => {
-        const { updateUser, updateLoggedInStatus } = this.props;
-        updateUser({ ...data.user });
-        updateLoggedInStatus(true);
-      })
-      .catch(error => {
-        //write error functionality where, display message (set error state true, paired with
-      // conditional rendering logic within RENDER))
-      });
-      //display error - replace console.log();
-      //
+    this.validateInputs();
+    if (this.state.error !== '') {
+      fetchUserLogin(this.state.email, this.state.password)
+        .then(data => {
+          const { updateUser, updateLoggedInStatus } = this.props;
+          updateUser({ ...data.user });
+          updateLoggedInStatus(true);
+        })
+        .catch(error => {
+          //write POST error functionality where, display message (set error state true, paired with
+        // conditional rendering logic within RENDER))         //display error - replace console.log();
+        //
+        });
+
+    }
   }
 
   render() {
@@ -42,6 +53,7 @@ class LoginForm extends Component {
         : <section className='login-section'>
         <div className='form-container'>
           <h1>Login Form</h1>
+          <h1 className='validation-error'>{this.state.error}</h1>
           <form onSubmit={event => this.handleSubmit(event)}>
             <div className='input-container'>
               <label htmlFor='email-input'>Email:</label>
