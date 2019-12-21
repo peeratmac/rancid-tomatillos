@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationBar should match the NavigationBar Snapshot 1`] = `
+<header
+  className="header"
+>
+  <Link
+    to="/"
+  >
+    <Route
+      path={
+        Array [
+          "/login",
+          "/movies/:id",
+        ]
+      }
+      render={[Function]}
+    />
+  </Link>
+  <Link
+    to="/login"
+  >
+    <button
+      className="login-button"
+    >
+      Log In
+    </button>
+  </Link>
+</header>
+`;
