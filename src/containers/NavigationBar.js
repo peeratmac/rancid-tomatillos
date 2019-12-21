@@ -11,7 +11,7 @@ const NavigationBar = props => {
     <header className='header'>
       <Link to='/'>
         <Route path={['/login', '/movies/:id']} render={ () =>
-          <button className='backButton'>Back to Home</button>} />
+          <button className='home-button'>Home</button>} />
       </Link>
       {isLoggedIn && <h1>Welcome {user.name}</h1>}
       {!isLoggedIn &&

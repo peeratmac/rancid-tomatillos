@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
+import './MovieContainer.css';
+
 
 export const MovieContainer = props => {
   const { allMovies } = props;
@@ -37,7 +39,13 @@ export const MovieContainer = props => {
     //https://media.giphy.com/media/DvVTVeqPc5qEM/giphy.gif
   }
 
-  return <div className='movie-container'>{loader}</div>;
+  return (
+  <div className='movie-container'>
+    <div className="inner-container">
+      {loader}
+    </div>
+  </div>
+  )
 };
 
 export const mapStateToProps = state => ({
