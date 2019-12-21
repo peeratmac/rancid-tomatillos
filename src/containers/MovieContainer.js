@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
 import './MovieContainer.css';
-
+import { handleError} from '../actions/index';
 
 export const MovieContainer = props => {
   const { allMovies } = props;
@@ -23,33 +23,25 @@ export const MovieContainer = props => {
     );
   });
 
-  let loader;
-  if (displayMovies.length > 1) {
-    loader = displayMovies;
-  } else {
-    loader = (
-      <img
-        src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
-        alt='loading screen depicting a running film spool'
-      />
-    );
+  // 'https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
     //Alternative GIF URLS for loading icon
     //https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif
     //https://media.giphy.com/media/AITymLVsG2v2U/giphy.gif
     //https://media.giphy.com/media/DvVTVeqPc5qEM/giphy.gif
-  }
 
   return (
   <div className='movie-container'>
-    <div className="inner-container">
-      {loader}
+    <div className='inner-container'>
+      <h1 className='error-styling'>{props.errorMessage}</h1>
+      {displayMovies}
     </div>
   </div>
   )
 };
 
 export const mapStateToProps = state => ({
-  allMovies: state.movies
+  allMovies: state.movies,
+  errorMessage: state.errorMessage
 });
 
 export default connect(mapStateToProps, null)(MovieContainer);
