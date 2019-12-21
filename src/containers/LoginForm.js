@@ -31,7 +31,7 @@ export class LoginForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.validateInputs();
-    if (this.state.error !== '') {
+    if (this.state.error === '') {
       fetchUserLogin(this.state.email, this.state.password)
         .then(data => {
           const { updateUser, updateLoggedInStatus } = this.props;
@@ -58,7 +58,7 @@ export class LoginForm extends Component {
         <div className='form-container'>
           <h1>Login Form</h1>
           <h1 className='error-styling'>{this.state.error}</h1>
-          <h1 className='error-styling'>{this.props.errorMessage}</h1>
+          {!this.state.error && <h1 className='error-styling'>{this.props.errorMessage}</h1>}
           <form onSubmit={event => this.handleSubmit(event)}>
             <div className='input-container'>
               <label htmlFor='email-input'>Email:</label>
