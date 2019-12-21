@@ -23,6 +23,6 @@ form {
   height: 200px;
 }
 
-.validation-error {
+.error-styling {
   color: red;
 }

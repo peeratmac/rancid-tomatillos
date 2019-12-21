@@ -50,8 +50,8 @@ class LoginForm extends Component {
         : <section className='login-section'>
         <div className='form-container'>
           <h1>Login Form</h1>
-          <h1 className='validation-error'>{this.state.error}</h1>
-          <h1 className='validation-error'>{this.props.errorMessage}</h1>
+          <h1 className='error-styling'>{this.state.error}</h1>
+          <h1 className='error-styling'>{this.props.errorMessage}</h1>
           <form onSubmit={event => this.handleSubmit(event)}>
             <div className='input-container'>
               <label htmlFor='email-input'>Email:</label>
