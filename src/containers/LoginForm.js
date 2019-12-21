@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
-import { fetchUserLogin } from '../apiCalls';
+import { fetchUserLogin, fetchRatings } from '../apiCalls';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 
@@ -25,8 +25,11 @@ export class LoginForm extends Component {
     fetchUserLogin(this.state.email, this.state.password)
       .then(data => {
         const { updateUser, updateLoggedInStatus } = this.props;
-        updateUser({ ...data.user });
-        updateLoggedInStatus(true);
+        fetchRatings(data.user.id)
+          .then(ratingData => {
+            updateLoggedInStatus(true);
+            updateUser({ ...data.user, ratings: ratingData.ratings });
+          })
       })
       .catch(error => {
         //write error functionality where, display message (set error state true, paired with
@@ -80,7 +83,7 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
-  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
+  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

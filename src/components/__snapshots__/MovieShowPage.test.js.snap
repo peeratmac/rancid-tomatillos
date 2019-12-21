@@ -18,72 +18,72 @@ exports[`MovieShowPage should match the MovieShowPage Snapshot 1`] = `
     Average Rating: 
   </p>
   <div
-    class="rating-bar"
+    className="rating-bar"
   >
     <p
-      class="rating-description"
+      className="rating-description"
     >
       Rate Film:
     </p>
     <div
-      class="rating-scale"
+      className="rating-scale"
     >
       <button
-        class="rating-btn btn-one"
+        className="rating-btn btn-one"
         value="1"
       >
         1
       </button>
       <button
-        class="rating-btn btn-two"
+        className="rating-btn btn-two"
         value="2"
       >
         2
       </button>
       <button
-        class="rating-btn btn-three"
+        className="rating-btn btn-three"
         value="3"
       >
         3
       </button>
       <button
-        class="rating-btn btn-four"
+        className="rating-btn btn-four"
         value="4"
       >
         4
       </button>
       <button
-        class="rating-btn btn-five"
+        className="rating-btn btn-five"
         value="5"
       >
         5
       </button>
       <button
-        class="rating-btn btn-six"
+        className="rating-btn btn-six"
         value="6"
       >
         6
       </button>
       <button
-        class="rating-btn btn-seven"
+        className="rating-btn btn-seven"
         value="7"
       >
         7
       </button>
       <button
-        class="rating-btn btn-eight"
+        className="rating-btn btn-eight"
         value="8"
       >
         8
       </button>
       <button
-        class="rating-btn btn-nine"
+        className="rating-btn btn-nine"
         value="9"
       >
         9
       </button>
       <button
-        class="rating-btn btn-ten"
+        className="rating-btn btn-ten"
         value="10"
       >
         10
