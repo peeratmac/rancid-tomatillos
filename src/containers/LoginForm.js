@@ -5,7 +5,6 @@ import { updateUser, updateLoggedInStatus, handleError } from '../actions/index'
 import { fetchUserLogin } from '../apiCalls';
 import { Redirect } from 'react-router'
 
-//Error handling in this file utilizes JUST local state?
 class LoginForm extends Component {
   constructor(props) {
     super(props);
