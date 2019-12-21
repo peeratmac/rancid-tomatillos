@@ -1,7 +1,12 @@
 export const fetchAllMovies = () => {
   return fetch(
     'https://rancid-tomatillos.herokuapp.com/api/v1/movies'
-  ).then(response => response.json());
+  ).then(response => {
+    if (!response.ok) {
+      throw Error('Something went wrong')
+    }
+    return response.json()
+  })
 };
 
 export const fetchUserLogin = (email, password) => {
