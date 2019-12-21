@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
-import { updateUser, updateLoggedInStatus } from '../actions/index';
+import { updateUser, updateLoggedInStatus, handleError } from '../actions/index';
 import { fetchUserLogin } from '../apiCalls';
 import { Redirect } from 'react-router'
 
@@ -24,6 +24,7 @@ class LoginForm extends Component {
 
   handleInputChange(event) {
     this.setState({error: ''});
+    this.props.handleError('');
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -38,11 +39,8 @@ class LoginForm extends Component {
           updateLoggedInStatus(true);
         })
         .catch(error => {
-          //write POST error functionality where, display message (set error state true, paired with
-        // conditional rendering logic within RENDER))         //display error - replace console.log();
-        //
+          this.props.handleError('Invalid login attempt, please try again')
         });
-
     }
   }
 
@@ -54,6 +52,7 @@ class LoginForm extends Component {
         <div className='form-container'>
           <h1>Login Form</h1>
           <h1 className='validation-error'>{this.state.error}</h1>
+          <h1 className='validation-error'>{this.props.errorMessage}</h1>
           <form onSubmit={event => this.handleSubmit(event)}>
             <div className='input-container'>
               <label htmlFor='email-input'>Email:</label>
@@ -86,12 +85,14 @@ class LoginForm extends Component {
 }
 
 export const mapStateToProps = state => ({
-  isLoggedIn: state.isLoggedIn
+  isLoggedIn: state.isLoggedIn,
+  errorMessage: state.errorMessage
 })
 
 export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
-  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status))
+  updateLoggedInStatus: status => dispatch(updateLoggedInStatus(status)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
