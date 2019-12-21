@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   movies: moviesReducer,
   user: userReducer,
   isLoggedIn: isLoggedInReducer,
-  //Error and loading naming conventions need to be approved by teammates. Whatever offers most clarity
   errorMessage: errorReducer,
   loadingStatus: loadingStatusReducer,
 });

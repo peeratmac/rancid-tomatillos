@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './MovieShowPage.css'
+import { updateUser, updateLoggedInStatus } from '../actions/index';
+
 
 export const MovieShowPage = props => {
   const {
@@ -12,6 +14,18 @@ export const MovieShowPage = props => {
     overview,
     average_rating
   } = props;
+
+// grab the value which will be the rating that we send through the POST
+// we get back a worthless return from POST
+// so we REFETCH ratings by invoking fetchRatings
+// that give us back the full updated array of ratings
+// const updatedRatings = whatever we get back from re-GET-fetchRatings
+// const updatedUserObj = {...state.user, ratings: updatedRatings}
+
+// updateRatings(fetchedRatings)
+
+
+
 
   return (
     <div className="movie-page">
@@ -41,11 +55,19 @@ export const MovieShowPage = props => {
 
 export const mapStateToProps = state => ({
   allMovies: state.movies,
-
+  isLoggedIn: state.isLoggedIn,
+  user: state.user
 });
 
-export default connect(mapStateToProps, null)(MovieShowPage);
+export const mapDispatchToProps = dispatch => ({
+  updateUser: user => dispatch(updateUser(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
 
 MovieShowPage.propTypes = {
-  allMovies: PropTypes.array
+  allMovies: PropTypes.array,
+  isLoggedIn: PropTypes.bool,
+  user: PropTypes.object,
+  updateUser: PropTypes.func
 };
