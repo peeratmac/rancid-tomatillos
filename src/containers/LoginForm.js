@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
-import { fetchUserLogin } from '../apiCalls';
+import { fetchUserLogin, fetchRatings } from '../apiCalls';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 
@@ -24,7 +24,7 @@ export class LoginForm extends Component {
     event.preventDefault();
     fetchUserLogin(this.state.email, this.state.password)
       .then(data => {
-        const { updateUser, updateLoggedInStatus, addRatings } = this.props;
+        const { updateUser, updateLoggedInStatus } = this.props;
         fetchRatings(data.user.id)
           .then(ratingData => {
             updateLoggedInStatus(true);
