@@ -40,7 +40,8 @@ export const MovieShowPage = props => {
 };
 
 export const mapStateToProps = state => ({
-  allMovies: state.movies
+  allMovies: state.movies,
+
 });
 
 export default connect(mapStateToProps, null)(MovieShowPage);

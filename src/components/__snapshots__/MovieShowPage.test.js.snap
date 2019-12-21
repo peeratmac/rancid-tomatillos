@@ -1,15 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MovieShowPage should match the MovieShowPage Snapshot 1`] = `
-<div>
+<div
+  className="movie-page"
+>
   <img
     className="backdrop"
   />
   <h1 />
-  <p />
-  <p />
+  <p>
+    In Theaters: 
+  </p>
+  <p
+    className="overview"
+  />
   <p>
     Average Rating: 
   </p>
+  <div
+    className="rating-bar"
+  >
+    <p
+      className="rating-description"
+    >
+      Rate Film:
+    </p>
+    <div
+      className="rating-scale"
+    >
+      <button
+        className="rating-btn btn-one"
+        value="1"
+      >
+        1
+      </button>
+      <button
+        className="rating-btn btn-two"
+        value="2"
+      >
+        2
+      </button>
+      <button
+        className="rating-btn btn-three"
+        value="3"
+      >
+        3
+      </button>
+      <button
+        className="rating-btn btn-four"
+        value="4"
+      >
+        4
+      </button>
+      <button
+        className="rating-btn btn-five"
+        value="5"
+      >
+        5
+      </button>
+      <button
+        className="rating-btn btn-six"
+        value="6"
+      >
+        6
+      </button>
+      <button
+        className="rating-btn btn-seven"
+        value="7"
+      >
+        7
+      </button>
+      <button
+        className="rating-btn btn-eight"
+        value="8"
+      >
+        8
+      </button>
+      <button
+        className="rating-btn btn-nine"
+        value="9"
+      >
+        9
+      </button>
+      <button
+        className="rating-btn btn-ten"
+        value="10"
+      >
+        10
+      </button>
+    </div>
+  </div>
 </div>
 `;

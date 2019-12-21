@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   isLoggedIn: isLoggedInReducer,
   //Error and loading naming conventions need to be approved by teammates. Whatever offers most clarity
   errorMessage: errorReducer,
-  loadingStatus: loadingStatusReducer
+  loadingStatus: loadingStatusReducer,
 });
 
 export default rootReducer;

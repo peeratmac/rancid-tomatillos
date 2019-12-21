@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
 import { updateUser, updateLoggedInStatus, handleError } from '../actions/index';
-import { fetchUserLogin } from '../apiCalls';
-import { Redirect } from 'react-router'
+import { fetchUserLogin, fetchRatings } from '../apiCalls';
+import { Redirect } from 'react-router';
+import PropTypes from 'prop-types';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,20 +35,26 @@ class LoginForm extends Component {
       fetchUserLogin(this.state.email, this.state.password)
         .then(data => {
           const { updateUser, updateLoggedInStatus } = this.props;
-          updateUser({ ...data.user });
-          updateLoggedInStatus(true);
+          fetchRatings(data.user.id)
+            .then(ratingData => {
+              updateLoggedInStatus(true);
+              updateUser({ ...data.user, ratings: ratingData.ratings });
+            })
+            .catch(error => {
+              console.log('Error retrieving ratings')
+            })
         })
         .catch(error => {
           this.props.handleError('Invalid login attempt, please try again')
-        });
+        })
     }
   }
 
   render() {
-    return (
-      (this.props.isLoggedIn)
-        ? <Redirect to='/'/>
-        : <section className='login-section'>
+    return this.props.isLoggedIn ? (
+      <Redirect to='/' />
+    ) : (
+      <section className='login-section'>
         <div className='form-container'>
           <h1>Login Form</h1>
           <h1 className='error-styling'>{this.state.error}</h1>
@@ -95,3 +102,9 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  updateUser: PropTypes.func,
+  updateLoggedInStatus: PropTypes.func
+};
