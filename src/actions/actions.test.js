@@ -39,18 +39,32 @@ describe('actions', () => {
     const user = {
         id: 1,
         name: 'placeholder',
-        email: 'placeholder'
+        email: 'placeholder',
+        ratings: []
       };
     const expectedAction = {
       type: 'UPDATE_USER',
       user: {
         id: 1,
         name: 'placeholder',
-        email: 'placeholder'
+        email: 'placeholder',
+        ratings: []
       }
     };
 
     const result = actions.updateUser(user);
+
+    expect(result).toEqual(expectedAction);
+  })
+
+  it('should have a type of UPDATE_LOGGEDIN_STATUS', () => {
+    const status = true;
+    const expectedAction = {
+      type: 'UPDATE_LOGGEDIN_STATUS',
+      status: true
+    };
+
+    const result = actions.updateLoggedInStatus(status);
 
     expect(result).toEqual(expectedAction);
   })
@@ -78,4 +92,26 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   })
+})
+
+it('should have a type of UPDATE_RATINGS', () => {
+  const ratings = [
+    {id: 1, user_id: 1, movie_id: 1, rating: 6,
+    created_at: "someDate", updated_at: "someDate"},
+    {id: 2, user_id: 1, movie_id: 2, rating: 2,
+      created_at: "secondDate", updated_at: "secondDate"}
+  ];
+  const expectedAction = {
+    type: 'UPDATE_RATINGS',
+    ratings: [
+      {id: 1, user_id: 1, movie_id: 1, rating: 6,
+      created_at: "someDate", updated_at: "someDate"},
+      {id: 2, user_id: 1, movie_id: 2, rating: 2,
+        created_at: "secondDate", updated_at: "secondDate"}
+    ]
+  };
+
+  const result = actions.updateRatings(ratings);
+
+  expect(result).toEqual(expectedAction);
 })
