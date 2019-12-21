@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import './NavigationBar.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
+import PropTypes from 'prop-types';
 
 export const NavigationBar = props => {
   const { user, isLoggedIn, updateUser, updateLoggedInStatus } = props;
@@ -48,3 +49,10 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
+
+NavigationBar.propTypes = {
+  user: PropTypes.object,
+  isLoggedIn: PropTypes.bool,
+  updateUser: PropTypes.func,
+  updateLoggedInStatus: PropTypes.func
+};
