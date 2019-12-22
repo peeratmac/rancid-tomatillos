@@ -51,4 +51,48 @@ describe('apiCalls', () => {
       expect(fetchAllMovies()).rejects.toEqual(Error('Something went wrong'));
     });
   })
+
+  describe('fetchUserLogin', () => {
+    let mockResponse = {id: 9, name: "Marge", email: "marge@turing.io"};
+    let mockEmail = "marge@turing.io";
+    let mockPassword = 'topsecretpassword';
+    let mockBody = { email: mockEmail, password: mockPassword };
+    let mockOptions = {
+      method: 'POST',
+      body: JSON.stringify(mockBody),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => {
+            return Promise.resolve(mockResponse)
+          }
+        })
+      })
+    })
+
+    it('should be passed the correct URL', () => {
+      fetchUserLogin(mockEmail, mockPassword);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://rancid-tomatillos.herokuapp.com/api/v1/login', mockOptions)
+    });
+
+    it('should return a user object', () => {
+      expect(fetchUserLogin(mockEmail, mockPassword)).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false,
+        })
+      })
+      expect(fetchUserLogin()).rejects.toEqual(Error('Something went wrong'));
+    });
+  })
 })
