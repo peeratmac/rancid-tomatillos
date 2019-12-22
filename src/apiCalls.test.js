@@ -48,7 +48,7 @@ describe('apiCalls', () => {
           ok: false,
         })
       })
-      expect(fetchAllMovies()).rejects.toEqual(Error('Something went wrong'));
+      expect(fetchAllMovies()).rejects.toEqual(Error('Error with GET request'));
     });
   })
 
