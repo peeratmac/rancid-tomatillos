@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { App } from './App';
+import { App, mapStateToProps, mapDispatchToProps } from './App';
+import { addMovies, handleError, isLoading } from '../actions'
 
 describe('App', () => {
   let wrapper;
@@ -46,5 +47,75 @@ describe('App', () => {
   it('should match the App Snapshot', () => {
     wrapper = shallow(<App />);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('mapsStateToProps', () => {
+    it('should return only the necessary information from the redux store', () => {
+      const mockState = {
+        movies: [
+          {
+            id: 1,
+            title: 'Jumanji: The Next Level',
+            poster_path: 'https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg',
+            backdrop_path: 'https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg',
+            release_date: '2019-12-04',
+            overview: "In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
+            average_rating: 4
+          }
+        ],
+        user: {oldUser: 'Grandpa Gary'},
+        isLoggedIn: true,
+        errorMessage: '',
+        loadingStatus: false,
+      };
+      const expected = {
+        allMovies: [
+          {
+            id: 1,
+            title: 'Jumanji: The Next Level',
+            poster_path: 'https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg',
+            backdrop_path: 'https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg',
+            release_date: '2019-12-04',
+            overview: "In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
+            average_rating: 4
+          }
+        ],
+      };
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with an addMovies action when addMovies is called', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = addMovies([{some: 'flick'}]);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.addMovies([{some: 'flick'}]);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an handleError action when handleError is called', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = handleError('Mega Mishap');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.handleError('Mega Mishap');
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an isLoading action when isLoading is called', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = isLoading(false);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.isLoading(false);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 });

@@ -46,11 +46,11 @@ export class App extends Component {
   };
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allMovies: state.movies
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch(addMovies(movies)),
   handleError: errorMessage => dispatch(handleError(errorMessage)),
   isLoading: loadingStatus => dispatch(isLoading(loadingStatus))
