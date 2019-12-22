@@ -110,8 +110,28 @@ describe('apiCalls', () => {
           }
         })
       })
-    })
+    });
 
-  })
+    it('should be passed the correct URL', () => {
+      fetchRatings(mockUserId);
+
+      expect(window.fetch).toHaveBeenCalledWith(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${mockUserId}/ratings`);
+    });
+
+    it('should return an object with a ratings key with an array of ratings',
+    () => {
+      expect(fetchRatings(mockUserId)).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false,
+        })
+      });
+
+      expect(fetchRatings(mockUserId)).rejects.toEqual(Error('Something went wrong'));
+    })
+  });
 
 })
