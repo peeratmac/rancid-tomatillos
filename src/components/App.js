@@ -15,7 +15,10 @@ export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies()
-      .then(data => addMovies(data.movies))
+      .then(data => {
+        addMovies(data.movies)
+        this.props.isLoading(false)
+      })
       .catch(error => {
         this.props.handleError('Data retrieval error - Please refresh the page')
       })
@@ -49,12 +52,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch(addMovies(movies)),
-  handleError: errorMessage => dispatch(handleError(errorMessage))
+  handleError: errorMessage => dispatch(handleError(errorMessage)),
+  isLoading: loadingStatus => dispatch(isLoading(loadingStatus))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   allMovies: PropTypes.array,
-  addMovies: PropTypes.func
+  addMovies: PropTypes.func,
+  handleError: PropTypes.func,
+  isLoading: PropTypes.func
 };
