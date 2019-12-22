@@ -22,3 +22,7 @@ form {
   flex-direction: column;
   height: 200px;
 }
+
+.error-styling {
+  color: red;
+}
