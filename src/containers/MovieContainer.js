@@ -53,6 +53,8 @@ export const mapStateToProps = state => ({
 export default connect(mapStateToProps, null)(MovieContainer);
 
 MovieContainer.propTypes = {
-  allMovies: PropTypes.array
+  allMovies: PropTypes.array,
+  errorMessage: PropTypes.string,
+  loadingStatus: PropTypes.bool
 
 };

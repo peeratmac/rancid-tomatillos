@@ -60,5 +60,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   allMovies: PropTypes.array,
-  addMovies: PropTypes.func
+  addMovies: PropTypes.func,
+  handleError: PropTypes.func,
+  isLoading: PropTypes.func
 };

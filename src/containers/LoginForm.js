@@ -106,5 +106,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 LoginForm.propTypes = {
   isLoggedIn: PropTypes.bool,
   updateUser: PropTypes.func,
-  updateLoggedInStatus: PropTypes.func
+  updateLoggedInStatus: PropTypes.func,
+  handleError: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  errorMessage: PropTypes.string
 };
