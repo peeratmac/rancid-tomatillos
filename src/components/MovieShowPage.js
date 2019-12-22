@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './MovieShowPage.css'
+import './MovieShowPage.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
-
+import { updateRatings, fetchRatings } from '../apiCalls';
 
 export const MovieShowPage = props => {
   const {
@@ -12,60 +12,104 @@ export const MovieShowPage = props => {
     backdrop_path,
     release_date,
     overview,
-    average_rating
+    average_rating,
+    isLoggedIn
   } = props;
 
-// grab the value which will be the rating that we send through the POST
-// we get back a worthless return from POST
-// so we REFETCH ratings by invoking fetchRatings
-// that give us back the full updated array of ratings
-// const updatedRatings = whatever we get back from re-GET-fetchRatings
-// const updatedUserObj = {...state.user, ratings: updatedRatings}
+  const handleRatingsUpdates = event => {
+    const { updateUser, user } = props;
+    updateRatings(id, Number(event.target.value), user.id).then(data => {
+      fetchRatings(user.id).then(ratingData => {
+        const newRatings = { ...user, ratings: ratingData.ratings };
+        updateUser(newRatings);
+      });
+    });
+  };
 
-// updateRatings(fetchedRatings)
-const handleRatingsUpdates = () => {
-  console.log('got in')
-  const { updateUser, user } = props;
-
-  const newRatings = [
-    {id: 1, user_id: 1, movie_id: 1, rating: 6,
-    created_at: "someDate", updated_at: "someDate"},
-    {id: 2, user_id: 1, movie_id: 2, rating: 2,
-      created_at: "secondDate", updated_at: "secondDate"},
-    {id: 3, user_id: 1, movie_id: 3, rating: 3,
-      created_at: "thirdDate", updated_at: "thirdDate"}
-  ]
-  const createTestUserObj = {...user, ratings: newRatings}
-  console.log('USEROBJ: ', createTestUserObj);
-}
-
-
+  const findUserRating = id => {
+    const userRatings = props.user.ratings.map(rating => rating.movie_id);
+    if (userRatings.includes(id)) {
+      return props.user.ratings.find(movie => movie.movie_id === id).rating;
+    } else {
+      return 'Please rate the movie below...';
+    }
+  };
 
   return (
-    <div className="movie-page">
+    <div className='movie-page'>
       <img className='backdrop' src={backdrop_path} alt={title} />
       <h1>{title}</h1>
       <p>In Theaters: {release_date}</p>
-      <p className="overview">{overview}</p>
+      <p className='overview'>{overview}</p>
       <p>Average Rating: {average_rating}</p>
-      <div className="rating-bar">
-        <p className="rating-description">Rate Film:</p>
-        <div className="rating-scale">
-          <button className="rating-btn btn-one" value="1">1</button>
-          <button className="rating-btn btn-two" value="2">2</button>
-          <button className="rating-btn btn-three" value="3">3</button>
-          <button className="rating-btn btn-four" value="4">4</button>
-          <button className="rating-btn btn-five" value="5">5</button>
-          <button className="rating-btn btn-six" value="6">6</button>
-          <button className="rating-btn btn-seven" value="7">7</button>
-          <button className="rating-btn btn-eight" value="8">8</button>
-          <button className="rating-btn btn-nine" value="9">9</button>
-          <button className="rating-btn btn-ten" value="10"
-            onClick={handleRatingsUpdates}>10</button>
+      {isLoggedIn && <div>My Rating: {findUserRating(id)}</div>}
+      <div className='rating-bar'>
+        <p className='rating-description'>Rate Film:</p>
+        <div className='rating-scale'>
+          <button
+            className='rating-btn btn-one'
+            value='1'
+            onClick={event => handleRatingsUpdates(event)}>
+            1
+          </button>
+          <button
+            className='rating-btn btn-two'
+            value='2'
+            onClick={event => handleRatingsUpdates(event)}>
+            2
+          </button>
+          <button
+            className='rating-btn btn-three'
+            value='3'
+            onClick={event => handleRatingsUpdates(event)}>
+            3
+          </button>
+          <button
+            className='rating-btn btn-four'
+            value='4'
+            onClick={event => handleRatingsUpdates(event)}>
+            4
+          </button>
+          <button
+            className='rating-btn btn-five'
+            value='5'
+            onClick={event => handleRatingsUpdates(event)}>
+            5
+          </button>
+          <button
+            className='rating-btn btn-six'
+            value='6'
+            onClick={event => handleRatingsUpdates(event)}>
+            6
+          </button>
+          <button
+            className='rating-btn btn-seven'
+            value='7'
+            onClick={event => handleRatingsUpdates(event)}>
+            7
+          </button>
+          <button
+            className='rating-btn btn-eight'
+            value='8'
+            onClick={event => handleRatingsUpdates(event)}>
+            8
+          </button>
+          <button
+            className='rating-btn btn-nine'
+            value='9'
+            onClick={event => handleRatingsUpdates(event)}>
+            9
+          </button>
+          <button
+            className='rating-btn btn-ten'
+            value='10'
+            onClick={event => handleRatingsUpdates(event)}>
+            10
+          </button>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export const mapStateToProps = state => ({
