@@ -20,7 +20,6 @@ export const MovieShowPage = props => {
     updateRatings(id, Number(event.target.value), user.id).then(data => {
       fetchRatings(user.id).then(ratingData => {
         const newRatings = { ...user, ratings: ratingData.ratings };
-        console.log(newRatings);
         updateUser(newRatings);
       });
     });
@@ -36,31 +35,58 @@ export const MovieShowPage = props => {
       <div className='rating-bar'>
         <p className='rating-description'>Rate Film:</p>
         <div className='rating-scale'>
-          <button className='rating-btn btn-one' value='1'>
+          <button
+            className='rating-btn btn-one'
+            value='1'
+            onClick={event => handleRatingsUpdates(event)}>
             1
           </button>
-          <button className='rating-btn btn-two' value='2'>
+          <button
+            className='rating-btn btn-two'
+            value='2'
+            onClick={event => handleRatingsUpdates(event)}>
             2
           </button>
-          <button className='rating-btn btn-three' value='3'>
+          <button
+            className='rating-btn btn-three'
+            value='3'
+            onClick={event => handleRatingsUpdates(event)}>
             3
           </button>
-          <button className='rating-btn btn-four' value='4'>
+          <button
+            className='rating-btn btn-four'
+            value='4'
+            onClick={event => handleRatingsUpdates(event)}>
             4
           </button>
-          <button className='rating-btn btn-five' value='5'>
+          <button
+            className='rating-btn btn-five'
+            value='5'
+            onClick={event => handleRatingsUpdates(event)}>
             5
           </button>
-          <button className='rating-btn btn-six' value='6'>
+          <button
+            className='rating-btn btn-six'
+            value='6'
+            onClick={event => handleRatingsUpdates(event)}>
             6
           </button>
-          <button className='rating-btn btn-seven' value='7'>
+          <button
+            className='rating-btn btn-seven'
+            value='7'
+            onClick={event => handleRatingsUpdates(event)}>
             7
           </button>
-          <button className='rating-btn btn-eight' value='8'>
+          <button
+            className='rating-btn btn-eight'
+            value='8'
+            onClick={event => handleRatingsUpdates(event)}>
             8
           </button>
-          <button className='rating-btn btn-nine' value='9'>
+          <button
+            className='rating-btn btn-nine'
+            value='9'
+            onClick={event => handleRatingsUpdates(event)}>
             9
           </button>
           <button
