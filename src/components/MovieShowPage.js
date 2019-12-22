@@ -32,6 +32,7 @@ export const MovieShowPage = props => {
       <p>In Theaters: {release_date}</p>
       <p className='overview'>{overview}</p>
       <p>Average Rating: {average_rating}</p>
+      <div>My Rating: {props.user.ratings[id - 1].rating}</div>
       <div className='rating-bar'>
         <p className='rating-description'>Rate Film:</p>
         <div className='rating-scale'>
