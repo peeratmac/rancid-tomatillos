@@ -28,7 +28,6 @@ export const MovieShowPage = props => {
 
   const findUserRating = id => {
     const userRatings = props.user.ratings.map(rating => rating.movie_id);
-    console.log(userRatings);
     if (userRatings.includes(id)) {
       return props.user.ratings.find(movie => movie.movie_id === id).rating;
     } else {
