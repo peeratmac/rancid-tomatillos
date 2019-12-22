@@ -14,8 +14,11 @@ import PropTypes from 'prop-types';
 export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
-    fetchAllMovies().then(data => addMovies(data.movies));
-    //add a catch statement error => fireMethodSends
+    fetchAllMovies()
+      .then(data => addMovies(data.movies))
+      .catch(error => {
+        this.props.handleError('Data retrieval error - Please refresh the page')
+      })
   }
 
   render = () => {
@@ -45,7 +48,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMovies: movies => dispatch(addMovies(movies))
+  addMovies: movies => dispatch(addMovies(movies)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
