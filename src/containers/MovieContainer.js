@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
 import './MovieContainer.css';
-
+import { handleError, isLoading} from '../actions/index';
 
 export const MovieContainer = props => {
   const { allMovies } = props;
+
+  const loader = <img src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif' alt="loading..."/>;
 
   const displayMovies = allMovies.map(movie => {
     return (
@@ -23,37 +25,36 @@ export const MovieContainer = props => {
     );
   });
 
-  let loader;
-  if (displayMovies.length > 1) {
-    loader = displayMovies;
-  } else {
-    loader = (
-      <img
-        src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
-        alt='loading screen depicting a running film spool'
-      />
-    );
-    //Alternative GIF URLS for loading icon
-    //https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif
-    //https://media.giphy.com/media/AITymLVsG2v2U/giphy.gif
-    //https://media.giphy.com/media/DvVTVeqPc5qEM/giphy.gif
-  }
-
   return (
   <div className='movie-container'>
-    <div className="inner-container">
-      {loader}
-    </div>
+    {props.loadingStatus === false &&
+      <div className='inner-container'>
+        <h1 className='error-styling'>
+          {props.errorMessage}
+        </h1>
+        {displayMovies}
+      </div>
+    }
+    {props.loadingStatus === true &&
+      <div className='inner-container'>
+        {loader}
+      </div>
+    }
   </div>
   )
 };
 
 export const mapStateToProps = state => ({
-  allMovies: state.movies
+  allMovies: state.movies,
+  errorMessage: state.errorMessage,
+  loadingStatus: state.loadingStatus
 });
 
 export default connect(mapStateToProps, null)(MovieContainer);
 
 MovieContainer.propTypes = {
-  allMovies: PropTypes.array
+  allMovies: PropTypes.array,
+  errorMessage: PropTypes.string,
+  loadingStatus: PropTypes.bool
+
 };
