@@ -12,7 +12,8 @@ export const MovieShowPage = props => {
     backdrop_path,
     release_date,
     overview,
-    average_rating
+    average_rating,
+    isLoggedIn
   } = props;
 
   const handleRatingsUpdates = event => {
@@ -25,6 +26,10 @@ export const MovieShowPage = props => {
     });
   };
 
+  const findUserRating = id => {
+    return props.user.ratings.find(rating => rating.movie_id === id).rating;
+  };
+
   return (
     <div className='movie-page'>
       <img className='backdrop' src={backdrop_path} alt={title} />
@@ -32,7 +37,7 @@ export const MovieShowPage = props => {
       <p>In Theaters: {release_date}</p>
       <p className='overview'>{overview}</p>
       <p>Average Rating: {average_rating}</p>
-      <div>My Rating: {props.user.ratings[id - 1].rating}</div>
+      {isLoggedIn && <div>My Rating: {findUserRating(id)}</div>}
       <div className='rating-bar'>
         <p className='rating-description'>Rate Film:</p>
         <div className='rating-scale'>
