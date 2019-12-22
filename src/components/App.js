@@ -15,10 +15,12 @@ export class App extends Component {
   componentDidMount() {
     const { addMovies } = this.props;
     fetchAllMovies()
-      .then(data => addMovies(data.movies))
-      .catch(error => {
-        this.props.handleError('Data retrieval error - Please refresh the page');
+      .then(data => {
+        addMovies(data.movies)
         this.props.isLoading(false)
+      })
+      .catch(error => {
+        this.props.handleError('Data retrieval error - Please refresh the page')
       })
   }
 
