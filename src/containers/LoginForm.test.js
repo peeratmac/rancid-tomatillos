@@ -33,7 +33,6 @@ describe('LoginForm', () => {
 
   describe('mapDispatchToProps', () => {
     it('calls dispatch with a handleError action when handleInputChange is called', () => {
-      // Setup
       const mockDispatch = jest.fn();
       const actionToDispatch = handleError('mockError');
       const mappedProps = mapDispatchToProps(mockDispatch);
@@ -43,8 +42,7 @@ describe('LoginForm', () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('calls dispatch with a updateUser action when handleInputChange is called', () => {
-      // Setup
+    it('calls dispatch with an updateUser action when updateUser is called', () => {
       const mockDispatch = jest.fn();
       const actionToDispatch = updateUser({mock: 'property'});
       const mappedProps = mapDispatchToProps(mockDispatch);
@@ -54,8 +52,7 @@ describe('LoginForm', () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('calls dispatch with a updateLoggedInStatus action when handleInputChange is called', () => {
-      // Setup
+    it('calls dispatch with an updateLoggedInStatus action when updateLoggedInStatus is called', () => {
       const mockDispatch = jest.fn();
       const actionToDispatch = updateLoggedInStatus(true);
       const mappedProps = mapDispatchToProps(mockDispatch);
