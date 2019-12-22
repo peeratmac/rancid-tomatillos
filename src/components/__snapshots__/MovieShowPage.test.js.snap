@@ -84,6 +84,7 @@ exports[`MovieShowPage should match the MovieShowPage Snapshot 1`] = `
       </button>
       <button
         className="rating-btn btn-ten"
+        onClick={[Function]}
         value="10"
       >
         10

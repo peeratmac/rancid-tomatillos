@@ -10,6 +10,12 @@ exports[`LoginForm should match the LoginForm Snapshot 1`] = `
     <h1>
       Login Form
     </h1>
+    <h1
+      className="error-styling"
+    />
+    <h1
+      className="error-styling"
+    />
     <form
       onSubmit={[Function]}
     >
