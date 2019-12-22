@@ -27,7 +27,13 @@ export const MovieShowPage = props => {
   };
 
   const findUserRating = id => {
-    return props.user.ratings.find(rating => rating.movie_id === id).rating;
+    const userRatings = props.user.ratings.map(rating => rating.movie_id);
+    console.log(userRatings);
+    if (userRatings.includes(id)) {
+      return props.user.ratings.find(movie => movie.movie_id === id).rating;
+    } else {
+      return 'Please rate the movie below...';
+    }
   };
 
   return (
