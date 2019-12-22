@@ -92,7 +92,26 @@ describe('apiCalls', () => {
           ok: false,
         })
       })
+
       expect(fetchUserLogin()).rejects.toEqual(Error('Something went wrong'));
     });
+  });
+
+  describe('fetchRatings', () => {
+    let mockResponse = {ratings: [] };
+    let mockUserId = 3;
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => {
+            return Promise.resolve(mockResponse)
+          }
+        })
+      })
+    })
+
   })
+
 })
