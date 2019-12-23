@@ -16,7 +16,7 @@ export const NavigationBar = props => {
           render={() => <button className='home-button'>Home</button>}
         />
       </Link>
-      {isLoggedIn && <h1>Welcome {user.name}</h1>}
+      {isLoggedIn && <h1 className='welcome-user'>Welcome {user.name}</h1>}
       {!isLoggedIn && (
         <Link to='/login'>
           <button className='login-button'>Log In</button>

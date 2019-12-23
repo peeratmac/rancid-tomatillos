@@ -2,16 +2,41 @@
   align-items: center;
   background-color: #2D2D2F;
   display: flex;
-  height: 35px;
+  height: 8vh;
   justify-content: space-around;
 }
 
 .login-button,
 .logout-button,
 .home-button  {
+  border: 1px solid black;
   border-radius: 3px;
+  box-shadow: 0 0 5px 2px white;
   font-size: 20px;
   height: 25px;
   line-height: 5px;
   width: 80px;
+}
+
+.login-button:hover  {
+  background-color: #c654dd;;
+  border: 1px groove black;
+  color: white;
+}
+
+.logout-button:hover  {
+  background-color: #DC6173;
+  color: white;
+}
+
+.home-button:hover  {
+  background-color: #c654dd;;
+  border: 1px groove black;
+  color: white;
+}
+
+.welcome-user {
+  color: #C654DE;
+  font-size: 25px;
+  line-height: 1px;
 }

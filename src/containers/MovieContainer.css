@@ -1,7 +1,7 @@
 .movie-container {
   background-color: #3b397f;
   display: flex;
-  /* height: 100vh; */
+  height: 92vh;
   justify-content: center;
   width: 100%;
 }
@@ -11,7 +11,7 @@
   box-shadow: 0 0 20px 10px black;
   display: flex;
   flex-wrap: wrap;
-  /* height: 380px; */
+  height: 90%;
   justify-content: center;
   margin-top: 20px;
   overflow: scroll;
