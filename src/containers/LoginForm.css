@@ -1,9 +1,10 @@
-/* ALL STYLING CAN/SHOULD BE REPLACED/DISCARDED (merely placeholder styling) -Austen */
 .login-section {
   align-items: center;
-  background-color: yellow;
+  border: 10px dotted #C554DD;
+  box-sizing: border-box;
+  background-color: #3B397F;
   display: flex;
-  height: 100%;
+  height: 92vh;
   justify-content: center;
   width: 100%;
 }
@@ -12,17 +13,59 @@ form {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 150px;
   justify-content: space-around;
+}
+
+label {
+  display: none;
+}
+
+input {
+  text-align: center;
 }
 
 .form-container {
   align-items: center;
+  border: 5px ridge #C554DD;
+  box-shadow: 1px 1px 11px 3px black;
   display: flex;
   flex-direction: column;
-  height: 200px;
+  height: 270px;
+  justify-content: space-around;
+  width: 200px;
 }
 
 .error-styling {
   color: red;
+  font-size: 14px;
+  text-align: center;
+  text-shadow: 0 0 4px black;
+  width: 95%;
+}
+
+.form-title {
+  color: #E1DDE5;
+  text-shadow: 3px 20px 3px #C554DD;
+  text-decoration: underline;
+}
+
+.submit-btn {
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 2px white;
+}
+
+.submit-btn:hover {
+  background-color: #c654dd;;
+  border: 1px groove black;
+  color: white;
+}
+
+#password-input {
+  width: 140px;
+}
+
+#email-input {
+  width: 140px;
 }
