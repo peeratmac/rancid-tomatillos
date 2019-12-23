@@ -27,7 +27,7 @@ describe('NavigationBar', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should invoke updateUser props when log out button is clicked',
+  it('should invoke updateUser props with empty object when log out button is clicked',
     () => {
       const mockUpdateUser = jest.fn();
       wrapper = shallow(<NavigationBar
@@ -41,10 +41,19 @@ describe('NavigationBar', () => {
       expect(mockUpdateUser).toHaveBeenCalledWith({});
   });
 
-  // it('should invoke updateLoggedInStatus props with status passed in when button is clicked',
-  //   () => {
-  //
-  // });
+  it('should invoke updateLoggedInStatus props with false status when button is clicked',
+    () => {
+      const mockUpdateLoggedInStatus = jest.fn();
+      wrapper = shallow(<NavigationBar
+        user={{ id: 22, name: 'Marge', email: 'marge@turing.io', ranking: [] }}
+        isLoggedIn={true}
+        updateUser={jest.fn()}
+        updateLoggedInStatus={mockUpdateLoggedInStatus}
+        />);
+
+      wrapper.find('.logout-button').simulate('click');
+      expect(mockUpdateLoggedInStatus).toHaveBeenCalledWith(false);
+  });
 
   // without Redux we would test that updateUser and updateLoggedInStatus update
   // state (which is the Redux store).  With Redux, do we still test this? how?
