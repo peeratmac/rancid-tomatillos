@@ -1,21 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
 
-:root {
-  --neon-text-color: purple;
-  --neon-border-color: #2D2D2F;
+.welcome-user {
+  /* animation: flicker 3s infinite alternate; */
+  border-radius: 20px;
+  color: purple;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 25px;
 }
 
 .poster-title  {
-  animation: flicker 2s infinite alternate;
-  background-color: var(--neon-border-color);
+  background-color: #2D2D2F;
   border: 2px ridge #fff;
   border-radius: 20px;
+  box-shadow: 0 0 15px 2px black;
   color: #c654dd;
   font-family: 'Exo 2', sans-serif;
   font-size: 25px;
   text-align: center;
   text-transform: uppercase;
   width: 330px;
+}
+
+/* Replace root color styling variables with hexidecimal*/
+:root {
+  --neon-text-color: purple;
+  --neon-border-color: #2D2D2F;
 }
 
 @keyframes flicker {

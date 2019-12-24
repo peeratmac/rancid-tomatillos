@@ -25,7 +25,8 @@
 }
 
 .logout-button:hover  {
-  background-color: #DC6173;
+  background-color: #c654dd;;
+  border: 1px groove black;
   color: white;
 }
 
@@ -33,10 +34,4 @@
   background-color: #c654dd;;
   border: 1px groove black;
   color: white;
-}
-
-.welcome-user {
-  color: #C654DE;
-  font-size: 25px;
-  line-height: 1px;
 }
