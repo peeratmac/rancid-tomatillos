@@ -23,6 +23,7 @@ label {
 
 input {
   text-align: center;
+  width: 140px;
 }
 
 .form-container {
@@ -60,12 +61,4 @@ input {
   background-color: #c654dd;;
   border: 1px groove black;
   color: white;
-}
-
-#password-input {
-  width: 140px;
-}
-
-#email-input {
-  width: 140px;
 }
