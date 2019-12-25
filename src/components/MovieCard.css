@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+@import url(https://fonts.googleapis.com/css?family=Hanalei+Fill&display=swap);
 
 .welcome-user {
   /* animation: flicker 3s infinite alternate; */
@@ -67,9 +68,45 @@
   width: 350px;
 }
 
-.average-rating {
-  color: #EAB837;
+.avg-container {
+  text-shadow: 3px 3px 3px black;
+  width: 170px;
+}
+
+.avg-container:before {
+  color: #c654de;
+  content: 'Average ';
+  font-family: 'Hanalei Fill', cursive;
+  position: relative;
+  bottom: 20px;
+  font-size: 14px;
+}
+
+.avg-container:after {
+  color: #c654de;
+  content: 'Rating';
+  font-family: 'Hanalei Fill', cursive;
+  position: relative;
+  bottom: 20px;
+  font-size: 14px;
+}
+
+.average-img {
+  border-radius: 85px;
+  height: 70px;
+  margin-top: -30px;
+  text-shadow: 3px 3px 3px black;
+}
+
+.average-score {
+  color: #3B397F;
+  font-size: 20px;
+  position: relative;
+  text-align: center;
   text-shadow: 2px 2px 5px black;
+  top: -42px;
+  left: 4px;
+  z-index: 1;
 }
 
 .view-name {
