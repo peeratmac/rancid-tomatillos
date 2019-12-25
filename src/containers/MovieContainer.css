@@ -1,5 +1,5 @@
 .movie-container {
-  background-color: #3b397f;
+  background-color: #3B397F;
   display: flex;
   height: 92vh;
   justify-content: center;
@@ -7,6 +7,7 @@
 }
 
 .inner-container {
+  background-color: #3B397F;
   border: 10px ridge #c654dd;
   box-shadow: 0 0 20px 10px black;
   display: flex;
