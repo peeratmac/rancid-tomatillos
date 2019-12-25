@@ -23,7 +23,7 @@ export const MovieShowPage = props => {
         const newRatings = { ...user, ratings: ratingData.ratings };
         updateUser(newRatings);
       });
-    });
+    })
   };
 
   const findUserRating = id => {
@@ -43,71 +43,73 @@ export const MovieShowPage = props => {
       <p className='overview'>{overview}</p>
       <p>Average Rating: {average_rating}</p>
       {isLoggedIn && <div>My Rating: {findUserRating(id)}</div>}
-      <div className='rating-bar'>
-        <p className='rating-description'>Rate Film:</p>
-        <div className='rating-scale'>
-          <button
-            className='rating-btn btn-one'
-            value='1'
-            onClick={event => handleRatingsUpdates(event)}>
-            1
-          </button>
-          <button
-            className='rating-btn btn-two'
-            value='2'
-            onClick={event => handleRatingsUpdates(event)}>
-            2
-          </button>
-          <button
-            className='rating-btn btn-three'
-            value='3'
-            onClick={event => handleRatingsUpdates(event)}>
-            3
-          </button>
-          <button
-            className='rating-btn btn-four'
-            value='4'
-            onClick={event => handleRatingsUpdates(event)}>
-            4
-          </button>
-          <button
-            className='rating-btn btn-five'
-            value='5'
-            onClick={event => handleRatingsUpdates(event)}>
-            5
-          </button>
-          <button
-            className='rating-btn btn-six'
-            value='6'
-            onClick={event => handleRatingsUpdates(event)}>
-            6
-          </button>
-          <button
-            className='rating-btn btn-seven'
-            value='7'
-            onClick={event => handleRatingsUpdates(event)}>
-            7
-          </button>
-          <button
-            className='rating-btn btn-eight'
-            value='8'
-            onClick={event => handleRatingsUpdates(event)}>
-            8
-          </button>
-          <button
-            className='rating-btn btn-nine'
-            value='9'
-            onClick={event => handleRatingsUpdates(event)}>
-            9
-          </button>
-          <button
-            className='rating-btn btn-ten'
-            value='10'
-            onClick={event => handleRatingsUpdates(event)}>
-            10
-          </button>
+      {isLoggedIn &&
+        <div className='rating-bar'>
+          <p className='rating-description'>Rate Film:</p>
+          <div className='rating-scale'>
+            <button
+              className='rating-btn btn-one'
+              value='1'
+              onClick={event => handleRatingsUpdates(event)}>
+              1
+            </button>
+            <button
+              className='rating-btn btn-two'
+              value='2'
+              onClick={event => handleRatingsUpdates(event)}>
+              2
+            </button>
+            <button
+              className='rating-btn btn-three'
+              value='3'
+              onClick={event => handleRatingsUpdates(event)}>
+              3
+            </button>
+            <button
+              className='rating-btn btn-four'
+              value='4'
+              onClick={event => handleRatingsUpdates(event)}>
+              4
+            </button>
+            <button
+              className='rating-btn btn-five'
+              value='5'
+              onClick={event => handleRatingsUpdates(event)}>
+              5
+            </button>
+            <button
+              className='rating-btn btn-six'
+              value='6'
+              onClick={event => handleRatingsUpdates(event)}>
+              6
+            </button>
+            <button
+              className='rating-btn btn-seven'
+              value='7'
+              onClick={event => handleRatingsUpdates(event)}>
+              7
+            </button>
+            <button
+              className='rating-btn btn-eight'
+              value='8'
+              onClick={event => handleRatingsUpdates(event)}>
+              8
+            </button>
+            <button
+              className='rating-btn btn-nine'
+              value='9'
+              onClick={event => handleRatingsUpdates(event)}>
+              9
+            </button>
+            <button
+              className='rating-btn btn-ten'
+              value='10'
+              onClick={event => handleRatingsUpdates(event)}>
+              10
+            </button>
+          </div>
         </div>
-      </div>
+      }
     </div>
   );
 };
