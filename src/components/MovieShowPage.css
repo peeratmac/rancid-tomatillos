@@ -56,12 +56,14 @@
 
 .average__rating--two {
   color: #DEB2E8;
+  font-family: 'Hanalei Fill', cursive;
   margin: 0;
   text-shadow: 2px 3px 2px black;
 }
 
 .my-rating {
   color: #DEB2E8;
+  font-family: 'Hanalei Fill', cursive;
   text-shadow: 2px 3px 2px black;
 }
 
