@@ -31,7 +31,6 @@ export const MovieCard = props => {
         />
       </div>
       <span className='average-score'>
-        { /* }<span className='avg'>Avg</span> */}
         {average_rating.toFixed(1)}
       </span>
       <NavLink to={`/movies/${id}`} style={{ textDecoration: 'none'}}>

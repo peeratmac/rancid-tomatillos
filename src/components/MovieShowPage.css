@@ -1,18 +1,53 @@
 .movie-page {
   align-items: center;
+  background-color: #3B397F;
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: space-around;
-  margin: 10px;
+  height: 92vh;
+}
+
+.inner__show--container {
+  align-items: center;
+  color: #D45DC1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  margin: 0px;
+  overflow: scroll;
+  width: 100%;
 }
 
 .backdrop {
-  height: 400px;
-  width: 400px;
+  box-shadow: 0px 0px 20px 5px black;
+  border: 5px ridge purple;
+  height: 350px;
+  margin-top: 15px;
+  width: 450px;
+}
+
+.movie__title--two {
+  margin: 0;
+  text-shadow: 2px 3px 2px black;
+}
+
+.in-theaters {
+  margin: 0;
+  text-shadow: 2px 3px 2px black;
 }
 
 .overview {
+  margin: 0;
   text-align: center;
+  text-shadow: 2px 3px 2px black;
+  width: 90%;
+}
+
+.average__rating--two {
+  margin: 0;
+  text-shadow: 2px 3px 2px black;
 }
 
 .rating-bar {
