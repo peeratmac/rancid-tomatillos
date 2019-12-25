@@ -10,6 +10,7 @@
 
 .inner__show--container {
   align-items: center;
+  border: 20px double #C654DE;
   color: #D45DC1;
   display: flex;
   flex-direction: column;
@@ -17,12 +18,12 @@
   justify-content: space-around;
   margin: 0px;
   overflow: scroll;
-  width: 100%;
+  width: 97%;
 }
 
 .backdrop {
   box-shadow: 0px 0px 20px 5px black;
-  border: 5px ridge purple;
+  border: 10px double #d45dc1;
   height: 350px;
   margin-top: 15px;
   width: 450px;
@@ -34,14 +35,17 @@
 }
 
 .in-theaters {
+  font-family: 'Hanalei Fill', cursive;
   margin: 0;
   text-shadow: 2px 3px 2px black;
 }
 
 .overview {
+  color: #ED7899;
   margin: 0;
   text-align: center;
   text-shadow: 2px 3px 2px black;
+  font-style: italic;
   width: 90%;
 }
 
@@ -50,31 +54,109 @@
   text-shadow: 2px 3px 2px black;
 }
 
+.my-rating {
+  text-shadow: 2px 3px 2px black;
+}
+
 .rating-bar {
+  width: 380px;
 }
 
 .rating-scale {
+  box-shadow: 2px 3px 2px black;
+  margin-bottom: 10px;
 }
 
 .rating-description {
+  margin: 0;
+  margin-bottom: 2px;
   text-align: center;
+  text-shadow: 2px 3px 2px black;
+  font-weight: bold;
 }
 
 .rating-btn {
+  background-color: #deb2e8;
+  border: 1px groove gold;
   box-shadow: 0 0 1px black;
+  box-sizing: border-box;
   color: black;
-  font-size: 8px;
+  font-size: 15px;
   font-weight: bold;
   height: 45px;
   text-align: center;
-  width: 21px;
+  width: 10%;
 }
 
 .rating-btn:hover {
-  background-color: gold;
   border: 1px solid black;
+  color: black;
 }
 
-.rating-btn:active {
+.btn-one:hover {
+  background-color: #e5002d;
+}
+
+.btn-two:hover {
+  background-color: #f24b56;
+}
+
+.btn-three:hover {
+  background-color: #f7747c;
+}
+
+.btn-four:hover {
+  background-color: #f9aeb3;
+}
+
+.btn-five:hover {
+  background-color: #96dda6;
+}
+
+.btn-six:hover {
+  background-color: #72e08a;
+}
+
+.btn-seven:hover {
+  background-color: #30e557;
+}
+
+.btn-eight:hover {
+  background-color: #00ef33;
+}
+
+.btn-nine:hover {
+  background-color: #ddc237;
+}
+
+.btn-ten:hover {
+  animation: flicker 3s infinite alternate;
   background-color: gold;
+  color: black;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+        -0.2rem -0.2rem 1rem #fff,
+        0.2rem 0.2rem 1rem #fff,
+        0 0 2rem gold,
+        0 0 4rem gold,
+        0 0 6rem gold,
+        0 0 8rem gold,
+        0 0 10rem gold;
+
+    box-shadow:
+        0 0 .5rem #fff,
+        inset 0 0 .5rem #fff,
+        0 0 2rem white,
+        inset 0 0 2rem gold,
+        0 0 4rem gold,
+        inset 0 0 4rem gold;
+  }
+
+  20%, 24%, 55% {
+      text-shadow: none;
+      box-shadow: none;
+  }
 }

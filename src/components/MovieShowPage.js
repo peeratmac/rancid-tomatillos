@@ -31,7 +31,7 @@ export const MovieShowPage = props => {
     if (userRatings.includes(id)) {
       return props.user.ratings.find(movie => movie.movie_id === id).rating;
     } else {
-      return 'Please rate the movie below...';
+      return '...';
     }
   };
 
@@ -43,10 +43,9 @@ export const MovieShowPage = props => {
         <p className='in-theaters'>In Theaters: {release_date}</p>
         <p className='overview'>{overview}</p>
         <p className='average__rating--two'>Average Rating: {Math.round( average_rating * 10 ) / 10}</p>
-        {isLoggedIn && <div>My Rating: {findUserRating(id)}</div>}
+        {isLoggedIn && <div className='my-rating'>My Rating: {findUserRating(id)}</div>}
         {isLoggedIn &&
           <div className='rating-bar'>
-            <p className='rating-description'>Rate Film:</p>
             <div className='rating-scale'>
               <button
                 className='rating-btn btn-one'
