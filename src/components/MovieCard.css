@@ -71,7 +71,7 @@
 
 .avg-container {
   text-shadow: 3px 3px 3px black;
-  width: 170px;
+  width: 200px;
 }
 
 .avg-container:before {
@@ -80,7 +80,8 @@
   font-family: 'Hanalei Fill', cursive;
   position: relative;
   bottom: 20px;
-  font-size: 14px;
+  left: 4px;
+  font-size: 17px;
 }
 
 .avg-container:after {
@@ -89,13 +90,15 @@
   font-family: 'Hanalei Fill', cursive;
   position: relative;
   bottom: 20px;
-  font-size: 14px;
+  left: 2px;
+  font-size: 17px;
 }
 
 .average-img {
   border-radius: 85px;
   height: 70px;
   margin-top: -30px;
+  margin-left: 4px;
   text-shadow: 3px 3px 3px black;
 }
 
@@ -111,6 +114,23 @@
 }
 
 .view-movie {
+  color: #ED7899;
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: -23px;
+  text-align: center;
+  text-shadow: 6px 6px 3px black;
+  width: 140px;
+}
+
+.view-movie:hover {
+  color: #72CAAF;
+  text-shadow: 10px 15px 3px black;
+}
+
+/*Version One styling (cached)  */
+/*
+.view-movie {
   color: #d34ee5;
   font-size: 25px;
   margin-top: -23px;
@@ -121,10 +141,4 @@
   text-decoration-style: solid;
   text-decoration-color: silver;
   width: 140px;
-}
-
-.view-movie:hover {
-  color: #ED7899;
-  text-decoration: none;
-  text-shadow: 6px 6px 3px black;
-}
+} */
