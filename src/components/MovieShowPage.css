@@ -8,22 +8,26 @@
   height: 92vh;
 }
 
-.inner__show--container {
+.movie-page  {
   align-items: center;
-  border: 20px double #C654DE;
+  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url("../images/curtains.jpeg");
+  background-blend-mode: lighten saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px double #C654DE;
+  box-sizing: border-box;
   color: #D45DC1;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 92vh;
   justify-content: space-around;
   margin: 0px;
   overflow: scroll;
-  width: 97%;
 }
 
 .backdrop {
   box-shadow: 0px 0px 20px 5px black;
-  border: 10px double #d45dc1;
+  border: 4px double #d45dc1;
   height: 350px;
   margin-top: 15px;
   width: 450px;
@@ -32,6 +36,7 @@
 .movie__title--two {
   margin: 0;
   text-shadow: 2px 3px 2px black;
+  text-decoration: underline;
 }
 
 .in-theaters {
@@ -41,7 +46,7 @@
 }
 
 .overview {
-  color: #ED7899;
+  color: #DEB2E8;
   margin: 0;
   text-align: center;
   text-shadow: 2px 3px 2px black;
@@ -50,11 +55,13 @@
 }
 
 .average__rating--two {
+  color: #DEB2E8;
   margin: 0;
   text-shadow: 2px 3px 2px black;
 }
 
 .my-rating {
+  color: #DEB2E8;
   text-shadow: 2px 3px 2px black;
 }
 

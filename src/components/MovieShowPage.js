@@ -37,80 +37,78 @@ export const MovieShowPage = props => {
 
   return (
     <div className='movie-page'>
-      <div className='inner__show--container'>
-        <img className='backdrop' src={backdrop_path} alt={title} />
-        <h1 className='movie__title--two'>{title}</h1>
-        <p className='in-theaters'>In Theaters: {release_date}</p>
-        <p className='overview'>{overview}</p>
-        <p className='average__rating--two'>Average Rating: {Math.round( average_rating * 10 ) / 10}</p>
-        {isLoggedIn && <div className='my-rating'>My Rating: {findUserRating(id)}</div>}
-        {isLoggedIn &&
-          <div className='rating-bar'>
-            <div className='rating-scale'>
-              <button
-                className='rating-btn btn-one'
-                value='1'
-                onClick={event => handleRatingsUpdates(event)}>
-                1
-              </button>
-              <button
-                className='rating-btn btn-two'
-                value='2'
-                onClick={event => handleRatingsUpdates(event)}>
-                2
-              </button>
-              <button
-                className='rating-btn btn-three'
-                value='3'
-                onClick={event => handleRatingsUpdates(event)}>
-                3
-              </button>
-              <button
-                className='rating-btn btn-four'
-                value='4'
-                onClick={event => handleRatingsUpdates(event)}>
-                4
-              </button>
-              <button
-                className='rating-btn btn-five'
-                value='5'
-                onClick={event => handleRatingsUpdates(event)}>
-                5
-              </button>
-              <button
-                className='rating-btn btn-six'
-                value='6'
-                onClick={event => handleRatingsUpdates(event)}>
-                6
-              </button>
-              <button
-                className='rating-btn btn-seven'
-                value='7'
-                onClick={event => handleRatingsUpdates(event)}>
-                7
-              </button>
-              <button
-                className='rating-btn btn-eight'
-                value='8'
-                onClick={event => handleRatingsUpdates(event)}>
-                8
-              </button>
-              <button
-                className='rating-btn btn-nine'
-                value='9'
-                onClick={event => handleRatingsUpdates(event)}>
-                9
-              </button>
-              <button
-                className='rating-btn btn-ten'
-                value='10'
-                onClick={event => handleRatingsUpdates(event)}>
-                10
-              </button>
-            </div>
+      <img className='backdrop' src={backdrop_path} alt={title} />
+      <h1 className='movie__title--two'>{title}</h1>
+      <p className='in-theaters'>In Theaters: {release_date}</p>
+      <p className='overview'>{overview}</p>
+      <p className='average__rating--two'>Average Rating: {Math.round( average_rating * 10 ) / 10}</p>
+      {isLoggedIn && <div className='my-rating'>My Rating: {findUserRating(id)}</div>}
+      {isLoggedIn &&
+        <div className='rating-bar'>
+          <div className='rating-scale'>
+            <button
+              className='rating-btn btn-one'
+              value='1'
+              onClick={event => handleRatingsUpdates(event)}>
+              1
+            </button>
+            <button
+              className='rating-btn btn-two'
+              value='2'
+              onClick={event => handleRatingsUpdates(event)}>
+              2
+            </button>
+            <button
+              className='rating-btn btn-three'
+              value='3'
+              onClick={event => handleRatingsUpdates(event)}>
+              3
+            </button>
+            <button
+              className='rating-btn btn-four'
+              value='4'
+              onClick={event => handleRatingsUpdates(event)}>
+              4
+            </button>
+            <button
+              className='rating-btn btn-five'
+              value='5'
+              onClick={event => handleRatingsUpdates(event)}>
+              5
+            </button>
+            <button
+              className='rating-btn btn-six'
+              value='6'
+              onClick={event => handleRatingsUpdates(event)}>
+              6
+            </button>
+            <button
+              className='rating-btn btn-seven'
+              value='7'
+              onClick={event => handleRatingsUpdates(event)}>
+              7
+            </button>
+            <button
+              className='rating-btn btn-eight'
+              value='8'
+              onClick={event => handleRatingsUpdates(event)}>
+              8
+            </button>
+            <button
+              className='rating-btn btn-nine'
+              value='9'
+              onClick={event => handleRatingsUpdates(event)}>
+              9
+            </button>
+            <button
+              className='rating-btn btn-ten'
+              value='10'
+              onClick={event => handleRatingsUpdates(event)}>
+              10
+            </button>
           </div>
-        }
-      </div>
+        </div>
+      }
     </div>
   );
 };

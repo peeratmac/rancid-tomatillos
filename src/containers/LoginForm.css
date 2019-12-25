@@ -1,6 +1,10 @@
 .login-section {
   align-items: center;
-  border: 10px dotted #C554DD;
+  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url("../images/curtains.jpeg");
+  background-blend-mode: lighten saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px double #C554DD;
   box-sizing: border-box;
   background-color: #3B397F;
   display: flex;
@@ -11,7 +15,8 @@
 
 .form-container {
   align-items: center;
-  border: 5px ridge #C554DD;
+  background-color: #3B397F;
+  border: 8px double #C554DD;
   box-shadow: 1px 1px 11px 3px black;
   display: flex;
   flex-direction: column;
