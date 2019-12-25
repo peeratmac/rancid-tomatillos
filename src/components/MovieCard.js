@@ -34,8 +34,8 @@ export const MovieCard = props => {
         { /* }<span className='avg'>Avg</span> */}
         {average_rating.toFixed(1)}
       </span>
-      <NavLink to={`/movies/${id}`}>
-        <div className="view-name">View Movie</div>
+      <NavLink to={`/movies/${id}`} style={{ textDecoration: 'none'}}>
+        <div className="view-movie">View Movie</div>
       </NavLink>
     </div>
   );
