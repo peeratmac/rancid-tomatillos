@@ -61,9 +61,29 @@
   text-shadow: 2px 3px 2px black;
 }
 
+.already-rated {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  justify-content: center;
+}
+
 .my-rating {
+  color: black;
   color: #DEB2E8;
   font-family: 'Hanalei Fill', cursive;
+  font-size: 27px;
+  margin: 0px;
+  text-shadow: 2px 3px 2px black;
+}
+
+.top-marks {
+  animation: flicker-two 10s infinite alternate;
+  color: #DEB2E8;
+  font-family: 'Hanalei Fill', cursive;
+  font-size: 27px;
+  margin: 0px;
   text-shadow: 2px 3px 2px black;
 }
 
@@ -100,6 +120,23 @@
 .rating-btn:hover {
   border: 1px solid black;
   color: black;
+}
+
+.re-rate {
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 2px white;
+  font-size: 20px;
+  height: 35px;
+  line-height: 5px;
+  margin-top: 10px;
+  width: 90px;
+}
+
+.re-rate:hover {
+  background-color: #c654dd;;
+  border: 1px groove black;
+  color: white;
 }
 
 .btn-one:hover {
@@ -163,6 +200,24 @@
         0 0 4rem gold,
         inset 0 0 4rem gold;
   }
+
+  20%, 24%, 55% {
+      text-shadow: none;
+      box-shadow: none;
+  }
+}
+
+@keyframes flicker-two {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+        -0.2rem -0.2rem 3rem gold,
+        0.2rem 0.2rem 5rem gold,
+        0 0 7rem gold,
+        0 0 10rem gold,
+        0 0 16rem gold,
+        0 0 18rem gold,
+        0 0 20rem gold;
+    }
 
   20%, 24%, 55% {
       text-shadow: none;
