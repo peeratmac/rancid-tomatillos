@@ -26,6 +26,16 @@ export const MovieShowPage = props => {
     })
   };
 
+  // {
+  //   "id": 36,
+  //   "user_id": 9,
+  //   "movie_id": 1,
+  //   "rating": 5,
+  //   "created_at": "2019-12-21T23:13:59.184Z",
+  //   "updated_at": "2019-12-21T23:13:59.184Z"
+  // },
+
+
   const findUserRating = id => {
     const userRatings = props.user.ratings.map(rating => rating.movie_id);
     if (userRatings.includes(id)) {
@@ -42,8 +52,23 @@ export const MovieShowPage = props => {
       <p className='in-theaters'>In Theaters: {release_date}</p>
       <p className='overview'>{overview}</p>
       <p className='average__rating--two'>Average Rating: {Math.round( average_rating * 10 ) / 10}</p>
-      {isLoggedIn && <div className='my-rating'>My Rating: {findUserRating(id)}</div>}
-      {isLoggedIn &&
+      {isLoggedIn &&  (findUserRating(id) < 10) &&
+        <div className='already-rated'>
+          <p className='my-rating'>
+            My Rating: {findUserRating(id)}
+          </p>
+          <button className='re-rate'>Re-Rate</button>
+        </div>
+      }
+      {isLoggedIn &&  (findUserRating(id) === 10) &&
+        <div className='already-rated'>
+          <p className='top-marks'>
+            My Rating: {findUserRating(id)}
+          </p>
+          <button className='re-rate'>Re-Rate</button>
+        </div>
+      }
+      {isLoggedIn && (findUserRating(id) === '...') &&
         <div className='rating-bar'>
           <div className='rating-scale'>
             <button
