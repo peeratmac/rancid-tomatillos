@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { NavigationBar, mapStateToProps, mapDispatchToProps } from './NavigationBar';
-import { updateUser, updateLoggedInStatus } from '../actions'
+import { updateUser, updateLoggedInStatus, handleError } from '../actions'
 
 describe('NavigationBar', () => {
   let wrapper;
@@ -48,6 +48,15 @@ describe('NavigationBar', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
 
       mappedProps.updateLoggedInStatus(false);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an handleError action when handleError is called', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = handleError('eRroR');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+        mappedProps.handleError('eRroR');
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
