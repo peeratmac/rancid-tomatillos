@@ -6,6 +6,17 @@
   justify-content: space-around;
 }
 
+.welcome-user {
+  border-radius: 20px;
+  color: #C654DE;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+  text-decoration: underline;
+  text-shadow: 1px 1px 3px black;
+}
+
 .login-button,
 .logout-button,
 .home-button  {

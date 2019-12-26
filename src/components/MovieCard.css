@@ -1,13 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
 @import url(https://fonts.googleapis.com/css?family=Hanalei+Fill&display=swap);
 
-.welcome-user {
-  border-radius: 20px;
-  color: #C654DE;
-  font-family: 'Exo 2', sans-serif;
-  font-size: 25px;
-}
-
 .poster-title  {
   background-color: #2D2D2F;
   border: 2px ridge #fff;
