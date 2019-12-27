@@ -16,7 +16,7 @@
 .form-container {
   align-items: center;
   background-color: #3B397F;
-  border: 8px double #C554DD;
+  border: 4px double #C554DD;
   box-shadow: 1px 1px 11px 3px black;
   display: flex;
   flex-direction: column;
