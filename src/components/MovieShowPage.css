@@ -5,9 +5,8 @@
   background-color: #3B397F;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: space-around;
   height: 92vh;
+  justify-content: space-around;
 }
 
 .movie-page  {
