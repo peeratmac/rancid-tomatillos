@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Anton&display=swap);
+
 .movie-page {
   align-items: center;
   background-color: #3B397F;
@@ -56,7 +58,7 @@
 
 .average__rating--two {
   color: #DEB2E8;
-  font-family: 'Hanalei Fill', cursive;
+  font-family: 'Anton', sans-serif;
   margin: 0;
   text-shadow: 2px 3px 2px black;
 }
@@ -72,7 +74,7 @@
 .my-rating {
   color: black;
   color: #DEB2E8;
-  font-family: 'Hanalei Fill', cursive;
+  font-family: 'Anton', sans-serif;
   font-size: 27px;
   margin: 0px;
   text-shadow: 2px 3px 2px black;
@@ -81,7 +83,7 @@
 .top-marks {
   animation: flicker-two 10s infinite alternate;
   color: #DEB2E8;
-  font-family: 'Hanalei Fill', cursive;
+  font-family: 'Anton', sans-serif;
   font-size: 27px;
   margin: 0px;
   text-shadow: 2px 3px 2px black;
@@ -122,20 +124,21 @@
   color: black;
 }
 
-.re-rate {
-  background-color: #DEB2E8;
+.reset-rating {
+  background-color: #b970cc;
   border: 1px solid black;
   border-radius: 3px;
   box-shadow: 0 0 5px 2px white;
+  color: #34032F;
+  font-family: 'Hanalei Fill', cursive;
   font-size: 20px;
   height: 35px;
-  line-height: 5px;
-  margin-top: 10px;
-  width: 90px;
+  margin: 10px 0px;
+  width: 140px;
 }
 
-.re-rate:hover {
-  background-color: #c654dd;;
+.reset-rating:hover {
+  background-color: #3B0436;
   border: 1px groove black;
   color: white;
 }

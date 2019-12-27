@@ -67,9 +67,9 @@ export const MovieShowPage = props => {
             My Rating: {findUserRating(id)}
           </p>
           <button
-            className='re-rate'
+            className='reset-rating'
             onClick={event => handleDeleteRating(event)}>
-            Re-Rate
+            Reset Rating
           </button>
         </div>
       }
@@ -79,9 +79,9 @@ export const MovieShowPage = props => {
             My Rating: {findUserRating(id)}
           </p>
           <button
-            className='re-rate'
+            className='reset-rating'
             onClick={event => handleDeleteRating(event)}>
-            Re-Rate
+            Reset Rating
           </button>
         </div>
       }
