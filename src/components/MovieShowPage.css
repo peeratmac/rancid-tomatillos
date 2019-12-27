@@ -125,20 +125,21 @@
 }
 
 .reset-rating {
-  background-color: #b970cc;
-  border: 1px solid black;
+  background-color: #34032F;
+  border: .1px groove #C554DD;
   border-radius: 3px;
-  box-shadow: 0 0 5px 2px white;
-  color: #34032F;
+  box-shadow: 0 0 1px 1px white;
+  color: white;
   font-family: 'Hanalei Fill', cursive;
   font-size: 20px;
+  font-weight: bold;
   height: 35px;
   margin: 10px 0px;
   width: 140px;
 }
 
 .reset-rating:hover {
-  background-color: #3B0436;
+  background-color: #c654dd;;
   border: 1px groove black;
   color: white;
 }
