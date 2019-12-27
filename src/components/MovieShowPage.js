@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './MovieShowPage.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
-import { updateRatings, fetchRatings } from '../apiCalls';
+import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 
 export const MovieShowPage = props => {
   const {
@@ -26,16 +26,6 @@ export const MovieShowPage = props => {
     })
   };
 
-  // {
-  //   "id": 36,
-  //   "user_id": 9,
-  //   "movie_id": 1,
-  //   "rating": 5,
-  //   "created_at": "2019-12-21T23:13:59.184Z",
-  //   "updated_at": "2019-12-21T23:13:59.184Z"
-  // },
-
-
   const findUserRating = id => {
     const userRatings = props.user.ratings.map(rating => rating.movie_id);
     if (userRatings.includes(id)) {
@@ -43,6 +33,25 @@ export const MovieShowPage = props => {
     } else {
       return '...';
     }
+  };
+
+  const handleDeleteRating = event => {
+    const { updateUser, user } = props;
+    deleteRating(findRatingId(id), user.id)
+      .then(data => {
+        fetchRatings(user.id).then(ratingData => {
+          const updatedRatings = { ...user, ratings: ratingData.ratings };
+          updateUser(updatedRatings);
+      });
+    })
+  };
+
+  const findRatingId = id => {
+    const movieIds = props.user.ratings.map(rating => rating.movie_id);
+    if (movieIds.includes(id)) {
+      return props.user.ratings.find(movie => movie.movie_id === id).id;
+    }
+    console.log(props.user.ratings.find(movie => movie.movie_id === id).id)
   };
 
   return (
@@ -57,7 +66,11 @@ export const MovieShowPage = props => {
           <p className='my-rating'>
             My Rating: {findUserRating(id)}
           </p>
-          <button className='re-rate'>Re-Rate</button>
+          <button
+            className='re-rate'
+            onClick={event => handleDeleteRating(event)}>
+            Re-Rate
+          </button>
         </div>
       }
       {isLoggedIn &&  (findUserRating(id) === 10) &&
@@ -65,7 +78,11 @@ export const MovieShowPage = props => {
           <p className='top-marks'>
             My Rating: {findUserRating(id)}
           </p>
-          <button className='re-rate'>Re-Rate</button>
+          <button
+            className='re-rate'
+            onClick={event => handleDeleteRating(event)}>
+            Re-Rate
+          </button>
         </div>
       }
       {isLoggedIn && (findUserRating(id) === '...') &&
