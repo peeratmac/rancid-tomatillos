@@ -23,9 +23,18 @@ export const MovieCard = props => {
         src={poster_path}
         alt={`Poster Picture of ${title}`}
       />
-      <p className="average-rating">Average Rating: {average_rating}</p>
-      <NavLink to={`/movies/${id}`}>
-        <div className="view-name">View Movie</div>
+      <div className='avg-container'>
+        <img
+          className='average-img'
+          src='https://img.icons8.com/dusk/64/000000/tomato.png'
+          alt='cartoon tomato'
+        />
+      </div>
+      <span className='average-score'>
+        {average_rating.toFixed(1)}
+      </span>
+      <NavLink to={`/movies/${id}`} style={{ textDecoration: 'none'}}>
+        <div className="view-movie">View Movie</div>
       </NavLink>
     </div>
   );

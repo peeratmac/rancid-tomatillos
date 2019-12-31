@@ -1,15 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
-
-:root {
-  --neon-text-color: purple;
-  --neon-border-color: #2D2D2F;
-}
+@import url(https://fonts.googleapis.com/css?family=Hanalei+Fill&display=swap);
 
 .poster-title  {
-  animation: flicker 2s infinite alternate;
-  background-color: var(--neon-border-color);
+  background-color: #2D2D2F;
   border: 2px ridge #fff;
   border-radius: 20px;
+  box-shadow: 0 0 15px 2px black;
   color: #c654dd;
   font-family: 'Exo 2', sans-serif;
   font-size: 25px;
@@ -18,57 +14,76 @@
   width: 330px;
 }
 
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow:
-        -0.2rem -0.2rem 1rem #fff,
-        0.2rem 0.2rem 1rem #fff,
-        0 0 2rem var(--neon-text-color),
-        0 0 4rem var(--neon-text-color),
-        0 0 6rem var(--neon-text-color),
-        0 0 8rem var(--neon-text-color),
-        0 0 10rem var(--neon-text-color);
-
-    box-shadow:
-        0 0 .5rem #fff,
-        inset 0 0 .5rem #fff,
-        0 0 2rem var(--neon-border-color),
-        inset 0 0 2rem var(--neon-border-color),
-        0 0 4rem var(--neon-border-color),
-        inset 0 0 4rem var(--neon-border-color);
-  }
-
-  20%, 24%, 55% {
-      text-shadow: none;
-      box-shadow: none;
-  }
-}
-
 .movie-card {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 5px 0;
+  margin: 10px 0;
   width: 350px
 }
 
 .poster {
   box-shadow: 0px 0px 20px 5px black;
+  height: 450px;
   width: 350px;
 }
 
-.average-rating {
-  color: #EAB837;
-  text-shadow: 2px 2px 5px black;
+.avg-container {
+  text-shadow: 3px 3px 3px black;
+  width: 200px;
 }
 
-.view-name {
-  color: #d34ee5;
-  text-shadow: 3px 3px 5px black;
+.avg-container:before {
+  color: #c654de;
+  content: 'Average ';
+  font-family: 'Hanalei Fill', cursive;
+  position: relative;
+  bottom: 20px;
+  left: 4px;
+  font-size: 17px;
 }
 
-.view-name:hover {
-  color: #EAB837;
-  text-shadow: 3px 3px 10px black;
+.avg-container:after {
+  color: #c654de;
+  content: 'Rating';
+  font-family: 'Hanalei Fill', cursive;
+  position: relative;
+  bottom: 20px;
+  left: 2px;
+  font-size: 17px;
+}
+
+.average-img {
+  border-radius: 85px;
+  height: 70px;
+  margin-top: -30px;
+  margin-left: 4px;
+  text-shadow: 3px 3px 3px black;
+}
+
+.average-score {
+  color: #3B397F;
+  font-size: 20px;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 0px 1px black;
+  top: -42px;
+  left: 4px;
+  z-index: 1;
+}
+
+.view-movie {
+  color: #ED7899;
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: -23px;
+  text-align: center;
+  text-shadow: 6px 6px 3px black;
+  width: 140px;
+}
+
+.view-movie:hover {
+  color: #D45DC1;
+  text-shadow: 10px 15px 3px black;
 }

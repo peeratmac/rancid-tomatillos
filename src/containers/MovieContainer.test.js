@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MovieContainer } from './MovieContainer';
+import { MovieContainer, mapStateToProps, mapDispatchToProps } from './MovieContainer';
+
 
 describe('MovieContainer', () => {
   const mockMoviesData = [
@@ -47,4 +48,25 @@ describe('MovieContainer', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
+
+  describe('mapStateToProps', () => {
+    it('should return an object with error, loading, and allMovies properties from state', () => {
+      const mockState = {
+        movies: [{sample: 'datum'}],
+        user: {},
+        isLoggedIn: true,
+        errorMessage: 'Made Mistake',
+        loadingStatus: false,
+      };
+      const expected = {
+        allMovies: [{sample: 'datum'}],
+        errorMessage: 'Made Mistake',
+        loadingStatus: false
+      };
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
 });
