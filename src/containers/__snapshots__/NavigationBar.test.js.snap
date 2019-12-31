@@ -17,7 +17,9 @@ exports[`NavigationBar should match snapshot when user is logged in 1`] = `
       render={[Function]}
     />
   </Link>
-  <h1>
+  <h1
+    className="welcome-user"
+  >
     Welcome 
     Marge
   </h1>
