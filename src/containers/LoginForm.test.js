@@ -3,13 +3,41 @@ import { shallow } from 'enzyme';
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import { handleError, updateLoggedInStatus, updateUser } from '../actions';
 
-describe('LoginForm', () => {
-  let wrapper;
+describe('LoginForm Container', () => {
+  describe('LoginForm component', () => {
+    let wrapper;
+    let mockUpdateUser;
+    let mockUpdateLoggedInStatus;
+    let mockHandleError;
 
-  it('should match the LoginForm Snapshot', () => {
-    wrapper = shallow(<LoginForm />);
+    beforeEach(() => {
+      mockUpdateUser = jest.fn();
+      mockUpdateLoggedInStatus = jest.fn();
+      mockHandleError = jest.fn();
+      wrapper = shallow(<LoginForm
+        isLoggedIn={true}
+        errorMessage={''}
+        updateUser={mockUpdateUser}
+        updateLoggedInStatus={mockUpdateLoggedInStatus}
+        handleError={mockHandleError}
+      />);
+    });
 
-    expect(wrapper).toMatchSnapshot();
+    it('should match the LoginForm Snapshot when no one is logged in', () => {
+      wrapper = shallow(<LoginForm
+        isLoggedIn={false}
+        errorMessage={''}
+        updateUser={mockUpdateUser}
+        updateLoggedInStatus={mockUpdateLoggedInStatus}
+        handleError={mockHandleError}
+      />);
+
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    // it('should match the LoginForm Snapshot when user is logged in', () => {
+      // expect(wrapper).toMatchSnapshot();
+    // });
   });
 
   describe('mapStateToProps', () => {
