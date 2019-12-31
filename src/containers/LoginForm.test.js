@@ -35,9 +35,9 @@ describe('LoginForm Container', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    // it('should match the LoginForm Snapshot when user is logged in', () => {
-      // expect(wrapper).toMatchSnapshot();
-    // });
+    it('should match the LoginForm Snapshot when user is logged in', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
   describe('mapStateToProps', () => {
