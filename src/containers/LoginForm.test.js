@@ -38,6 +38,23 @@ describe('LoginForm Container', () => {
     it('should match the LoginForm Snapshot when user is logged in', () => {
       expect(wrapper).toMatchSnapshot();
     });
+
+    it('should match the LoginForm Snapshot when error occurs', () => {
+      wrapper = shallow(<LoginForm
+        isLoggedIn={false}
+        errorMessage={'There is an error'}
+        updateUser={mockUpdateUser}
+        updateLoggedInStatus={mockUpdateLoggedInStatus}
+        handleError={mockHandleError}
+      />);
+      const mockState = { email: '',
+      password: '',
+      error: 'Error!' }
+      wrapper.setState(mockState);
+
+      expect(wrapper).toMatchSnapshot();
+    });
+
   });
 
   describe('mapStateToProps', () => {
