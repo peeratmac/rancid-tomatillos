@@ -62,8 +62,17 @@ describe('LoginForm Container', () => {
       expect(wrapper.instance().handleSubmit).toHaveBeenCalledWith(mockEvent);
     });
 
-    it('should invoke handleInputChange on change', () => {
-      // this is for 2 input fields  - TEST BOTH?
+    it('should invoke handleInputChange on change within email input field',
+      () => {
+        const mockEvent = { target: { name: 'testName', value: 'testValue' } }
+        wrapper.instance().handleInputChange = jest.fn();
+        wrapper.find('#email-input').simulate('change', mockEvent);
+        expect(wrapper.instance().handleInputChange)
+          .toHaveBeenCalledWith(mockEvent);
+
+        wrapper.find('#password-input').simulate('change', mockEvent);
+        expect(wrapper.instance().handleInputChange)
+          .toHaveBeenCalledWith(mockEvent);
     });
 
     it('should invoke validateInputs when handleSubmit is called', () => {
