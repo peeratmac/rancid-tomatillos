@@ -2,6 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import { handleError, updateLoggedInStatus, updateUser } from '../actions';
+import { fetchUserLogin } from '../apiCalls';
+
+jest.mock('../apiCalls.js');
 
 describe('LoginForm Container', () => {
   describe('LoginForm component', () => {
@@ -21,6 +24,9 @@ describe('LoginForm Container', () => {
         updateLoggedInStatus={mockUpdateLoggedInStatus}
         handleError={mockHandleError}
       />);
+      fetchUserLogin.mockImplementation(() => {
+        return Promise.resolve({ user: { id: 9, name: 'Marge', email: 'marge@turing.io' } })
+      });
     });
 
     it('should match the LoginForm Snapshot when no one is logged in', () => {
@@ -118,11 +124,27 @@ describe('LoginForm Container', () => {
       expect(mockHandleError).toHaveBeenCalled();
     });
 
-    // it('should do a bunch of stuff based on successful or fail fetches', () => {
-    //   // should these things be tested as unit tests or as part of async testing in the api calls file?
-    //   'should invoke updateLoggedInStatus with true'
-    //   'should invoke updateUser with data from fetches responses'
-    //   'should invoke handleError if fails'
+    it('should invoke fetchUserLogin when handleSubmit is called', () => {
+      const mockStartingState = {
+        email: 'Marge@turing.io',
+        password: 'fakepassword',
+        error: '' };
+      wrapper.setState(mockStartingState);
+
+      const mockEvent = { preventDefault: jest.fn() };
+      wrapper.instance().handleSubmit(mockEvent);
+      expect(fetchUserLogin).toHaveBeenCalledWith('Marge@turing.io', 'fakepassword');
+    });
+    //
+    // it('should invoke fetchRatings after fetchUserLogin resolves when handleSubmit is called', () => {
+    // });
+    //
+    // it('should invoke updateLoggedInStatus with true when fetchRatings has resolved', () => {
+    // });
+    //
+    // it('should invoke updateUser with data passed in when fetchRatings has resolved', () => {
+    // 'should invoke handleError if fails'???????
+    // async await??
     // });
 
   });
