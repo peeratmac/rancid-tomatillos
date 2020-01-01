@@ -76,6 +76,10 @@ describe('LoginForm Container', () => {
     });
 
     it('should invoke validateInputs when handleSubmit is called', () => {
+      const mockEvent = { preventDefault: jest.fn() };
+      wrapper.instance().validateInputs = jest.fn();
+      wrapper.instance().handleSubmit(mockEvent);
+      expect(wrapper.instance().validateInputs).toHaveBeenCalled();
     });
 
     it('should setState when validateInputs is called', () => {
