@@ -151,37 +151,10 @@ describe('LoginForm Container', () => {
         .toHaveBeenCalledWith('Marge@turing.io', 'fakepassword');
     });
 
-    it('should invoke fetchRatings when fetchUserLogin resolves', () => {
-      fetchUserLogin('Marge@turing.io', 'fakepassword');
+    it('should invoke fetchRatings when fetchUserLogin resolves', async () => {
+      await fetchUserLogin('Marge@turing.io', 'fakepassword');
       expect(fetchRatings).toHaveBeenCalledWith(9);
     });
-
-
-    // it('should update state with an idea when addIdea is called', async () => {
-    //     postIdea.mockImplementation(() => {
-    //       return Promise.resolve(
-    //         { id: 2, title: 'Sweaters for pugs', description: 'Why not?' }
-    //       );
-    //     })
-    //     const wrapper = shallow(<App />);
-    //     const mockIdea = { id: 2, title: 'Sweaters for pugs', description: 'Why not?' };
-    //     const expected = [{id: 1, title: 'Idea', description: 'It\'s great'}, mockIdea];
-    //
-    //     await wrapper.instance().addIdea(mockIdea);
-    //
-    //     expect(postIdea).toHaveBeenCalledWith(mockIdea);
-    //     expect(wrapper.state('ideas')).toEqual(expected);
-    //   });
-
-
-
-
-
-
-
-
-
-
 
     // it('should invoke updateLoggedInStatus with true when fetchRatings has resolved', () => {
     // });
