@@ -15,7 +15,7 @@ describe('LoginForm Container', () => {
       mockUpdateLoggedInStatus = jest.fn();
       mockHandleError = jest.fn();
       wrapper = shallow(<LoginForm
-        isLoggedIn={true}
+        isLoggedIn={false}
         errorMessage={''}
         updateUser={mockUpdateUser}
         updateLoggedInStatus={mockUpdateLoggedInStatus}
@@ -24,18 +24,17 @@ describe('LoginForm Container', () => {
     });
 
     it('should match the LoginForm Snapshot when no one is logged in', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should match the LoginForm Snapshot when user is logged in', () => {
       wrapper = shallow(<LoginForm
-        isLoggedIn={false}
+        isLoggedIn={true}
         errorMessage={''}
         updateUser={mockUpdateUser}
         updateLoggedInStatus={mockUpdateLoggedInStatus}
         handleError={mockHandleError}
       />);
-
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should match the LoginForm Snapshot when user is logged in', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
@@ -48,14 +47,19 @@ describe('LoginForm Container', () => {
         handleError={mockHandleError}
       />);
       const mockState = { email: '',
-      password: '',
-      error: 'Error!' }
+        password: '',
+        error: 'Error!' }
       wrapper.setState(mockState);
 
       expect(wrapper).toMatchSnapshot();
     });
 
     it('should invoke handleSubmit on button click to submit form', () => {
+      const mockEvent = { preventDefault: jest.fn() };
+      wrapper.instance().handleSubmit = jest.fn();
+      wrapper.find('form').simulate('submit', mockEvent);
+
+      expect(wrapper.instance().handleSubmit).toHaveBeenCalledWith(mockEvent);
     });
 
     it('should invoke handleInputChange on change', () => {
