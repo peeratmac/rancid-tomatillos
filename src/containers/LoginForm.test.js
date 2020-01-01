@@ -38,7 +38,7 @@ describe('LoginForm Container', () => {
           {id: 46, user_id: 9, movie_id: 10, rating: 5,
             created_at: "2019-12-25T20:30:21.606Z",
             updated_at: "2019-12-25T20:30:21.606Z"
-          } ] });
+          } ] })
       });
     });
 
@@ -156,15 +156,20 @@ describe('LoginForm Container', () => {
       expect(fetchRatings).toHaveBeenCalledWith(9);
     });
 
+// FAILING - NUMBER OF CALLS: 0
     // it('should invoke updateLoggedInStatus with true when fetchRatings has resolved', () => {
-    // });
-    //
-    // it('should invoke updateUser with data passed in when fetchRatings has resolved', () => {
-    // 'should invoke handleError if fails'???????
-    // async await??
+    //   fetchRatings(9);
+    //   expect(mockUpdateLoggedInStatus).toHaveBeenCalled();
     // });
 
-  });
+// FAILING - NUMBER OF CALLS: 0
+    // it('should invoke updateUser with data passed in when fetchRatings has resolved', async () => {
+    //   await fetchRatings(9);
+    //   expect(mockupdateUser).toHaveBeenCalled();
+    // });
+
+// HOW WILL WE TEST WHETHER HANDLEERROR IS INVOKED?
+});
 
   describe('mapStateToProps', () => {
     it('should return an object with error and loggedIn properties from state', () => {
