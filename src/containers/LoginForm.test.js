@@ -55,6 +55,33 @@ describe('LoginForm Container', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
+    it('should invoke handleSubmit on button click to submit form', () => {
+    });
+
+    it('should invoke handleInputChange on change', () => {
+      // this is for 2 input fields  - TEST BOTH?
+    });
+
+    it('should invoke validateInputs when handleSubmit is called', () => {
+    });
+
+    it('should setState when validateInputs is called', () => {
+    });
+
+    it('should setState when handleInputChange is called', () => {
+      // error/name and target
+    });
+
+    it('should invoke handleError prop method when handleInputChange is called', () => {
+    });
+
+    // it('should do a bunch of stuff based on successful or fail fetches', () => {
+    //   // should these things be tested as unit tests or as part of async testing in the api calls file?
+    //   'should invoke updateLoggedInStatus with true'
+    //   'should invoke updateUser with data from fetches responses'
+    //   'should invoke handleError if fails'
+    // });
+
   });
 
   describe('mapStateToProps', () => {
