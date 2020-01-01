@@ -91,16 +91,32 @@ describe('LoginForm Container', () => {
           password: '',
           error: 'All input fields required'};
         wrapper.setState(mockStartingState);
+        expect(wrapper.state()).toEqual(mockStartingState);
+
         wrapper.instance().validateInputs();
         expect(wrapper.state()).toEqual(mockEndingState);
     });
 
-    // it('should setState when handleInputChange is called', () => {
-    //   // error/name and target
-    // });
+    it('should setState when handleInputChange is called', () => {
+      const mockEvent = { target: { name: 'email', value: 'testValue' } };
+      const mockStartingState = {
+        email: 'fakeemail@email.com',
+        password: 'fakepassword',
+        error: 'fakeerror' };
+      const mockEndingState = {
+        email: 'testValue',
+        password: 'fakepassword',
+        error: '' };
+      wrapper.setState(mockStartingState);
+      wrapper.instance().handleInputChange(mockEvent);
+      expect(wrapper.state()).toEqual(mockEndingState);
+    });
 
-    // it('should invoke handleError prop method when handleInputChange is called', () => {
-    // });
+    it('should invoke handleError prop method when handleInputChange is called', () => {
+      const mockEvent = { target: { name: 'email', value: 'testValue' } };
+      wrapper.instance().handleInputChange(mockEvent);
+      expect(mockHandleError).toHaveBeenCalled();
+    });
 
     // it('should do a bunch of stuff based on successful or fail fetches', () => {
     //   // should these things be tested as unit tests or as part of async testing in the api calls file?
