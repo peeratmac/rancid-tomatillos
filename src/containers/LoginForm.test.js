@@ -82,15 +82,25 @@ describe('LoginForm Container', () => {
       expect(wrapper.instance().validateInputs).toHaveBeenCalled();
     });
 
-    it('should setState when validateInputs is called', () => {
+    it('should setState when validateInputs is called with an input empty',
+      () => {
+        const mockStartingState = {email: 'fakeemail@email.com',
+          password: '',
+          error: ''};
+        const mockEndingState = {email: 'fakeemail@email.com',
+          password: '',
+          error: 'All input fields required'};
+        wrapper.setState(mockStartingState);
+        wrapper.instance().validateInputs();
+        expect(wrapper.state()).toEqual(mockEndingState);
     });
 
-    it('should setState when handleInputChange is called', () => {
-      // error/name and target
-    });
+    // it('should setState when handleInputChange is called', () => {
+    //   // error/name and target
+    // });
 
-    it('should invoke handleError prop method when handleInputChange is called', () => {
-    });
+    // it('should invoke handleError prop method when handleInputChange is called', () => {
+    // });
 
     // it('should do a bunch of stuff based on successful or fail fetches', () => {
     //   // should these things be tested as unit tests or as part of async testing in the api calls file?
