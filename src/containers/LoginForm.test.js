@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import { handleError, updateLoggedInStatus, updateUser } from '../actions';
-import { fetchUserLogin } from '../apiCalls';
+import { fetchUserLogin, fetchRatings } from '../apiCalls';
 
 jest.mock('../apiCalls.js');
 
@@ -25,7 +25,20 @@ describe('LoginForm Container', () => {
         handleError={mockHandleError}
       />);
       fetchUserLogin.mockImplementation(() => {
-        return Promise.resolve({ user: { id: 9, name: 'Marge', email: 'marge@turing.io' } })
+        return Promise.resolve({ user:
+          { id: 9, name: 'Marge', email: 'marge@turing.io' }
+        })
+      });
+      fetchRatings.mockImplementation(() => {
+        return Promise.resolve({ ratings: [
+          {id: 45, user_id: 9, movie_id: 8, rating: 8,
+            created_at: "2019-12-25T20:16:34.893Z",
+            updated_at: "2019-12-25T20:16:34.893Z"
+          },
+          {id: 46, user_id: 9, movie_id: 10, rating: 5,
+            created_at: "2019-12-25T20:30:21.606Z",
+            updated_at: "2019-12-25T20:30:21.606Z"
+          } ] });
       });
     });
 
@@ -118,10 +131,11 @@ describe('LoginForm Container', () => {
       expect(wrapper.state()).toEqual(mockEndingState);
     });
 
-    it('should invoke handleError prop method when handleInputChange is called', () => {
-      const mockEvent = { target: { name: 'email', value: 'testValue' } };
-      wrapper.instance().handleInputChange(mockEvent);
-      expect(mockHandleError).toHaveBeenCalled();
+    it('should invoke handleError prop method when handleInputChange is called',
+      () => {
+        const mockEvent = { target: { name: 'email', value: 'testValue' } };
+        wrapper.instance().handleInputChange(mockEvent);
+        expect(mockHandleError).toHaveBeenCalled();
     });
 
     it('should invoke fetchUserLogin when handleSubmit is called', () => {
@@ -133,12 +147,42 @@ describe('LoginForm Container', () => {
 
       const mockEvent = { preventDefault: jest.fn() };
       wrapper.instance().handleSubmit(mockEvent);
-      expect(fetchUserLogin).toHaveBeenCalledWith('Marge@turing.io', 'fakepassword');
+      expect(fetchUserLogin)
+        .toHaveBeenCalledWith('Marge@turing.io', 'fakepassword');
     });
+
+    it('should invoke fetchRatings when fetchUserLogin resolves', () => {
+      fetchUserLogin('Marge@turing.io', 'fakepassword');
+      expect(fetchRatings).toHaveBeenCalledWith(9);
+    });
+
+
+    // it('should update state with an idea when addIdea is called', async () => {
+    //     postIdea.mockImplementation(() => {
+    //       return Promise.resolve(
+    //         { id: 2, title: 'Sweaters for pugs', description: 'Why not?' }
+    //       );
+    //     })
+    //     const wrapper = shallow(<App />);
+    //     const mockIdea = { id: 2, title: 'Sweaters for pugs', description: 'Why not?' };
+    //     const expected = [{id: 1, title: 'Idea', description: 'It\'s great'}, mockIdea];
     //
-    // it('should invoke fetchRatings after fetchUserLogin resolves when handleSubmit is called', () => {
-    // });
+    //     await wrapper.instance().addIdea(mockIdea);
     //
+    //     expect(postIdea).toHaveBeenCalledWith(mockIdea);
+    //     expect(wrapper.state('ideas')).toEqual(expected);
+    //   });
+
+
+
+
+
+
+
+
+
+
+
     // it('should invoke updateLoggedInStatus with true when fetchRatings has resolved', () => {
     // });
     //
