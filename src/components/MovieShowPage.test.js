@@ -22,7 +22,6 @@ describe('MovieShowPage', () => {
         loadingStatus: false,
       };
       const expected = {
-        allMovies: [],
         isLoggedIn: true,
         user: {newUser: 'Tron'}
       };
