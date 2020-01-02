@@ -101,16 +101,49 @@ describe('MovieShowPage', () => {
     />)
     expect(wrapper).toMatchSnapshot();
   });
-  //
-  // it('should', () => {
-  //
+
+  //DO WE NEED A TEST FOR INVOCATION OF findUserRating SINCE IT HAPPENS DURING RENDERING AUTOMATICALLY?
+  // it('should invoke handleDeleteRating on click', () => {
+  //  let mockEvent =
   // });
   //
-  // it('should', () => {
+  // it('should invoke handleRatingsUpdates on click or any rating button (10)', () => {
+  //  let mockEvent =
   //
   // });
 
+  // it('should invoke updateRatings fetch when handleRatingsUpdates is called', () => {
+  //
+  // });
+  // it('should invoke fetchRatings when updateRatings resolves', () => {
+  //
+  // });
+  // it('should invoke updateUser when fetchRatings resolves', () => {
+  //
+  // });
+  // Nested describe for findUserRating???  Do we need this?
+  // it('should return rating for already rated movie', () => {
+  //
+  // });
+  // it('should return '...' for unrated movie', () => {
+  //
+  // });
+  // end nested describe for findUserRating
 
+  // it('should invoke deleteRating when handleDeleteRating is called', () => {
+  //
+  // });
+
+  // it('should invoke fetchRatings when deleteRating resolves', () => {
+  //
+  // });
+  // HOW DO I MAKE THE TEST BELOW DIFFERENT FROM THE IDENTICAL ONE ABOVE SINCE FETCH RATINGS IS INVOKED MORE THAN ONCE?
+  // lines 23-25 are identical to lines 42-44 so maybe we can wrap them in a handler function?
+  // it('should invoke updateUser when fetchRatings resolves', () => {
+  //
+  // });
+
+  // Do we need to test findRatingId?
 
 
   describe('mapsStateToProps', () => {
