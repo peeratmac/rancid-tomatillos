@@ -8,31 +8,6 @@ describe('MovieShowPage', () => {
 
   beforeEach(() => {
     mockUpdateUser = jest.fn();
-    wrapper = shallow(<MovieShowPage
-      id={2}
-      title="Ad Astra"
-      poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
-      backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
-      release_date="2019-09-17"
-      overview="The near future, humanity to look to the stars an....."
-      average_rating={5.142857142857143}
-      isLoggedIn={true}
-      updateUser={mockUpdateUser}
-      user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: [
-        {id:45,
-          user_id:9,
-          movie_id:8,
-          rating:8,
-          created_at:"2019-12-25T20:16:34.893Z",
-          updated_at:"2019-12-25T20:16:34.893Z"},
-        {id:46,
-          user_id:9,
-          movie_id:10,
-          rating:10,
-          created_at:"2019-12-25T20:30:21.606Z",
-          updated_at:"2019-12-25T20:30:21.606Z"}
-        ]} }
-    />)
   })
 
   it('should match the MovieShowPage Snapshot', () => {
@@ -59,9 +34,35 @@ describe('MovieShowPage', () => {
 // 'should match snapshot when logged in and no user rating yet'
 
   //
-  // it('should', () => {
-  //
-  // });
+  it('should match snapshot when user is logged in and rating is less than 10',
+    () => {
+      wrapper = shallow(<MovieShowPage
+        id={2}
+        title="Ad Astra"
+        poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+        backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+        release_date="2019-09-17"
+        overview="The near future, humanity to look to the stars an....."
+        average_rating={5.142857142857143}
+        isLoggedIn={true}
+        updateUser={mockUpdateUser}
+        user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: [
+          {id:45,
+            user_id:9,
+            movie_id:2,
+            rating:8,
+            created_at:"2019-12-25T20:16:34.893Z",
+            updated_at:"2019-12-25T20:16:34.893Z"},
+          {id:46,
+            user_id:9,
+            movie_id:10,
+            rating:10,
+            created_at:"2019-12-25T20:30:21.606Z",
+            updated_at:"2019-12-25T20:30:21.606Z"}
+          ]} }
+      />)
+    expect(wrapper).toMatchSnapshot();
+  });
   //
   // it('should', () => {
   //
