@@ -5,24 +5,31 @@ exports[`MovieShowPage should match the MovieShowPage Snapshot 1`] = `
   className="movie-page"
 >
   <img
+    alt="Ad Astra"
     className="backdrop"
+    src="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
   />
   <h1
     className="movie__title--two"
-  />
+  >
+    Ad Astra
+  </h1>
   <p
     className="in-theaters"
   >
     In Theaters: 
+    2019-09-17
   </p>
   <p
     className="overview"
-  />
+  >
+    The near future, humanity to look to the stars an.....
+  </p>
   <p
     className="average__rating--two"
   >
     Average Rating: 
-    NaN
+    5.1
   </p>
 </div>
 `;
