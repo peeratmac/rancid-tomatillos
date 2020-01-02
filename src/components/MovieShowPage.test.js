@@ -26,14 +26,6 @@ describe('MovieShowPage', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-// Should have snapshop test for each conditional rendering possibility
-// Do we need to pass the props through for proper snapshot?
-// 'should match the MovieShowPage snapshot when no user logged in'
-// 'should match snapshot when logged in and user rating < 10'
-// 'should match snapshot when logged in and user rating === 10'
-// 'should match snapshot when logged in and no user rating yet'
-
-  //
   it('should match snapshot when user is logged in and rating is less than 10',
     () => {
       wrapper = shallow(<MovieShowPage
@@ -93,10 +85,22 @@ describe('MovieShowPage', () => {
       />)
     expect(wrapper).toMatchSnapshot();
   });
-  //
-  // it('should', () => {
-  //
-  // });
+
+  it('should match snapshot when logged in and no user rating yet', () => {
+    wrapper = shallow(<MovieShowPage
+      id={2}
+      title="Ad Astra"
+      poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+      release_date="2019-09-17"
+      overview="The near future, humanity to look to the stars an....."
+      average_rating={5.142857142857143}
+      isLoggedIn={true}
+      updateUser={mockUpdateUser}
+      user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: []} }
+    />)
+    expect(wrapper).toMatchSnapshot();
+  });
   //
   // it('should', () => {
   //
