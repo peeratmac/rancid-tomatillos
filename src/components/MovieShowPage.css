@@ -211,3 +211,21 @@
       box-shadow: none;
   }
 }
+
+@keyframes flicker-two {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+        -0.2rem -0.2rem 3rem gold,
+        0.2rem 0.2rem 5rem gold,
+        0 0 7rem gold,
+        0 0 10rem gold,
+        0 0 16rem gold,
+        0 0 18rem gold,
+        0 0 20rem gold;
+    }
+
+  20%, 24%, 55% {
+      text-shadow: none;
+      box-shadow: none;
+  }
+}
