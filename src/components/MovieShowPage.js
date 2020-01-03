@@ -13,11 +13,12 @@ export const MovieShowPage = props => {
     release_date,
     overview,
     average_rating,
-    isLoggedIn
+    isLoggedIn,
+    updateUser,
+    user
   } = props;
 
   const handleRatingsUpdates = event => {
-    const { updateUser, user } = props;
     updateRatings(id, Number(event.target.value), user.id).then(data => {
       fetchRatings(user.id).then(ratingData => {
         const newRatings = { ...user, ratings: ratingData.ratings };
@@ -27,16 +28,15 @@ export const MovieShowPage = props => {
   };
 
   const findUserRating = id => {
-    const userRatings = props.user.ratings.map(rating => rating.movie_id);
+    const userRatings = user.ratings.map(rating => rating.movie_id);
     if (userRatings.includes(id)) {
-      return props.user.ratings.find(movie => movie.movie_id === id).rating;
+      return user.ratings.find(movie => movie.movie_id === id).rating;
     } else {
       return '...';
     }
   };
 
   const handleDeleteRating = event => {
-    const { updateUser, user } = props;
     deleteRating(findRatingId(id), user.id)
       .then(data => {
         fetchRatings(user.id).then(ratingData => {
@@ -47,11 +47,11 @@ export const MovieShowPage = props => {
   };
 
   const findRatingId = id => {
-    const movieIds = props.user.ratings.map(rating => rating.movie_id);
+    const movieIds = user.ratings.map(rating => rating.movie_id);
     if (movieIds.includes(id)) {
-      return props.user.ratings.find(movie => movie.movie_id === id).id;
+      return user.ratings.find(movie => movie.movie_id === id).id;
     }
-    console.log(props.user.ratings.find(movie => movie.movie_id === id).id)
+    console.log(user.ratings.find(movie => movie.movie_id === id).id)
   };
 
   return (
@@ -144,7 +144,6 @@ export const MovieShowPage = props => {
 };
 
 export const mapStateToProps = state => ({
-  allMovies: state.movies,
   isLoggedIn: state.isLoggedIn,
   user: state.user
 });

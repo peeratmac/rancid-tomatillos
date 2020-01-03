@@ -4,13 +4,147 @@ import { MovieShowPage, mapStateToProps, mapDispatchToProps } from './MovieShowP
 import { updateUser} from '../actions'
 
 describe('MovieShowPage', () => {
-  let wrapper;
+  let wrapper, mockUpdateUser;
 
-  it('should match the MovieShowPage Snapshot', () => {
-    wrapper = shallow(<MovieShowPage />);
+  beforeEach(() => {
+    mockUpdateUser = jest.fn();
+  })
 
+  it('should match the MovieShowPage Snapshot with no logged in user', () => {
+    wrapper = shallow(<MovieShowPage
+      id={2}
+      title="Ad Astra"
+      poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+      release_date="2019-09-17"
+      overview="The near future, humanity to look to the stars an....."
+      average_rating={5.142857142857143}
+      isLoggedIn={false}
+      updateUser={mockUpdateUser}
+      user={ {} }
+      />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should match snapshot when user is logged in and rating is less than 10',
+    () => {
+      wrapper = shallow(<MovieShowPage
+        id={2}
+        title="Ad Astra"
+        poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+        backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+        release_date="2019-09-17"
+        overview="The near future, humanity to look to the stars an....."
+        average_rating={5.142857142857143}
+        isLoggedIn={true}
+        updateUser={mockUpdateUser}
+        user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: [
+          {id:45,
+            user_id:9,
+            movie_id:2,
+            rating:8,
+            created_at:"2019-12-25T20:16:34.893Z",
+            updated_at:"2019-12-25T20:16:34.893Z"},
+          {id:46,
+            user_id:9,
+            movie_id:10,
+            rating:10,
+            created_at:"2019-12-25T20:30:21.606Z",
+            updated_at:"2019-12-25T20:30:21.606Z"}
+          ]} }
+      />)
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match snapshot when user is logged in and rating is 10',
+    () => {
+      wrapper = shallow(<MovieShowPage
+        id={2}
+        title="Ad Astra"
+        poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+        backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+        release_date="2019-09-17"
+        overview="The near future, humanity to look to the stars an....."
+        average_rating={5.142857142857143}
+        isLoggedIn={true}
+        updateUser={mockUpdateUser}
+        user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: [
+          {id:45,
+            user_id:9,
+            movie_id:10,
+            rating:8,
+            created_at:"2019-12-25T20:16:34.893Z",
+            updated_at:"2019-12-25T20:16:34.893Z"},
+          {id:46,
+            user_id:9,
+            movie_id:2,
+            rating:10,
+            created_at:"2019-12-25T20:30:21.606Z",
+            updated_at:"2019-12-25T20:30:21.606Z"}
+          ]} }
+      />)
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match snapshot when logged in and no user rating yet', () => {
+    wrapper = shallow(<MovieShowPage
+      id={2}
+      title="Ad Astra"
+      poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+      release_date="2019-09-17"
+      overview="The near future, humanity to look to the stars an....."
+      average_rating={5.142857142857143}
+      isLoggedIn={true}
+      updateUser={mockUpdateUser}
+      user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: []} }
+    />)
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  //DO WE NEED A TEST FOR INVOCATION OF findUserRating SINCE IT HAPPENS DURING RENDERING AUTOMATICALLY?
+  // it('should invoke handleDeleteRating on click', () => {
+  //  let mockEvent =
+  // });
+  //
+  // it('should invoke handleRatingsUpdates on click or any rating button (10)', () => {
+  //  let mockEvent =
+  //
+  // });
+
+  // it('should invoke updateRatings fetch when handleRatingsUpdates is called', () => {
+  //
+  // });
+  // it('should invoke fetchRatings when updateRatings resolves', () => {
+  //
+  // });
+  // it('should invoke updateUser when fetchRatings resolves', () => {
+  //
+  // });
+  // Nested describe for findUserRating???  Do we need this?
+  // it('should return rating for already rated movie', () => {
+  //
+  // });
+  // it('should return '...' for unrated movie', () => {
+  //
+  // });
+  // end nested describe for findUserRating
+
+  // it('should invoke deleteRating when handleDeleteRating is called', () => {
+  //
+  // });
+
+  // it('should invoke fetchRatings when deleteRating resolves', () => {
+  //
+  // });
+  // HOW DO I MAKE THE TEST BELOW DIFFERENT FROM THE IDENTICAL ONE ABOVE SINCE FETCH RATINGS IS INVOKED MORE THAN ONCE?
+  // lines 23-25 are identical to lines 42-44 so maybe we can wrap them in a handler function?
+  // it('should invoke updateUser when fetchRatings resolves', () => {
+  //
+  // });
+
+  // Do we need to test findRatingId?
+
 
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store', () => {
@@ -22,7 +156,6 @@ describe('MovieShowPage', () => {
         loadingStatus: false,
       };
       const expected = {
-        allMovies: [],
         isLoggedIn: true,
         user: {newUser: 'Tron'}
       };

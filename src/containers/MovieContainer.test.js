@@ -43,8 +43,22 @@ describe('MovieContainer', () => {
     }
   ];
 
-  it('should match the snapshot with all data successfully passed', () => {
-    const wrapper = shallow(<MovieContainer allMovies={mockMoviesData} />);
+  it('should match the snapshot with loadingStatus of false', () => {
+    const wrapper = shallow(<MovieContainer
+      allMovies={mockMoviesData}
+      errorMessage={''}
+      loadingStatus={false}
+    />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match the snapshot with loadingStatus of true', () => {
+    const wrapper = shallow(<MovieContainer
+      allMovies={mockMoviesData}
+      errorMessage={''}
+      loadingStatus={true}
+    />);
 
     expect(wrapper).toMatchSnapshot();
   });

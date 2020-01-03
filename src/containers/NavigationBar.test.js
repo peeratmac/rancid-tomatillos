@@ -3,14 +3,62 @@ import { shallow } from 'enzyme';
 import { NavigationBar, mapStateToProps, mapDispatchToProps } from './NavigationBar';
 import { updateUser, updateLoggedInStatus, handleError } from '../actions'
 
-describe('NavigationBar', () => {
-  let wrapper;
+describe('NavigationBar Container', () => {
+  describe('NavigationBar component', () => {
+    let wrapper;
+    let mockUpdateUser;
+    let mockUpdateLoggedInStatus;
+    let mockHandleError;
 
-  it('should match the NavigationBar Snapshot', () => {
-    wrapper = shallow(<NavigationBar />);
+    beforeEach(() => {
+      mockUpdateUser = jest.fn();
+      mockUpdateLoggedInStatus = jest.fn();
+      mockHandleError = jest.fn();
+      wrapper = shallow(<NavigationBar
+        user={{ id: 22, name: 'Marge', email: 'marge@turing.io', ranking: [] }}
+        isLoggedIn={true}
+        updateUser={mockUpdateUser}
+        updateLoggedInStatus={mockUpdateLoggedInStatus}
+        handleError={mockHandleError}
+        />);
+    })
 
-    expect(wrapper).toMatchSnapshot();
+    it('should match snapshot when user is logged in', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should match the NavigationBar Snapshot when no one is logged in', () => {
+      wrapper = shallow(<NavigationBar
+          user={{}}
+          isLoggedIn={false}
+          updateUser={jest.fn()}
+          updateLoggedInStatus={jest.fn()}
+        />);
+
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should invoke updateUser props with empty object when log out button is clicked',
+      () => {
+        wrapper.find('.logout-button').simulate('click');
+        expect(mockUpdateUser).toHaveBeenCalledWith({});
+    });
+
+    it('should invoke updateLoggedInStatus props with false status when button is clicked',
+      () => {
+        wrapper.find('.logout-button').simulate('click');
+        expect(mockUpdateLoggedInStatus).toHaveBeenCalledWith(false);
+    });
+
+    // it('should invoke handleError props with empty string when button is clicked',
+      // () => {
+        // console.log(wrapper.debug())
+        // FAILING TEST because home-button can't be found bc its wrapped in <Route>
+        // wrapper.find('.home-button').simulate('click');
+        // expect(mockHandleError).toHaveBeenCalledWith('');
+    // });
   });
+
 
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store', () => {
