@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MovieShowPage, mapStateToProps, mapDispatchToProps } from './MovieShowPage';
+import { MovieShowPage, mapStateToProps, mapDispatchToProps, handleDeleteRating } from './MovieShowPage';
 import { updateUser} from '../actions'
 
 describe('MovieShowPage', () => {
@@ -38,7 +38,7 @@ describe('MovieShowPage', () => {
         average_rating={5.142857142857143}
         isLoggedIn={true}
         updateUser={mockUpdateUser}
-        user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: [
+        user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
           {id:45,
             user_id:9,
             movie_id:2,
@@ -68,7 +68,7 @@ describe('MovieShowPage', () => {
         average_rating={5.142857142857143}
         isLoggedIn={true}
         updateUser={mockUpdateUser}
-        user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: [
+        user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
           {id:45,
             user_id:9,
             movie_id:10,
@@ -97,15 +97,44 @@ describe('MovieShowPage', () => {
       average_rating={5.142857142857143}
       isLoggedIn={true}
       updateUser={mockUpdateUser}
-      user={ {id: 22, name: 'Marge', email: 'marge@turing.io', ratings: []} }
+      user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: []} }
     />)
     expect(wrapper).toMatchSnapshot();
   });
 
   //DO WE NEED A TEST FOR INVOCATION OF findUserRating SINCE IT HAPPENS DURING RENDERING AUTOMATICALLY?
-  // it('should invoke handleDeleteRating on click', () => {
-  //  let mockEvent =
-  // });
+  it('should invoke handleDeleteRating on click', () => {
+    wrapper = shallow(<MovieShowPage
+      id={2}
+      title="Ad Astra"
+      poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+      release_date="2019-09-17"
+      overview="The near future, humanity to look to the stars an....."
+      average_rating={5.142857142857143}
+      isLoggedIn={true}
+      updateUser={mockUpdateUser}
+      user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
+        {id:45,
+          user_id:9,
+          movie_id:2,
+          rating:8,
+          created_at:"2019-12-25T20:16:34.893Z",
+          updated_at:"2019-12-25T20:16:34.893Z"},
+        {id:46,
+          user_id:9,
+          movie_id:10,
+          rating:10,
+          created_at:"2019-12-25T20:30:21.606Z",
+          updated_at:"2019-12-25T20:30:21.606Z"}
+        ]} }
+    />);
+    console.log(wrapper);
+    const deleteFunction = wrapper.props.handleDeleteRating();
+    // wrapper.handleDeleteRating = jest.fn();
+    wrapper.find('.reset-rating').simulate('click');
+    expect(deleteFunction).toHaveBeenCalled();
+  });
   //
   // it('should invoke handleRatingsUpdates on click or any rating button (10)', () => {
   //  let mockEvent =

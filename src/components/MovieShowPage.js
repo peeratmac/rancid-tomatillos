@@ -36,7 +36,7 @@ export const MovieShowPage = props => {
     }
   };
 
-  const handleDeleteRating = event => {
+  const handleDeleteRating = () => {
     deleteRating(findRatingId(id), user.id)
       .then(data => {
         fetchRatings(user.id).then(ratingData => {
@@ -68,7 +68,7 @@ export const MovieShowPage = props => {
           </p>
           <button
             className='reset-rating'
-            onClick={event => handleDeleteRating(event)}>
+            onClick={handleDeleteRating}>
             Reset Rating
           </button>
         </div>
