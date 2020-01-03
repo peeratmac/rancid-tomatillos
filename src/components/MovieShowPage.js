@@ -61,21 +61,9 @@ export const MovieShowPage = props => {
       <p className='in-theaters'>In Theaters: {release_date}</p>
       <p className='overview'>{overview}</p>
       <p className='average__rating--two'>Average Rating: {Math.round( average_rating * 10 ) / 10}</p>
-      {isLoggedIn &&  (findUserRating(id) < 10) &&
+      {isLoggedIn &&  (findUserRating(id) !== '...') &&
         <div className='already-rated'>
-          <p className='my-rating'>
-            My Rating: {findUserRating(id)}
-          </p>
-          <button
-            className='reset-rating'
-            onClick={event => handleDeleteRating(event)}>
-            Reset Rating
-          </button>
-        </div>
-      }
-      {isLoggedIn &&  (findUserRating(id) === 10) &&
-        <div className='already-rated'>
-          <p className='top-marks'>
+          <p className={findUserRating(id) === 10 ? 'top-marks' : 'my-rating'}>
             My Rating: {findUserRating(id)}
           </p>
           <button

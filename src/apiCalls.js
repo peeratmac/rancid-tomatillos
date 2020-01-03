@@ -17,7 +17,7 @@ export const fetchUserLogin = (email, password) => {
     headers: {
       'Content-Type': 'application/json'
     }
-  };
+};
 
   return fetch(
     'https://rancid-tomatillos.herokuapp.com/api/v1/login',
