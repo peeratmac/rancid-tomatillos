@@ -31,23 +31,21 @@ export class LoginForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.validateInputs();
-    if (this.state.error === '') {
-      fetchUserLogin(this.state.email, this.state.password)
-        .then(data => {
-          const { updateUser, updateLoggedInStatus } = this.props;
-          fetchRatings(data.user.id)
-            .then(ratingData => {
-              updateLoggedInStatus(true);
-              updateUser({ ...data.user, ratings: ratingData.ratings });
-            })
-            .catch(error => {
-              console.log('Error retrieving ratings')
-            })
-        })
-        .catch(error => {
-          this.props.handleError('Invalid login attempt, please try again')
-        })
-    }
+    fetchUserLogin(this.state.email, this.state.password)
+      .then(data => {
+        const { updateUser, updateLoggedInStatus } = this.props;
+        fetchRatings(data.user.id)
+          .then(ratingData => {
+            updateLoggedInStatus(true);
+            updateUser({ ...data.user, ratings: ratingData.ratings });
+          })
+          .catch(error => {
+            console.log('Error retrieving ratings')
+          })
+      })
+      .catch(error => {
+        this.props.handleError('Invalid login attempt, please try again')
+      })
   }
 
   render() {
