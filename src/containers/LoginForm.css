@@ -1,12 +1,13 @@
 .login-section {
   align-items: center;
-  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url("../images/curtains.jpeg");
+  background: linear-gradient(rgba(0, 0, 0.5, 0.5), rgba(0, 0.1, 0.1, 0.1)),
+    url('../images/curtains.jpeg');
   background-blend-mode: lighten saturation;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  border: 5px double #C554DD;
+  border: 5px double #c554dd;
   box-sizing: border-box;
-  background-color: #3B397F;
+  background-color: #3b397f;
   display: flex;
   height: 92vh;
   justify-content: center;
@@ -15,8 +16,8 @@
 
 .form-container {
   align-items: center;
-  background-color: #3B397F;
-  border: 4px double #C554DD;
+  background-color: #3b397f;
+  border: 4px double #c554dd;
   box-shadow: 1px 1px 11px 3px black;
   display: flex;
   flex-direction: column;
@@ -34,9 +35,8 @@ form {
 }
 
 .form-title {
-  color: #E1DDE5;
+  color: #e1dde5;
   font-size: 35px;
-  text-shadow: 3px 20px 3px #C554DD;
   text-decoration: underline;
 }
 
@@ -70,7 +70,7 @@ input {
 }
 
 .submit-btn:hover {
-  background-color: #c654dd;;
+  background-color: #c654dd;
   border: 1px groove black;
   color: white;
 }
