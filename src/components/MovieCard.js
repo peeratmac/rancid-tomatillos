@@ -15,9 +15,34 @@ export const MovieCard = props => {
     average_rating
   } = props;
 
+  const { isLoggedIn, user } = props;
+
+  const findUserRating = id => {
+    if (isLoggedIn && user.ratings) {
+      const userRatings = user.ratings.map(ratedFilm => ratedFilm.movie_id);
+        if (userRatings.includes(id)) {
+          return user.ratings.find(movie => movie.movie_id === id).rating;
+        } else {
+          return '...';
+        }
+    }
+  };
+
   return (
     <div className="movie-card">
       <h1 className="poster-title">{title}</h1>
+      {isLoggedIn && findUserRating(id) !== '...' &&
+        <div className='star-container'>
+          <img
+            className='user-star'
+            src='https://img.icons8.com/officel/80/000000/filled-star.png'
+            alt='cartoon star'
+          />
+          <span className={findUserRating(id) === 10 ? 'user-score': 'user__score--two'}>
+            {findUserRating(id)}
+          </span>
+        </div>
+      }
       <img
         className='poster'
         src={poster_path}
@@ -40,7 +65,12 @@ export const MovieCard = props => {
   );
 };
 
-export default MovieCard;
+export const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn,
+  user: state.user
+});
+
+export default connect(mapStateToProps, null)(MovieCard);
 
 MovieCard.propTypes = {
   id: PropTypes.number,

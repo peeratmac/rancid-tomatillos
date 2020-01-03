@@ -10,7 +10,7 @@ exports[`MovieContainer should match the snapshot with loadingStatus of false 1`
     <h1
       className="error-styling"
     />
-    <MovieCard
+    <Connect(MovieCard)
       average_rating={4}
       backdrop_path="https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg"
       id={1}
@@ -20,7 +20,7 @@ exports[`MovieContainer should match the snapshot with loadingStatus of false 1`
       release_date="2019-12-04"
       title="Jumanji: The Next Level"
     />
-    <MovieCard
+    <Connect(MovieCard)
       average_rating={7}
       backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
       id={2}
@@ -30,7 +30,7 @@ exports[`MovieContainer should match the snapshot with loadingStatus of false 1`
       release_date="2019-09-17"
       title="Ad Astra"
     />
-    <MovieCard
+    <Connect(MovieCard)
       average_rating={8}
       backdrop_path="https://image.tmdb.org/t/p/original//xJWPZIYOEFIjZpBL7SVBGnzRYXp.jpg"
       id={3}

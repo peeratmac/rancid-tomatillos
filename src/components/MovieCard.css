@@ -35,23 +35,23 @@
 }
 
 .avg-container:before {
+  bottom: 20px;
   color: #c654de;
   content: 'Average ';
   font-family: 'Hanalei Fill', cursive;
-  position: relative;
-  bottom: 20px;
-  left: 4px;
   font-size: 17px;
+  left: 4px;
+  position: relative;
 }
 
 .avg-container:after {
+  bottom: 20px;
   color: #c654de;
   content: 'Rating';
   font-family: 'Hanalei Fill', cursive;
-  position: relative;
-  bottom: 20px;
-  left: 2px;
   font-size: 17px;
+  left: 2px;
+  position: relative;
 }
 
 .average-img {
@@ -65,11 +65,12 @@
 .average-score {
   color: #3B397F;
   font-size: 20px;
+  font-weight: bold;
+  left: 4px;
   position: relative;
   text-align: center;
-  text-shadow: 0px 0px 1px black;
+  text-shadow: 0px 0px 1px purple;
   top: -42px;
-  left: 4px;
   z-index: 1;
 }
 
@@ -86,4 +87,65 @@
 .view-movie:hover {
   color: #D45DC1;
   text-shadow: 10px 15px 3px black;
+}
+
+.star-container {
+  height: 85px;
+  margin-top: -85px;
+  position: relative;
+  text-shadow: 3px 3px 3px black;
+  top: 65px;
+  width: 200px;
+  z-index: 1;
+}
+
+.star-container:before {
+  bottom: 20px;
+  color: white;
+  content: 'Your ';
+  font-family: 'Hanalei Fill', cursive;
+  font-size: 18px;
+  left: 29px;
+  position: relative;
+}
+
+.star-container:after {
+  bottom: 20px;
+  color: white;
+  content: 'Score';
+  font-family: 'Hanalei Fill', cursive;
+  font-size: 17px;
+  left: -10px;
+  position: relative;
+}
+
+.user-star {
+  height: 80px;
+  position: relative;
+  left: 21px;
+}
+
+.user-score {
+  color: #3B397F;
+  font-size: 20px;
+  font-weight: bold;
+  left: -32px;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 0px 1px pink;
+  top: -26px;
+  z-index: 2;
+}
+
+.user__score--two {
+  color: #3B397F;
+  font-size: 20px;
+  font-weight: bold;
+  left: -26px;
+  margin-right: 9px;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 0px 1px pink;
+  top: -26px;
+  z-index: 2;
 }
