@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MovieCard } from './MovieCard';
+import { MovieCard, mapStateToProps, mapDispatchToProps } from './MovieCard';
+
 
 describe('MovieCard', () => {
   let wrapper;
@@ -24,5 +25,21 @@ describe('MovieCard', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('mapsStateToProps', () => {
+    it('should return only the necessary information from the redux store', () => {
+      const mockState = {
+        isLoggedIn: true,
+        user: {newUser: 'Anonymous'}
+      };
+      const expected = {
+        isLoggedIn: true,
+        user: {newUser: 'Anonymous'}
+      };
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
   });
 });
