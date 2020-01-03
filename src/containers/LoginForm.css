@@ -1,28 +1,76 @@
-/* ALL STYLING CAN/SHOULD BE REPLACED/DISCARDED (merely placeholder styling) -Austen */
 .login-section {
   align-items: center;
-  background-color: yellow;
+  background: linear-gradient(rgba(0, 0, 0.5, 0.5), rgba(0, 0.1, 0.1, 0.1)),
+    url('../images/curtains.jpeg');
+  background-blend-mode: lighten saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px double #c554dd;
+  box-sizing: border-box;
+  background-color: #3b397f;
   display: flex;
-  height: 100%;
+  height: 92vh;
   justify-content: center;
   width: 100%;
+}
+
+.form-container {
+  align-items: center;
+  background-color: #3b397f;
+  border: 4px double #c554dd;
+  box-shadow: 1px 1px 11px 3px black;
+  display: flex;
+  flex-direction: column;
+  height: 330px;
+  justify-content: space-around;
+  width: 240px;
 }
 
 form {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 150px;
   justify-content: space-around;
 }
 
-.form-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 200px;
+.form-title {
+  color: #e1dde5;
+  font-size: 35px;
+  text-decoration: underline;
+}
+
+label {
+  display: none;
+}
+
+input {
+  font-size: 18px;
+  height: 23px;
+  text-align: center;
+  width: 140px;
 }
 
 .error-styling {
   color: red;
+  font-size: 14px;
+  margin-top: -1px;
+  text-align: center;
+  text-shadow: 0 0 4px black;
+  width: 95%;
+}
+
+.submit-btn {
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 2px white;
+  font-size: 18px;
+  height: 25px;
+  width: 80px;
+}
+
+.submit-btn:hover {
+  background-color: #c654dd;
+  border: 1px groove black;
+  color: white;
 }

@@ -14,17 +14,30 @@ exports[`MovieCard should match the MovieCard Snapshot 1`] = `
     className="poster"
     src="https://image.tmdb.org/t/p/original//pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg"
   />
-  <p
-    className="average-rating"
+  <div
+    className="avg-container"
   >
-    Average Rating: 
-    8
-  </p>
+    <img
+      alt="cartoon tomato"
+      className="average-img"
+      src="https://img.icons8.com/dusk/64/000000/tomato.png"
+    />
+  </div>
+  <span
+    className="average-score"
+  >
+    8.0
+  </span>
   <NavLink
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
     to="/movies/3"
   >
     <div
-      className="view-name"
+      className="view-movie"
     >
       View Movie
     </div>

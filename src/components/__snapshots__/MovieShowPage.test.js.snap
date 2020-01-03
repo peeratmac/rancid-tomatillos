@@ -7,89 +7,22 @@ exports[`MovieShowPage should match the MovieShowPage Snapshot 1`] = `
   <img
     className="backdrop"
   />
-  <h1 />
-  <p>
+  <h1
+    className="movie__title--two"
+  />
+  <p
+    className="in-theaters"
+  >
     In Theaters: 
   </p>
   <p
     className="overview"
   />
-  <p>
-    Average Rating: 
-  </p>
-  <div
-    className="rating-bar"
+  <p
+    className="average__rating--two"
   >
-    <p
-      className="rating-description"
-    >
-      Rate Film:
-    </p>
-    <div
-      className="rating-scale"
-    >
-      <button
-        className="rating-btn btn-one"
-        value="1"
-      >
-        1
-      </button>
-      <button
-        className="rating-btn btn-two"
-        value="2"
-      >
-        2
-      </button>
-      <button
-        className="rating-btn btn-three"
-        value="3"
-      >
-        3
-      </button>
-      <button
-        className="rating-btn btn-four"
-        value="4"
-      >
-        4
-      </button>
-      <button
-        className="rating-btn btn-five"
-        value="5"
-      >
-        5
-      </button>
-      <button
-        className="rating-btn btn-six"
-        value="6"
-      >
-        6
-      </button>
-      <button
-        className="rating-btn btn-seven"
-        value="7"
-      >
-        7
-      </button>
-      <button
-        className="rating-btn btn-eight"
-        value="8"
-      >
-        8
-      </button>
-      <button
-        className="rating-btn btn-nine"
-        value="9"
-      >
-        9
-      </button>
-      <button
-        className="rating-btn btn-ten"
-        onClick={[Function]}
-        value="10"
-      >
-        10
-      </button>
-    </div>
-  </div>
+    Average Rating: 
+    NaN
+  </p>
 </div>
 `;

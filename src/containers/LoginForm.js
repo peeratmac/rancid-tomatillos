@@ -31,23 +31,21 @@ export class LoginForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.validateInputs();
-    if (this.state.error === '') {
-      fetchUserLogin(this.state.email, this.state.password)
-        .then(data => {
-          const { updateUser, updateLoggedInStatus } = this.props;
-          fetchRatings(data.user.id)
-            .then(ratingData => {
-              updateLoggedInStatus(true);
-              updateUser({ ...data.user, ratings: ratingData.ratings });
-            })
-            .catch(error => {
-              console.log('Error retrieving ratings')
-            })
-        })
-        .catch(error => {
-          this.props.handleError('Invalid login attempt, please try again')
-        })
-    }
+    fetchUserLogin(this.state.email, this.state.password)
+      .then(data => {
+        const { updateUser, updateLoggedInStatus } = this.props;
+        fetchRatings(data.user.id)
+          .then(ratingData => {
+            updateLoggedInStatus(true);
+            updateUser({ ...data.user, ratings: ratingData.ratings });
+          })
+          .catch(error => {
+            console.log('Error retrieving ratings')
+          })
+      })
+      .catch(error => {
+        this.props.handleError('Invalid login attempt, please try again')
+      })
   }
 
   render() {
@@ -56,7 +54,7 @@ export class LoginForm extends Component {
     ) : (
       <section className='login-section'>
         <div className='form-container'>
-          <h1>Login Form</h1>
+          <h1 className='form-title'>Login</h1>
           <h1 className='error-styling'>{this.state.error}</h1>
           {!this.state.error && <h1 className='error-styling'>{this.props.errorMessage}</h1>}
           <form onSubmit={event => this.handleSubmit(event)}>

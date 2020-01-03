@@ -1,45 +1,231 @@
+@import url(https://fonts.googleapis.com/css?family=Anton&display=swap);
+
 .movie-page {
   align-items: center;
+  background-color: #3B397F;
   display: flex;
   flex-direction: column;
+  height: 92vh;
   justify-content: space-around;
-  margin: 10px;
+}
+
+.movie-page  {
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url("../images/curtains.jpeg");
+  background-blend-mode: lighten saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px double #C654DE;
+  box-sizing: border-box;
+  color: #D45DC1;
+  display: flex;
+  flex-direction: column;
+  height: 92vh;
+  justify-content: space-around;
+  margin: 0px;
+  overflow: scroll;
 }
 
 .backdrop {
-  height: 400px;
-  width: 400px;
+  box-shadow: 0px 0px 20px 5px black;
+  border: 4px double #d45dc1;
+  height: 350px;
+  margin-top: 15px;
+  width: 450px;
+}
+
+.movie__title--two {
+  margin: 0;
+  text-shadow: 2px 3px 2px black;
+  text-decoration: underline;
+}
+
+.in-theaters {
+  font-family: 'Hanalei Fill', cursive;
+  margin: 0;
+  text-shadow: 2px 3px 2px black;
 }
 
 .overview {
+  color: #DEB2E8;
+  font-style: italic;
+  margin: 0;
   text-align: center;
+  text-shadow: 2px 3px 2px black;
+  width: 90%;
+}
+
+.average__rating--two {
+  color: #DEB2E8;
+  font-family: 'Anton', sans-serif;
+  margin: 0;
+  text-shadow: 2px 3px 2px black;
+}
+
+.already-rated {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  justify-content: center;
+}
+
+.my-rating {
+  color: black;
+  color: #DEB2E8;
+  font-family: 'Anton', sans-serif;
+  font-size: 27px;
+  margin: 0px;
+  text-shadow: 2px 3px 2px black;
+}
+
+.top-marks {
+  animation: flicker-two 10s infinite alternate;
+  color: #DEB2E8;
+  font-family: 'Anton', sans-serif;
+  font-size: 27px;
+  margin: 0px;
+  text-shadow: 2px 3px 2px black;
 }
 
 .rating-bar {
+  width: 380px;
 }
 
 .rating-scale {
+  box-shadow: 2px 3px 2px black;
+  margin-bottom: 10px;
 }
 
 .rating-description {
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 2px;
   text-align: center;
+  text-shadow: 2px 3px 2px black;
 }
 
 .rating-btn {
+  background-color: #deb2e8;
+  border: 1px groove gold;
   box-shadow: 0 0 1px black;
+  box-sizing: border-box;
   color: black;
-  font-size: 8px;
+  font-size: 15px;
   font-weight: bold;
   height: 45px;
   text-align: center;
-  width: 21px;
+  width: 10%;
 }
 
 .rating-btn:hover {
-  background-color: gold;
   border: 1px solid black;
+  color: black;
 }
 
-.rating-btn:active {
+.reset-rating {
+  background-color: #34032F;
+  border: .1px groove #C554DD;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 1px white;
+  color: white;
+  font-family: 'Hanalei Fill', cursive;
+  font-size: 20px;
+  font-weight: bold;
+  height: 35px;
+  letter-spacing: 1px;
+  margin: 10px 0px;
+  width: 140px;
+}
+
+.reset-rating:hover {
+  background-color: #c654dd;;
+  border: 1px groove black;
+  color: white;
+}
+
+.btn-one:hover {
+  background-color: #e5002d;
+}
+
+.btn-two:hover {
+  background-color: #f24b56;
+}
+
+.btn-three:hover {
+  background-color: #f7747c;
+}
+
+.btn-four:hover {
+  background-color: #f9aeb3;
+}
+
+.btn-five:hover {
+  background-color: #96dda6;
+}
+
+.btn-six:hover {
+  background-color: #72e08a;
+}
+
+.btn-seven:hover {
+  background-color: #30e557;
+}
+
+.btn-eight:hover {
+  background-color: #00ef33;
+}
+
+.btn-nine:hover {
+  background-color: #ddc237;
+}
+
+.btn-ten:hover {
+  animation: flicker 3s infinite alternate;
   background-color: gold;
+  color: black;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+        -0.2rem -0.2rem 1rem #fff,
+        0.2rem 0.2rem 1rem #fff,
+        0 0 2rem gold,
+        0 0 4rem gold,
+        0 0 6rem gold,
+        0 0 8rem gold,
+        0 0 10rem gold;
+
+    box-shadow:
+        0 0 .5rem #fff,
+        inset 0 0 .5rem #fff,
+        0 0 2rem white,
+        inset 0 0 2rem gold,
+        0 0 4rem gold,
+        inset 0 0 4rem gold;
+  }
+
+  20%, 24%, 55% {
+      text-shadow: none;
+      box-shadow: none;
+  }
+}
+
+@keyframes flicker-two {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+        -0.2rem -0.2rem 3rem gold,
+        0.2rem 0.2rem 5rem gold,
+        0 0 7rem gold,
+        0 0 10rem gold,
+        0 0 16rem gold,
+        0 0 18rem gold,
+        0 0 20rem gold;
+    }
+
+  20%, 24%, 55% {
+      text-shadow: none;
+      box-shadow: none;
+  }
 }

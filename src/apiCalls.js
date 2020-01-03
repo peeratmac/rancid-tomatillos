@@ -17,7 +17,7 @@ export const fetchUserLogin = (email, password) => {
     headers: {
       'Content-Type': 'application/json'
     }
-  };
+};
 
   return fetch(
     'https://rancid-tomatillos.herokuapp.com/api/v1/login',
@@ -62,3 +62,21 @@ export const updateRatings = (movieId, rating, userId) => {
     return response.json();
   });
 };
+
+export const deleteRating = (ratingId, userId) => {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  return fetch(
+    `https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings/${ratingId}`,
+    options
+  ).then(response => {
+    if (!response.ok) {
+      throw Error('Problem with delete rating')
+    }
+  })
+}

@@ -1,17 +1,52 @@
 .header {
   align-items: center;
-  background-color: #2D2D2F;
+  background-color: #2d2d2f;
   display: flex;
-  height: 35px;
+  height: 8vh;
   justify-content: space-around;
+}
+
+.welcome-user {
+  border-radius: 20px;
+  color: #c654de;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+  text-decoration: underline;
+  text-shadow: 1px 1px 3px black;
 }
 
 .login-button,
 .logout-button,
-.home-button  {
+.home-button {
+  background-color: #34032f;
+  border: 0.1px groove #c554dd;
   border-radius: 3px;
+  box-shadow: 0 0 1px 1px white;
+  color: white;
   font-size: 20px;
-  height: 25px;
+  font-weight: bold;
+  height: 45px;
   line-height: 5px;
-  width: 80px;
+  outline: none;
+  width: 95px;
+}
+
+.login-button:hover {
+  background-color: #c654dd;
+  border: 1px groove black;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #c654dd;
+  border: 1px groove black;
+  color: white;
+}
+
+.home-button:hover {
+  background-color: #c654dd;
+  border: 1px groove black;
+  color: white;
 }
