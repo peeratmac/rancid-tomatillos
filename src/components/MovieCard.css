@@ -35,23 +35,23 @@
 }
 
 .avg-container:before {
+  bottom: 20px;
   color: #c654de;
   content: 'Average ';
   font-family: 'Hanalei Fill', cursive;
-  position: relative;
-  bottom: 20px;
-  left: 4px;
   font-size: 17px;
+  left: 4px;
+  position: relative;
 }
 
 .avg-container:after {
+  bottom: 20px;
   color: #c654de;
   content: 'Rating';
   font-family: 'Hanalei Fill', cursive;
-  position: relative;
-  bottom: 20px;
-  left: 2px;
   font-size: 17px;
+  left: 2px;
+  position: relative;
 }
 
 .average-img {
@@ -65,11 +65,11 @@
 .average-score {
   color: #3B397F;
   font-size: 20px;
+  left: 4px;
   position: relative;
   text-align: center;
   text-shadow: 0px 0px 1px black;
   top: -42px;
-  left: 4px;
   z-index: 1;
 }
 

@@ -48,10 +48,10 @@
 
 .overview {
   color: #DEB2E8;
+  font-style: italic;
   margin: 0;
   text-align: center;
   text-shadow: 2px 3px 2px black;
-  font-style: italic;
   width: 90%;
 }
 
@@ -98,11 +98,11 @@
 }
 
 .rating-description {
+  font-weight: bold;
   margin: 0;
   margin-bottom: 2px;
   text-align: center;
   text-shadow: 2px 3px 2px black;
-  font-weight: bold;
 }
 
 .rating-btn {
@@ -133,6 +133,7 @@
   font-size: 20px;
   font-weight: bold;
   height: 35px;
+  letter-spacing: 1px;
   margin: 10px 0px;
   width: 140px;
 }
@@ -204,24 +205,6 @@
         0 0 4rem gold,
         inset 0 0 4rem gold;
   }
-
-  20%, 24%, 55% {
-      text-shadow: none;
-      box-shadow: none;
-  }
-}
-
-@keyframes flicker-two {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow:
-        -0.2rem -0.2rem 3rem gold,
-        0.2rem 0.2rem 5rem gold,
-        0 0 7rem gold,
-        0 0 10rem gold,
-        0 0 16rem gold,
-        0 0 18rem gold,
-        0 0 20rem gold;
-    }
 
   20%, 24%, 55% {
       text-shadow: none;
