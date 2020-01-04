@@ -1,4 +1,9 @@
-import { fetchAllMovies, fetchUserLogin, fetchRatings } from './apiCalls';
+import {
+  fetchAllMovies,
+  fetchUserLogin,
+  fetchRatings,
+  updateRatings
+} from './apiCalls';
 
 describe('apiCalls', () => {
   describe('fetchAllMovies', () => {
@@ -153,11 +158,32 @@ describe('apiCalls', () => {
   });
 
   describe('updateRatings', () => {
+    let mockResponse = {
+      movie_id: 9,
+      rating: 10
+    };
+    let mockMovieId = 9;
+    let mockRating = 10;
+    let mockUserId = 9;
+
+    const mockOptions = {
+      method: 'POST',
+      body: JSON.stringify(mockResponse),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
     it('should passed the correct URL', () => {
-      // TEST here
+      updateRatings(mockMovieId, mockRating, mockUserId);
+
+      expect(window.fetch).toHaveBeenCalledWith(
+        `https://rancid-tomatillos.herokuapp.com/api/v1/users/${mockUserId}/ratings`,
+        mockOptions
+      );
     });
 
-    it('should return an object with a ratings key with an array of id, user_id, movie_id, rating, created_at, and updated_at', () => {
+    it('should return an object with a ratings key with an array of movie_id and rating', () => {
       // TEST here
     });
 
