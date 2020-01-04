@@ -160,5 +160,9 @@ describe('apiCalls', () => {
     it('should return an object with a ratings key with an array of id, user_id, movie_id, rating, created_at, and updated_at', () => {
       // TEST here
     });
+
+    it('should return an error for response that is not ok', () => {
+      // TEST here
+    });
   });
 });
