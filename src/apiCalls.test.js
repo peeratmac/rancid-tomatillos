@@ -190,7 +190,15 @@ describe('apiCalls', () => {
     });
 
     it('should return an error for response that is not ok', () => {
-      // TEST here
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+
+      expect(fetchRatings(mockUserId)).rejects.toEqual(
+        Error('Something went wrong')
+      );
     });
   });
 });
