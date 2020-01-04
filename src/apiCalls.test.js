@@ -184,7 +184,9 @@ describe('apiCalls', () => {
     });
 
     it('should return an object with a ratings key with an array of movie_id and rating', () => {
-      // TEST here
+      expect(
+        updateRatings(mockMovieId, mockRating, mockUserId)
+      ).resolves.toEqual(mockResponse);
     });
 
     it('should return an error for response that is not ok', () => {
