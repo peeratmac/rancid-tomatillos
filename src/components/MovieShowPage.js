@@ -1,24 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './MovieShowPage.css';
 import { updateUser, updateLoggedInStatus } from '../actions/index';
 import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 
-export const MovieShowPage = props => {
-  const {
-    id,
-    title,
-    backdrop_path,
-    release_date,
-    overview,
-    average_rating,
-    isLoggedIn,
-    updateUser,
-    user
-  } = props;
+export class MovieShowPage extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  const handleRatingsUpdates = event => {
+  handleRatingsUpdates = event => {
+    const {user, id, updateUser} = this.props;
     updateRatings(id, Number(event.target.value), user.id).then(data => {
       fetchRatings(user.id).then(ratingData => {
         const newRatings = { ...user, ratings: ratingData.ratings };
@@ -27,7 +20,7 @@ export const MovieShowPage = props => {
     })
   };
 
-  const findUserRating = id => {
+  findUserRating = (id, user) => {
     const userRatings = user.ratings.map(rating => rating.movie_id);
     if (userRatings.includes(id)) {
       return user.ratings.find(movie => movie.movie_id === id).rating;
@@ -36,17 +29,7 @@ export const MovieShowPage = props => {
     }
   };
 
-  const handleDeleteRating = event => {
-    deleteRating(findRatingId(id), user.id)
-      .then(data => {
-        fetchRatings(user.id).then(ratingData => {
-          const updatedRatings = { ...user, ratings: ratingData.ratings };
-          updateUser(updatedRatings);
-      });
-    })
-  };
-
-  const findRatingId = id => {
+  findRatingId = (id, user) => {
     const movieIds = user.ratings.map(rating => rating.movie_id);
     if (movieIds.includes(id)) {
       return user.ratings.find(movie => movie.movie_id === id).id;
@@ -54,6 +37,18 @@ export const MovieShowPage = props => {
     console.log(user.ratings.find(movie => movie.movie_id === id).id)
   };
 
+render() {
+  const {
+      id,
+      title,
+      backdrop_path,
+      release_date,
+      overview,
+      average_rating,
+      isLoggedIn,
+      updateUser,
+      user
+    } = this.props;
   return (
     <div className='movie-page'>
       <img className='backdrop' src={backdrop_path} alt={title} />
@@ -61,79 +56,84 @@ export const MovieShowPage = props => {
       <p className='in-theaters'>In Theaters: {release_date}</p>
       <p className='overview'>{overview}</p>
       <p className='average__rating--two'>Average Rating: {Math.round( average_rating * 10 ) / 10}</p>
-      {isLoggedIn &&  (findUserRating(id) !== '...') &&
+      {isLoggedIn &&  (this.findUserRating(id, user) !== '...') &&
         <div className='already-rated'>
-          <p className={findUserRating(id) === 10 ? 'top-marks' : 'my-rating'}>
-            My Rating: {findUserRating(id)}
+          <p className={this.findUserRating(id, user) === 10 ? 'top-marks' : 'my-rating'}>
+            My Rating: {this.findUserRating(id, user)}
           </p>
-          <button
-            className='reset-rating'
-            onClick={event => handleDeleteRating(event)}>
-            Reset Rating
-          </button>
+          <button className='reset-rating'
+            onClick={() => {deleteRating(this.findRatingId(id, user), user.id)
+              .then(data => {
+                fetchRatings(user.id).then(ratingData => {
+                  const updatedRatings = { ...user, ratings: ratingData.ratings };
+                  updateUser(updatedRatings);
+                })
+              })
+            }}
+          >Reset Rating</button>
         </div>
       }
-      {isLoggedIn && (findUserRating(id) === '...') &&
+      {isLoggedIn && (this.findUserRating(id, user) === '...') &&
         <div className='rating-bar'>
           <div className='rating-scale'>
             <button
               className='rating-btn btn-one'
               value='1'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               1
             </button>
             <button
               className='rating-btn btn-two'
               value='2'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               2
             </button>
             <button
               className='rating-btn btn-three'
               value='3'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               3
             </button>
             <button
               className='rating-btn btn-four'
               value='4'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               4
             </button>
             <button
               className='rating-btn btn-five'
               value='5'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               5
             </button>
             <button
               className='rating-btn btn-six'
               value='6'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               6
             </button>
             <button
               className='rating-btn btn-seven'
               value='7'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               7
             </button>
             <button
               className='rating-btn btn-eight'
               value='8'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               8
             </button>
             <button
               className='rating-btn btn-nine'
               value='9'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               9
             </button>
             <button
               className='rating-btn btn-ten'
               value='10'
-              onClick={event => handleRatingsUpdates(event)}>
+              onClick={event => this.handleRatingsUpdates(event)}>
               10
             </button>
           </div>
@@ -141,6 +141,7 @@ export const MovieShowPage = props => {
       }
     </div>
   );
+}
 };
 
 export const mapStateToProps = state => ({
