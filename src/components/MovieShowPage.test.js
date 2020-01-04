@@ -42,6 +42,17 @@ describe('MovieShowPage', () => {
     updateRatings.mockImplementation(() => {
       return Promise.resolve({ rating: { user_id: 9, movie_id: 2, rating: 2 } })
     });
+    fetchRatings.mockImplementation(() => {
+      return Promise.resolve({ ratings: [
+        {id: 45, user_id: 9, movie_id: 8, rating: 8,
+          created_at: "2019-12-25T20:16:34.893Z",
+          updated_at: "2019-12-25T20:16:34.893Z"
+        },
+        {id: 46, user_id: 9, movie_id: 10, rating: 5,
+          created_at: "2019-12-25T20:30:21.606Z",
+          updated_at: "2019-12-25T20:30:21.606Z"
+        } ] })
+    })
   })
 
   it('should match the MovieShowPage Snapshot with no logged in user', () => {
@@ -180,9 +191,11 @@ describe('MovieShowPage', () => {
     expect(updateRatings).toHaveBeenCalledWith(2, 2, 9);
   });
 
-  // it('should invoke fetchRatings when updateRatings resolves', () => {
-  //
-  // });
+  it('should invoke fetchRatings when updateRatings resolves', () => {
+    updateRatings(2, 2, 9);
+    expect(fetchRatings).toHaveBeenCalledWith(9);
+  });
+
   // it('should invoke updateUser when fetchRatings resolves', () => {
   //
   // });
