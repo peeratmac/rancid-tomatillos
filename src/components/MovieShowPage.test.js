@@ -1,13 +1,44 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MovieShowPage, mapStateToProps, mapDispatchToProps, handleDeleteRating } from './MovieShowPage';
-import { updateUser} from '../actions'
+import { MovieShowPage, mapStateToProps, mapDispatchToProps } from './MovieShowPage';
+import { updateUser} from '../actions';
+import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
+
+jest.mock('../apiCalls.js');
 
 describe('MovieShowPage', () => {
   let wrapper, mockUpdateUser;
 
   beforeEach(() => {
     mockUpdateUser = jest.fn();
+    wrapper = shallow(<MovieShowPage
+      id={2}
+      title="Ad Astra"
+      poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+      release_date="2019-09-17"
+      overview="The near future, humanity to look to the stars an....."
+      average_rating={5.142857142857143}
+      isLoggedIn={true}
+      updateUser={mockUpdateUser}
+      user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
+        {id:45,
+          user_id:9,
+          movie_id:2,
+          rating:8,
+          created_at:"2019-12-25T20:16:34.893Z",
+          updated_at:"2019-12-25T20:16:34.893Z"},
+        {id:46,
+          user_id:9,
+          movie_id:10,
+          rating:10,
+          created_at:"2019-12-25T20:30:21.606Z",
+          updated_at:"2019-12-25T20:30:21.606Z"}
+        ]} }
+    />);
+    deleteRating.mockImplementation(() => {
+      return Promise.resolve()
+    });
   })
 
   it('should match the MovieShowPage Snapshot with no logged in user', () => {
@@ -28,31 +59,6 @@ describe('MovieShowPage', () => {
 
   it('should match snapshot when user is logged in and rating is less than 10',
     () => {
-      wrapper = shallow(<MovieShowPage
-        id={2}
-        title="Ad Astra"
-        poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
-        backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
-        release_date="2019-09-17"
-        overview="The near future, humanity to look to the stars an....."
-        average_rating={5.142857142857143}
-        isLoggedIn={true}
-        updateUser={mockUpdateUser}
-        user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
-          {id:45,
-            user_id:9,
-            movie_id:2,
-            rating:8,
-            created_at:"2019-12-25T20:16:34.893Z",
-            updated_at:"2019-12-25T20:16:34.893Z"},
-          {id:46,
-            user_id:9,
-            movie_id:10,
-            rating:10,
-            created_at:"2019-12-25T20:30:21.606Z",
-            updated_at:"2019-12-25T20:30:21.606Z"}
-          ]} }
-      />)
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -103,7 +109,7 @@ describe('MovieShowPage', () => {
   });
 
   //DO WE NEED A TEST FOR INVOCATION OF findUserRating SINCE IT HAPPENS DURING RENDERING AUTOMATICALLY?
-  it('should invoke handleDeleteRating on click', () => {
+  it('should invoke deleteRating on click', () => {
     wrapper = shallow(<MovieShowPage
       id={2}
       title="Ad Astra"
@@ -129,11 +135,8 @@ describe('MovieShowPage', () => {
           updated_at:"2019-12-25T20:30:21.606Z"}
         ]} }
     />);
-    console.log(wrapper);
-    const deleteFunction = wrapper.props.handleDeleteRating();
-    // wrapper.handleDeleteRating = jest.fn();
     wrapper.find('.reset-rating').simulate('click');
-    expect(deleteFunction).toHaveBeenCalled();
+    expect(deleteRating).toHaveBeenCalled();
   });
   //
   // it('should invoke handleRatingsUpdates on click or any rating button (10)', () => {

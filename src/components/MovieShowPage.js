@@ -36,15 +36,15 @@ export const MovieShowPage = props => {
     }
   };
 
-  const handleDeleteRating = () => {
-    deleteRating(findRatingId(id), user.id)
-      .then(data => {
-        fetchRatings(user.id).then(ratingData => {
-          const updatedRatings = { ...user, ratings: ratingData.ratings };
-          updateUser(updatedRatings);
-      });
-    })
-  };
+  // const handleDeleteRating = () => {
+    // deleteRating(findRatingId(id), user.id)
+    //   .then(data => {
+    //     fetchRatings(user.id).then(ratingData => {
+    //       const updatedRatings = { ...user, ratings: ratingData.ratings };
+    //       updateUser(updatedRatings);
+    //   });
+    // })
+  // };
 
   const findRatingId = id => {
     const movieIds = user.ratings.map(rating => rating.movie_id);
@@ -66,11 +66,16 @@ export const MovieShowPage = props => {
           <p className={findUserRating(id) === 10 ? 'top-marks' : 'my-rating'}>
             My Rating: {findUserRating(id)}
           </p>
-          <button
-            className='reset-rating'
-            onClick={handleDeleteRating}>
-            Reset Rating
-          </button>
+          <button className='reset-rating'
+            onClick={() => {deleteRating(findRatingId(id), user.id)
+              .then(data => {
+                fetchRatings(user.id).then(ratingData => {
+                  const updatedRatings = { ...user, ratings: ratingData.ratings };
+                  updateUser(updatedRatings);
+                })
+              })
+            }}
+          >Reset Rating</button>
         </div>
       }
       {isLoggedIn && (findUserRating(id) === '...') &&
