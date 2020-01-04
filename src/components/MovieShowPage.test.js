@@ -153,6 +153,13 @@ describe('MovieShowPage', () => {
     expect(deleteRating).toHaveBeenCalledWith(45, 9);
   });
 
+  it('should invoke fetchRatings when deleteRating is resolved', () => {
+    deleteRating(45, 9);
+    expect(fetchRatings).toHaveBeenCalledWith(9);
+  })
+
+
+
   it('should invoke handleRatingsUpdates on click of any rating button (10)', () => {
    let mockEvent = { target: {value: '2'} };
    wrapper = shallow(<MovieShowPage
