@@ -39,6 +39,9 @@ describe('MovieShowPage', () => {
     deleteRating.mockImplementation(() => {
       return Promise.resolve()
     });
+    updateRatings.mockImplementation(() => {
+      return Promise.resolve({ rating: { user_id: 9, movie_id: 2, rating: 2 } })
+    });
   })
 
   it('should match the MovieShowPage Snapshot with no logged in user', () => {
@@ -171,9 +174,12 @@ describe('MovieShowPage', () => {
    expect(wrapper.instance().handleRatingsUpdates).toHaveBeenCalledWith(mockEvent);
   });
 
-  // it('should invoke updateRatings fetch when handleRatingsUpdates is called', () => {
-  //
-  // });
+  it('should invoke updateRatings fetch when handleRatingsUpdates is called', () => {
+    let mockEvent = { target: {value: '2'} };
+    wrapper.instance().handleRatingsUpdates(mockEvent);
+    expect(updateRatings).toHaveBeenCalledWith(2, 2, 9);
+  });
+
   // it('should invoke fetchRatings when updateRatings resolves', () => {
   //
   // });
