@@ -150,7 +150,7 @@ describe('MovieShowPage', () => {
         ]} }
     />);
     wrapper.find('.reset-rating').simulate('click');
-    expect(deleteRating).toHaveBeenCalled();
+    expect(deleteRating).toHaveBeenCalledWith(45, 9);
   });
 
   it('should invoke handleRatingsUpdates on click of any rating button (10)', () => {
@@ -220,13 +220,6 @@ describe('MovieShowPage', () => {
   // });
   // end nested describe for findUserRating
 
-  // it('should invoke deleteRating when handleDeleteRating is called', () => {
-  //
-  // });
-
-  // it('should invoke fetchRatings when deleteRating resolves', () => {
-  //
-  // });
   // HOW DO I MAKE THE TEST BELOW DIFFERENT FROM THE IDENTICAL ONE ABOVE SINCE FETCH RATINGS IS INVOKED MORE THAN ONCE?
   // lines 23-25 are identical to lines 42-44 so maybe we can wrap them in a handler function?
   // it('should invoke updateUser when fetchRatings resolves', () => {
