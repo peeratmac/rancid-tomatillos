@@ -138,11 +138,38 @@ describe('MovieShowPage', () => {
     wrapper.find('.reset-rating').simulate('click');
     expect(deleteRating).toHaveBeenCalled();
   });
-  //
-  // it('should invoke handleRatingsUpdates on click or any rating button (10)', () => {
-  //  let mockEvent =
-  //
-  // });
+
+  it('should invoke handleRatingsUpdates on click of any rating button (10)', () => {
+   let mockEvent = { target: {value: '2'} };
+   wrapper = shallow(<MovieShowPage
+     id={2}
+     title="Ad Astra"
+     poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+     backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
+     release_date="2019-09-17"
+     overview="The near future, humanity to look to the stars an....."
+     average_rating={5.142857142857143}
+     isLoggedIn={true}
+     updateUser={mockUpdateUser}
+     user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
+       {id:45,
+         user_id:9,
+         movie_id:4,
+         rating:8,
+         created_at:"2019-12-25T20:16:34.893Z",
+         updated_at:"2019-12-25T20:16:34.893Z"},
+       {id:46,
+         user_id:9,
+         movie_id:10,
+         rating:10,
+         created_at:"2019-12-25T20:30:21.606Z",
+         updated_at:"2019-12-25T20:30:21.606Z"}
+       ]} }
+   />);
+   wrapper.instance().handleRatingsUpdates = jest.fn();
+   wrapper.find('.btn-two').simulate('click', mockEvent);
+   expect(wrapper.instance().handleRatingsUpdates).toHaveBeenCalledWith(mockEvent);
+  });
 
   // it('should invoke updateRatings fetch when handleRatingsUpdates is called', () => {
   //
