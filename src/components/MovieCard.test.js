@@ -28,18 +28,19 @@ describe('MovieCard', () => {
   });
 
   describe('mapsStateToProps', () => {
-    it('should return only the necessary information from the redux store', () => {
-      const mockState = {
-        isLoggedIn: true,
-        user: {newUser: 'Anonymous'}
-      };
-      const expected = {
-        isLoggedIn: true,
-        user: {newUser: 'Anonymous'}
-      };
-      const mappedProps = mapStateToProps(mockState);
+    it('should return only the necessary information from the redux store',
+      () => {
+        const mockState = {
+          isLoggedIn: true,
+          user: {newUser: 'Anonymous'}
+        };
+        const expected = {
+          isLoggedIn: true,
+          user: {newUser: 'Anonymous'}
+        };
+        const mappedProps = mapStateToProps(mockState);
 
-      expect(mappedProps).toEqual(expected);
+        expect(mappedProps).toEqual(expected);
     });
   });
 });

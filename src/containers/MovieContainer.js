@@ -7,7 +7,9 @@ import './MovieContainer.css';
 export const MovieContainer = props => {
   const { allMovies } = props;
 
-  const loader = <img src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif' alt="loading..."/>;
+  const loader =
+    <img src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
+      alt="loading..."/>;
 
   const displayMovies = allMovies.map(movie => {
     return (

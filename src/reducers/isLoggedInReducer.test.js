@@ -8,12 +8,13 @@ describe('isLoggedInReducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should return the correct state if the action is UPDATE_LOGGEDIN_STATUS', () => {
-    const initialState = false;
-    const action = {type: 'UPDATE_LOGGEDIN_STATUS', status: true};
-    const result = isLoggedInReducer(initialState, action);
-    const expectedState = true;
+  it('should return the correct state if the action is UPDATE_LOGGEDIN_STATUS',
+    () => {
+      const initialState = false;
+      const action = {type: 'UPDATE_LOGGEDIN_STATUS', status: true};
+      const result = isLoggedInReducer(initialState, action);
+      const expectedState = true;
 
-    expect(result).toEqual(expectedState);
+      expect(result).toEqual(expectedState);
   });
 });

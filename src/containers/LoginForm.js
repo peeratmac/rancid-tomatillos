@@ -56,7 +56,8 @@ export class LoginForm extends Component {
         <div className='form-container'>
           <h1 className='form-title'>Login</h1>
           <h1 className='error-styling'>{this.state.error}</h1>
-          {!this.state.error && <h1 className='error-styling'>{this.props.errorMessage}</h1>}
+          {!this.state.error && <h1 className='error-styling'>
+            {this.props.errorMessage}</h1>}
           <form onSubmit={event => this.handleSubmit(event)}>
             <div className='input-container'>
               <label htmlFor='email-input'>Email:</label>

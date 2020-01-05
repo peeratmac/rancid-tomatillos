@@ -19,14 +19,14 @@ export const MovieCard = props => {
     <div className="movie-card">
       <h1 className="poster-title">{title}</h1>
       {isLoggedIn && user.ratings && findRating(id, user, 'rating') !== '...' &&
-
         <div className='star-container'>
           <img
             className='user-star'
             src='https://img.icons8.com/officel/80/000000/filled-star.png'
             alt='cartoon star'
           />
-          <span className={findRating(id, user, 'rating') === 10 ? 'user-score': 'user__score--two'}>
+          <span className={findRating(id, user, 'rating') === 10 ? 'user-score':
+            'user__score--two'}>
             {findRating(id, user, 'rating')}
           </span>
         </div>

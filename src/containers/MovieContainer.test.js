@@ -64,22 +64,23 @@ describe('MovieContainer', () => {
   });
 
   describe('mapStateToProps', () => {
-    it('should return an object with error, loading, and allMovies properties from state', () => {
-      const mockState = {
-        movies: [{sample: 'datum'}],
-        user: {},
-        isLoggedIn: true,
-        errorMessage: 'Made Mistake',
-        loadingStatus: false,
-      };
-      const expected = {
-        allMovies: [{sample: 'datum'}],
-        errorMessage: 'Made Mistake',
-        loadingStatus: false
-      };
-      const mappedProps = mapStateToProps(mockState);
+    it('should return an object with error, loading, and allMovies \
+      properties from state', () => {
+        const mockState = {
+          movies: [{sample: 'datum'}],
+          user: {},
+          isLoggedIn: true,
+          errorMessage: 'Made Mistake',
+          loadingStatus: false,
+        };
+        const expected = {
+          allMovies: [{sample: 'datum'}],
+          errorMessage: 'Made Mistake',
+          loadingStatus: false
+        };
+        const mappedProps = mapStateToProps(mockState);
 
-      expect(mappedProps).toEqual(expected);
+        expect(mappedProps).toEqual(expected);
     });
   });
 
