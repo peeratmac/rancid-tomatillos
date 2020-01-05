@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './MovieShowPage.css';
-import { updateUser, updateLoggedInStatus } from '../actions/index';
+import { updateUser } from '../actions/index';
 import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 import { findRating } from '../util';
 

@@ -10,9 +10,6 @@ export const MovieCard = props => {
     id,
     title,
     poster_path,
-    backdrop_path,
-    release_date,
-    overview,
     average_rating
   } = props;
 

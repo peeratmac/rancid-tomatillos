@@ -106,6 +106,5 @@ LoginForm.propTypes = {
   updateUser: PropTypes.func,
   updateLoggedInStatus: PropTypes.func,
   handleError: PropTypes.func,
-  isLoggedIn: PropTypes.bool,
   errorMessage: PropTypes.string
 };
