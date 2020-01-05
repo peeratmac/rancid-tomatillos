@@ -10,7 +10,7 @@ exports[`MovieCard should match the MovieCard Snapshot 1`] = `
     Frozen II
   </h1>
   <img
-    alt="Poster Picture of Frozen II"
+    alt="Movie Poster of Frozen II"
     className="poster"
     src="https://image.tmdb.org/t/p/original//pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg"
   />

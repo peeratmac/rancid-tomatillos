@@ -37,7 +37,7 @@ export const MovieCard = props => {
       <img
         className='poster'
         src={poster_path}
-        alt={`Poster Picture of ${title}`}
+        alt={`Movie Poster of ${title}`}
       />
       <div className='avg-container'>
         <img
