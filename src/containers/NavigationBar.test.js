@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { NavigationBar, mapStateToProps, mapDispatchToProps } from './NavigationBar';
+import { NavigationBar, mapStateToProps, mapDispatchToProps }
+  from './NavigationBar';
 import { updateUser, updateLoggedInStatus, handleError } from '../actions'
 
 describe('NavigationBar Container', () => {
@@ -27,24 +28,25 @@ describe('NavigationBar Container', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should match the NavigationBar Snapshot when no one is logged in', () => {
-      wrapper = shallow(<NavigationBar
-          user={{}}
-          isLoggedIn={false}
-          updateUser={jest.fn()}
-          updateLoggedInStatus={jest.fn()}
-        />);
+    it('should match the NavigationBar Snapshot when no one is logged in',
+      () => {
+        wrapper = shallow(<NavigationBar
+            user={{}}
+            isLoggedIn={false}
+            updateUser={jest.fn()}
+            updateLoggedInStatus={jest.fn()}
+          />);
 
-      expect(wrapper).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
-    it('should invoke updateUser props with empty object when log out button is clicked',
+    it('should invoke updateUser props with empty object on click',
       () => {
         wrapper.find('.logout-button').simulate('click');
         expect(mockUpdateUser).toHaveBeenCalledWith({});
     });
 
-    it('should invoke updateLoggedInStatus props with false status when button is clicked',
+    it('should invoke updateLoggedInStatus props with false status on click',
       () => {
         wrapper.find('.logout-button').simulate('click');
         expect(mockUpdateLoggedInStatus).toHaveBeenCalledWith(false);
@@ -61,52 +63,56 @@ describe('NavigationBar Container', () => {
 
 
   describe('mapsStateToProps', () => {
-    it('should return only the necessary information from the redux store', () => {
-      const mockState = {
-        movies: [],
-        user: {user: 'data'},
-        isLoggedIn: true,
-        errorMessage: '',
-        loadingStatus: false,
-      };
-      const expected = {
-        user: {user: 'data'},
-        isLoggedIn: true
-      };
-      const mappedProps = mapStateToProps(mockState);
+    it('should return only the necessary information from the redux store',
+      () => {
+        const mockState = {
+          movies: [],
+          user: {user: 'data'},
+          isLoggedIn: true,
+          errorMessage: '',
+          loadingStatus: false,
+        };
+        const expected = {
+          user: {user: 'data'},
+          isLoggedIn: true
+        };
+        const mappedProps = mapStateToProps(mockState);
 
-      expect(mappedProps).toEqual(expected);
+        expect(mappedProps).toEqual(expected);
     });
   });
 
   describe('mapDispatchToProps', () => {
-    it('calls dispatch with an updateUser action when updateUser is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = updateUser({mock: 'value'});
-      const mappedProps = mapDispatchToProps(mockDispatch);
+    it('calls dispatch with an updateUser action when updateUser is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = updateUser({mock: 'value'});
+        const mappedProps = mapDispatchToProps(mockDispatch);
 
-      mappedProps.updateUser({mock: 'value'});
+        mappedProps.updateUser({mock: 'value'});
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('calls dispatch with an updateLoggedInStatus action when updateLoggedInStatus is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = updateLoggedInStatus(false);
-      const mappedProps = mapDispatchToProps(mockDispatch);
+    it('calls dispatch with an updateLoggedInStatus action when \
+      updateLoggedInStatus is called', () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = updateLoggedInStatus(false);
+        const mappedProps = mapDispatchToProps(mockDispatch);
 
-      mappedProps.updateLoggedInStatus(false);
+        mappedProps.updateLoggedInStatus(false);
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('calls dispatch with an handleError action when handleError is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = handleError('eRroR');
-      const mappedProps = mapDispatchToProps(mockDispatch);
-        mappedProps.handleError('eRroR');
+    it('calls dispatch with an handleError action when handleError is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = handleError('eRroR');
+        const mappedProps = mapDispatchToProps(mockDispatch);
+          mappedProps.handleError('eRroR');
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 });

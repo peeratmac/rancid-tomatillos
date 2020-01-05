@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MovieShowPage, mapStateToProps, mapDispatchToProps } from './MovieShowPage';
+import { MovieShowPage, mapStateToProps, mapDispatchToProps }
+  from './MovieShowPage';
 import { updateUser} from '../actions';
 import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 
@@ -192,10 +193,11 @@ describe('MovieShowPage', () => {
    expect(wrapper.instance().handleRatingsUpdates).toHaveBeenCalledWith(mockEvent);
   });
 
-  it('should invoke updateRatings fetch when handleRatingsUpdates is called', () => {
-    let mockEvent = { target: {value: '2'} };
-    wrapper.instance().handleRatingsUpdates(mockEvent);
-    expect(updateRatings).toHaveBeenCalledWith(2, 2, 9);
+  it('should invoke updateRatings fetch when handleRatingsUpdates is called',
+    () => {
+      let mockEvent = { target: {value: '2'} };
+      wrapper.instance().handleRatingsUpdates(mockEvent);
+      expect(updateRatings).toHaveBeenCalledWith(2, 2, 9);
   });
 
   it('should invoke fetchRatings when updateRatings resolves', () => {
@@ -204,7 +206,8 @@ describe('MovieShowPage', () => {
   });
 
   // it('should invoke updateUser when fetchRatings resolves', () => {
-  //   let mockNewRatings = {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
+  //   let mockNewRatings = {id: 9, name: 'Marge', email: 'marge@turing.io',
+        // ratings: [
   //     {id: 45, user_id: 9, movie_id: 8, rating: 8,
   //       created_at: "2019-12-25T20:16:34.893Z",
   //       updated_at: "2019-12-25T20:16:34.893Z"
@@ -218,52 +221,42 @@ describe('MovieShowPage', () => {
   //   // FAILING TEST - NUMBER OF CALLS: 0 - WHY???
   // });
 
-  // Nested describe for findUserRating???  Do we need this?
-  // it('should return rating for already rated movie', () => {
-  //
-  // });
-  // it('should return '...' for unrated movie', () => {
-  //
-  // });
-  // end nested describe for findUserRating
-
   // HOW DO I MAKE THE TEST BELOW DIFFERENT FROM THE IDENTICAL ONE ABOVE SINCE FETCH RATINGS IS INVOKED MORE THAN ONCE?
   // lines 23-25 are identical to lines 42-44 so maybe we can wrap them in a handler function?
   // it('should invoke updateUser when fetchRatings resolves', () => {
   //
   // });
 
-  // Do we need to test findRatingId?
-
-
   describe('mapsStateToProps', () => {
-    it('should return only the necessary information from the redux store', () => {
-      const mockState = {
-        movies: [],
-        user: {newUser: 'Tron'},
-        isLoggedIn: true,
-        errorMessage: '',
-        loadingStatus: false,
-      };
-      const expected = {
-        isLoggedIn: true,
-        user: {newUser: 'Tron'}
-      };
-      const mappedProps = mapStateToProps(mockState);
+    it('should return only the necessary information from the redux store',
+      () => {
+        const mockState = {
+          movies: [],
+          user: {newUser: 'Tron'},
+          isLoggedIn: true,
+          errorMessage: '',
+          loadingStatus: false,
+        };
+        const expected = {
+          isLoggedIn: true,
+          user: {newUser: 'Tron'}
+        };
+        const mappedProps = mapStateToProps(mockState);
 
-      expect(mappedProps).toEqual(expected);
+        expect(mappedProps).toEqual(expected);
     });
   });
 
   describe('mapDispatchToProps', () => {
-    it('calls dispatch with an updateUser action when updateUser is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = updateUser({some: 'thing'});
-      const mappedProps = mapDispatchToProps(mockDispatch);
+    it('calls dispatch with an updateUser action when updateUser is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = updateUser({some: 'thing'});
+        const mappedProps = mapDispatchToProps(mockDispatch);
 
-      mappedProps.updateUser({some: 'thing'});
+        mappedProps.updateUser({some: 'thing'});
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 });

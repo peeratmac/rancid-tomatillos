@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
 import './MovieContainer.css';
-import { handleError, isLoading} from '../actions/index';
 
 export const MovieContainer = props => {
   const { allMovies } = props;
 
-  const loader = <img src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif' alt="loading..."/>;
+  const loader =
+    <img src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
+      alt="loading..."/>;
 
   const displayMovies = allMovies.map(movie => {
     return (

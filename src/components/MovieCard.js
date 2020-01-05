@@ -3,50 +3,38 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './MovieCard.css';
+import { findRating } from '../util';
 
 export const MovieCard = props => {
   const {
     id,
     title,
     poster_path,
-    backdrop_path,
-    release_date,
-    overview,
     average_rating
   } = props;
 
   const { isLoggedIn, user } = props;
 
-  const findUserRating = id => {
-    if (isLoggedIn && user.ratings) {
-      const userRatings = user.ratings.map(ratedFilm => ratedFilm.movie_id);
-        if (userRatings.includes(id)) {
-          return user.ratings.find(movie => movie.movie_id === id).rating;
-        } else {
-          return '...';
-        }
-    }
-  };
-
   return (
     <div className="movie-card">
       <h1 className="poster-title">{title}</h1>
-      {isLoggedIn && findUserRating(id) !== '...' &&
+      {isLoggedIn && user.ratings && findRating(id, user, 'rating') !== '...' &&
         <div className='star-container'>
           <img
             className='user-star'
             src='https://img.icons8.com/officel/80/000000/filled-star.png'
             alt='cartoon star'
           />
-          <span className={findUserRating(id) === 10 ? 'user-score': 'user__score--two'}>
-            {findUserRating(id)}
+          <span className={findRating(id, user, 'rating') === 10 ? 'user-score':
+            'user__score--two'}>
+            {findRating(id, user, 'rating')}
           </span>
         </div>
       }
       <img
         className='poster'
         src={poster_path}
-        alt={`Poster Picture of ${title}`}
+        alt={`Movie Poster of ${title}`}
       />
       <div className='avg-container'>
         <img

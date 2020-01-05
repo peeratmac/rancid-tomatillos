@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import './NavigationBar.css';
-import { updateUser, updateLoggedInStatus, handleError } from '../actions/index';
+import {updateUser, updateLoggedInStatus, handleError} from '../actions/index';
 import PropTypes from 'prop-types';
 
 export const NavigationBar = props => {
-  const { user, isLoggedIn, updateUser, updateLoggedInStatus, handleError } = props;
+  const { user, isLoggedIn, updateUser, updateLoggedInStatus, handleError }
+    = props;
 
   return (
     <header className='header'>

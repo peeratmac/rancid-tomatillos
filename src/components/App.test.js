@@ -88,34 +88,37 @@ describe('App', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('calls dispatch with an addMovies action when addMovies is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = addMovies([{some: 'flick'}]);
-      const mappedProps = mapDispatchToProps(mockDispatch);
+    it('calls dispatch with an addMovies action when addMovies is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = addMovies([{some: 'flick'}]);
+        const mappedProps = mapDispatchToProps(mockDispatch);
 
-      mappedProps.addMovies([{some: 'flick'}]);
+        mappedProps.addMovies([{some: 'flick'}]);
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('calls dispatch with an handleError action when handleError is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = handleError('Mega Mishap');
-      const mappedProps = mapDispatchToProps(mockDispatch);
+    it('calls dispatch with an handleError action when handleError is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = handleError('Mega Mishap');
+        const mappedProps = mapDispatchToProps(mockDispatch);
 
-      mappedProps.handleError('Mega Mishap');
+        mappedProps.handleError('Mega Mishap');
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('calls dispatch with an isLoading action when isLoading is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = isLoading(false);
-      const mappedProps = mapDispatchToProps(mockDispatch);
+    it('calls dispatch with an isLoading action when isLoading is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = isLoading(false);
+        const mappedProps = mapDispatchToProps(mockDispatch);
 
-      mappedProps.isLoading(false);
+        mappedProps.isLoading(false);
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 });
