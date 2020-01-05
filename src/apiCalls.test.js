@@ -197,7 +197,7 @@ describe('apiCalls', () => {
         });
       });
 
-      expect(fetchRatings(mockUserId)).rejects.toEqual(
+      expect(updateRatings(mockUserId)).rejects.toEqual(
         Error('Something went wrong')
       );
     });
@@ -220,6 +220,18 @@ describe('apiCalls', () => {
       expect(window.fetch).toHaveBeenCalledWith(
         `https://rancid-tomatillos.herokuapp.com/api/v1/users/${mockUserId}/ratings/${mockRatingId}`,
         mockOptions
+      );
+    });
+
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+
+      expect(deleteRating(mockUserId)).rejects.toEqual(
+        Error('Problem with delete rating')
       );
     });
   });
