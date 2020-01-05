@@ -29,6 +29,12 @@ describe('Util', () => {
     expect(findRating(mockId, mockUser, 'rating')).toEqual(expected);
   });
 
+  it('should return correct rating id when passed the correct arguments',
+    () => {
+    let expected = 46;
+    expect(findRating(mockId, mockUser, 'id')).toEqual(expected);
+  });
+
   it('should return \'...\' when user has not yet rated movie', () => {
     mockUser = {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
       {id:45,
