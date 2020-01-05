@@ -2,7 +2,8 @@ import {
   fetchAllMovies,
   fetchUserLogin,
   fetchRatings,
-  updateRatings
+  updateRatings,
+  deleteRating
 } from './apiCalls';
 
 describe('apiCalls', () => {
@@ -198,6 +199,27 @@ describe('apiCalls', () => {
 
       expect(fetchRatings(mockUserId)).rejects.toEqual(
         Error('Something went wrong')
+      );
+    });
+  });
+
+  describe('deleteRating', () => {
+    let mockRatingId = 38;
+    let mockUserId = 5;
+
+    const mockOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    it('should passed the correct URL', () => {
+      deleteRating(mockRatingId, mockUserId);
+
+      expect(window.fetch).toHaveBeenCalledWith(
+        `https://rancid-tomatillos.herokuapp.com/api/v1/users/${mockUserId}/ratings/${mockRatingId}`,
+        mockOptions
       );
     });
   });
