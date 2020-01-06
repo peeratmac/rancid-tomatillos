@@ -147,7 +147,8 @@ export class MovieShowPage extends Component {
 
 export const mapStateToProps = state => ({
   isLoggedIn: state.isLoggedIn,
-  user: state.user
+  user: state.user,
+  errorMessage: state.errorMessage
 });
 
 export const mapDispatchToProps = dispatch => ({
