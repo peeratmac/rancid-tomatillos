@@ -1,0 +1,41 @@
+.no-match {
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url("../images/curtains.jpeg");
+  background-blend-mode: lighten saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px double #C654DE;
+  box-sizing: border-box;
+  color: #D45DC1;
+  display: flex;
+  flex-direction: column;
+  height: 92vh;
+  margin: 0px;
+  overflow: scroll;
+}
+
+.invalid-route-header {
+  font-size: 3em;
+  margin: 120px 120px 55px 120px;
+  text-align: center;
+}
+
+.invalid-route-button {
+  background-color: #34032f;
+  border: 0.1px groove #c554dd;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 1px white;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  height: 45px;
+  line-height: 5px;
+  outline: none;
+  width: 221px;
+}
+
+.invalid-route-button:hover {
+  background-color: #c654dd;
+  border: 1px groove black;
+  color: white;
+}

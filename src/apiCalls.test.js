@@ -174,6 +174,16 @@ describe('apiCalls', () => {
         'Content-Type': 'application/json'
       }
     };
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => {
+            return Promise.resolve(mockResponse);
+          }
+        });
+      });
+    });
 
     it('should passed the correct URL', () => {
       updateRatings(mockMovieId, mockRating, mockUserId);
@@ -213,6 +223,17 @@ describe('apiCalls', () => {
         'Content-Type': 'application/json'
       }
     };
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => {
+            return Promise.resolve(mockResponse);
+          }
+        });
+      });
+    });
 
     it('should passed the correct URL', () => {
       deleteRating(mockRatingId, mockUserId);

@@ -4,16 +4,34 @@ exports[`MovieCard should match the MovieCard Snapshot 1`] = `
 <div
   className="movie-card"
 >
-  <h1
-    className="poster-title"
+  <NavLink
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    to="/movies/3"
   >
-    Frozen II
-  </h1>
-  <img
-    alt="Movie Poster of Frozen II"
-    className="poster"
-    src="https://image.tmdb.org/t/p/original//pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg"
-  />
+    <h1
+      className="poster-title"
+    >
+      Frozen II
+    </h1>
+  </NavLink>
+  <NavLink
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    to="/movies/3"
+  >
+    <img
+      alt="Movie Poster of Frozen II"
+      className="poster"
+      src="https://image.tmdb.org/t/p/original//pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg"
+    />
+  </NavLink>
   <div
     className="avg-container"
   >
@@ -28,19 +46,5 @@ exports[`MovieCard should match the MovieCard Snapshot 1`] = `
   >
     8.0
   </span>
-  <NavLink
-    style={
-      Object {
-        "textDecoration": "none",
-      }
-    }
-    to="/movies/3"
-  >
-    <div
-      className="view-movie"
-    >
-      View Movie
-    </div>
-  </NavLink>
 </div>
 `;

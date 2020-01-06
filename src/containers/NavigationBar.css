@@ -3,7 +3,8 @@
   background-color: #2d2d2f;
   display: flex;
   height: 8vh;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 15px;
 }
 
 .welcome-user {
