@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoMatch should match snapshot 1`] = `
+<div
+  className="no-match"
+>
+  <h2
+    className="invalid-route-header"
+  >
+    Uh-oh! Page Not Found
+  </h2>
+  <Link
+    to="/"
+  >
+    <button
+      className="invalid-route-button"
+    >
+      Return To Homepage
+    </button>
+  </Link>
+</div>
+`;
