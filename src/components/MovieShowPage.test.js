@@ -207,7 +207,7 @@ describe('MovieShowPage', () => {
 
   // it('should invoke updateUser when fetchRatings resolves', () => {
   //   let mockNewRatings = {id: 9, name: 'Marge', email: 'marge@turing.io',
-        // ratings: [
+  //       ratings: [
   //     {id: 45, user_id: 9, movie_id: 8, rating: 8,
   //       created_at: "2019-12-25T20:16:34.893Z",
   //       updated_at: "2019-12-25T20:16:34.893Z"
