@@ -166,5 +166,6 @@ MovieShowPage.propTypes = {
   allMovies: PropTypes.array,
   isLoggedIn: PropTypes.bool,
   user: PropTypes.object,
-  updateUser: PropTypes.func
+  updateUser: PropTypes.func,
+  errorMessage: PropTypes.string
 };
