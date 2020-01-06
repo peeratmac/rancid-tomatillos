@@ -21,3 +21,24 @@
   overflow: scroll;
   width: 78%;
 }
+
+.sort-button {
+  background-color: #2D2C2F;
+  border: 0.1px groove #c554dd;
+  border-radius: 10px;
+  box-shadow: 0 0 1px 1px white;
+  color: #ED7899;
+  font-size: 20px;
+  font-weight: bold;
+  height: 30px;
+  line-height: 5px;
+  margin-top: 10px;
+  outline: none;
+  width: 295px;
+}
+
+.sort-button:hover {
+  background-color: #c654dd;
+  border: 1px groove white;
+  color: black;
+}
