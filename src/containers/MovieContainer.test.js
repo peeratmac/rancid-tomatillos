@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieContainer, mapStateToProps, mapDispatchToProps } from './MovieContainer';
+import { addMovies } from '../actions'
 
 
 describe('MovieContainer', () => {
@@ -84,4 +85,16 @@ describe('MovieContainer', () => {
     });
   });
 
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with addMovies action when addMovies is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = addMovies([{}, {}]);
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.addMovies([{}, {}]);
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
 });
