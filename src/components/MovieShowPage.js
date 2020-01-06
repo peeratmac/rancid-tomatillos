@@ -13,14 +13,18 @@ export class MovieShowPage extends Component {
 
   handleRatingsUpdates = event => {
     const { user, id, updateUser } = this.props;
-    updateRatings(id, Number(event.target.value), user.id)
+    updateRatings(id, Number(100), user.id)
       .then(data => {
         fetchRatings(user.id).then(ratingData => {
           const newRatings = { ...user, ratings: ratingData.ratings };
           updateUser(newRatings);
         });
       })
-      .catch(error => console.log('.catch() error on update'));
+      .catch(error => {
+        this.props.handleError(
+          'Problem updating your rating, please try again later.'
+        );
+      });
   };
 
   render() {
