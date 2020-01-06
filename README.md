@@ -1,7 +1,8 @@
 # Rancid-Tomatillo
 ## Mod 3 Group Project
-### [Austen Dunn](https://github.com/Dunn-Austen),
-[Peerat Sukcharoenyingyong](https://github.com/peeratmac) &
+### Dev Team
+[Austen Dunn](https://github.com/Dunn-Austen)
+[Peerat Sukcharoenyingyong](https://github.com/peeratmac)
 [Heather Faerber](https://github.com/hfaerber)
 
 An application which uses the Fetch API to retrieve movie data and display the
