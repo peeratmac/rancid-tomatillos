@@ -35,16 +35,22 @@ async and redux testing
 ![rancid_tomatillos_demo_gif](https://user-images.githubusercontent.com/48163945/71852056-c9c95580-30cf-11ea-9386-3b990729f4c5.gif)
 
 ## Screenshots
-<details><summary>Login Page</summary>
- ![LoginPageRancidTom](https://user-images.githubusercontent.com/48163945/71855757-d9e63280-30d9-11ea-81c4-9bc9402d0227.png)
- </details>
+<details>
+ <summary>Login Page</summary>  
+
+ ![LoginPageRancidTom](https://user-images.githubusercontent.com/48163945/71855757-d9e63280-30d9-11ea-81c4-9bc9402d0227.png)  
+
+</details>
  
- <details><summary>User Homepage</summary>
- ![UserHomepageRancidTom](https://user-images.githubusercontent.com/48163945/71855571-53315580-30d9-11ea-8cd9-4e78206a6978.jpg)
- </details>
+<details> 
+ <summary>User Homepage</summary>  
  
- <details><summary>Movie Page with Rating Bar</summary>
- <p>
- ![MoviePagewithRatingsBar](https://user-images.githubusercontent.com/48163945/71855597-65ab8f00-30d9-11ea-9aa4-9b1b64a7d296.jpg)
- </p>
- </details>
+ ![UserHomepageRancidTom](https://user-images.githubusercontent.com/48163945/71855571-53315580-30d9-11ea-8cd9-4e78206a6978.jpg)  
+</details>
+ 
+<details> 
+ <summary>Movie Page with Rating Bar</summary>  
+ 
+ ![MoviePagewithRatingsBar](https://user-images.githubusercontent.com/48163945/71855597-65ab8f00-30d9-11ea-9aa4-9b1b64a7d296.jpg)  
+ 
+</details>
