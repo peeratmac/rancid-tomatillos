@@ -157,16 +157,16 @@ describe('LoginForm Container', () => {
     });
 
 // FAILING - NUMBER OF CALLS: 0
-    // it('should invoke updateLoggedInStatus with true when fetchRatings has resolved', () => {
-    //   fetchRatings(9);
-    //   expect(mockUpdateLoggedInStatus).toHaveBeenCalled();
-    // });
+//     it('should invoke updateLoggedInStatus with true when fetchRatings has resolved', () => {
+//       fetchRatings(9);
+//       expect(mockUpdateLoggedInStatus).toHaveBeenCalled();
+//     });
 
 // FAILING - NUMBER OF CALLS: 0
-    // it('should invoke updateUser with data passed in when fetchRatings has resolved', async () => {
-    //   await fetchRatings(9);
-    //   expect(mockupdateUser).toHaveBeenCalled();
-    // });
+//     it('should invoke updateUser with data passed in when fetchRatings has resolved', async () => {
+//       await fetchRatings(9);
+//       expect(mockupdateUser).toHaveBeenCalled();
+//     });
 
 // HOW WILL WE TEST WHETHER HANDLEERROR IS INVOKED?
 });
