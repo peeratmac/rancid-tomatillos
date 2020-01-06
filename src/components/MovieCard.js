@@ -17,7 +17,9 @@ export const MovieCard = props => {
 
   return (
     <div className="movie-card">
-      <h1 className="poster-title">{title}</h1>
+      <NavLink to={`/movies/${id}`} style={{ textDecoration: 'none'}}>
+        <h1 className="poster-title">{title}</h1>
+      </NavLink>
       {isLoggedIn && user.ratings && findRating(id, user, 'rating') !== '...' &&
         <div className='star-container'>
           <img
@@ -31,11 +33,13 @@ export const MovieCard = props => {
           </span>
         </div>
       }
-      <img
-        className='poster'
-        src={poster_path}
-        alt={`Movie Poster of ${title}`}
-      />
+      <NavLink to={`/movies/${id}`} style={{ textDecoration: 'none'}}>
+        <img
+          className='poster'
+          src={poster_path}
+          alt={`Movie Poster of ${title}`}
+        />
+      </NavLink>
       <div className='avg-container'>
         <img
           className='average-img'
@@ -46,9 +50,6 @@ export const MovieCard = props => {
       <span className='average-score'>
         {average_rating.toFixed(1)}
       </span>
-      <NavLink to={`/movies/${id}`} style={{ textDecoration: 'none'}}>
-        <div className="view-movie">View Movie</div>
-      </NavLink>
     </div>
   );
 };
