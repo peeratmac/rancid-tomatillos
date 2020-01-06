@@ -6,7 +6,7 @@
 [Peerat Sukcharoenyingyong](https://github.com/peeratmac)  
 [Heather Faerber](https://github.com/hfaerber)  
 
-An application which uses the Fetch API to retrieve movie data and display the
+An application  which uses the Fetch API to retrieve movie data and display the
 movie information, including average rating. When logged in, users can add their
  own personal rating for each movie.
 
