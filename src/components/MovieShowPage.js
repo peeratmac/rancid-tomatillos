@@ -37,7 +37,8 @@ export class MovieShowPage extends Component {
       average_rating,
       isLoggedIn,
       updateUser,
-      user
+      user,
+      errorMessage
     } = this.props;
 
     return (
@@ -81,6 +82,9 @@ export class MovieShowPage extends Component {
         {isLoggedIn && findRating(id, user, 'rating') === '...' && (
           <div className='rating-bar'>
             <div className='rating-scale'>
+              {errorMessage && (
+                <h1 className='error-styling'>{this.props.errorMessage}</h1>
+              )}
               <button
                 className='rating-btn btn-one'
                 value='1'
