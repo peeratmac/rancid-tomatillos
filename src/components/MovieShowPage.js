@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './MovieShowPage.css';
-import { updateUser } from '../actions/index';
+import { updateUser, handleError } from '../actions/index';
 import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 import { findRating } from '../util';
 
@@ -12,27 +12,29 @@ export class MovieShowPage extends Component {
   }
 
   handleRatingsUpdates = event => {
-    const {user, id, updateUser} = this.props;
-    updateRatings(id, Number(event.target.value), user.id).then(data => {
-      fetchRatings(user.id).then(ratingData => {
-        const newRatings = { ...user, ratings: ratingData.ratings };
-        updateUser(newRatings);
+    const { user, id, updateUser } = this.props;
+    updateRatings(id, Number(event.target.value), user.id)
+      .then(data => {
+        fetchRatings(user.id).then(ratingData => {
+          const newRatings = { ...user, ratings: ratingData.ratings };
+          updateUser(newRatings);
+        });
       })
-    }).catch(err => console.log('.catch() error on update'))
+      .catch(err => console.log('.catch() error on update'));
   };
 
   render() {
     const {
-        id,
-        title,
-        backdrop_path,
-        release_date,
-        overview,
-        average_rating,
-        isLoggedIn,
-        updateUser,
-        user
-      } = this.props;
+      id,
+      title,
+      backdrop_path,
+      release_date,
+      overview,
+      average_rating,
+      isLoggedIn,
+      updateUser,
+      user
+    } = this.props;
 
     return (
       <div className='movie-page'>
@@ -40,28 +42,39 @@ export class MovieShowPage extends Component {
         <h1 className='movie__title--two'>{title}</h1>
         <p className='in-theaters'>In Theaters: {release_date}</p>
         <p className='overview'>{overview}</p>
-        <p className='average__rating--two'>Average Rating: {Math.round(
-          average_rating * 10 ) / 10}</p>
-        {isLoggedIn &&  (findRating(id, user, 'rating') !== '...') &&
+        <p className='average__rating--two'>
+          Average Rating: {Math.round(average_rating * 10) / 10}
+        </p>
+        {isLoggedIn && findRating(id, user, 'rating') !== '...' && (
           <div className='already-rated'>
-            <p className={findRating(id, user, 'rating') === 10 ? 'top-marks' :
-              'my-rating'}>
+            <p
+              className={
+                findRating(id, user, 'rating') === 10
+                  ? 'top-marks'
+                  : 'my-rating'
+              }>
               My Rating: {findRating(id, user, 'rating')}
             </p>
-            <button className='reset-rating'
-              onClick={() => {deleteRating(findRating(id, user, 'id'), user.id)
-                .then(data => {
-                  fetchRatings(user.id).then(ratingData => {
-                    const updatedRatings = { ...user,
-                      ratings: ratingData.ratings };
-                    updateUser(updatedRatings);
+            <button
+              className='reset-rating'
+              onClick={() => {
+                deleteRating(findRating(id, user, 'id'), user.id)
+                  .then(data => {
+                    fetchRatings(user.id).then(ratingData => {
+                      const updatedRatings = {
+                        ...user,
+                        ratings: ratingData.ratings
+                      };
+                      updateUser(updatedRatings);
+                    });
                   })
-                }).catch(err => console.log('.catch() error on delete'))
-              }}
-            >Reset Rating</button>
+                  .catch(err => console.log('.catch() error on delete'));
+              }}>
+              Reset Rating
+            </button>
           </div>
-        }
-        {isLoggedIn && (findRating(id, user, 'rating') === '...') &&
+        )}
+        {isLoggedIn && findRating(id, user, 'rating') === '...' && (
           <div className='rating-bar'>
             <div className='rating-scale'>
               <button
@@ -126,11 +139,11 @@ export class MovieShowPage extends Component {
               </button>
             </div>
           </div>
-        }
+        )}
       </div>
     );
-  };
-};
+  }
+}
 
 export const mapStateToProps = state => ({
   isLoggedIn: state.isLoggedIn,
