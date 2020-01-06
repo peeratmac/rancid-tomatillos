@@ -44,8 +44,7 @@ async and redux testing
  </details>
  
  <details><summary>Movie Page with Rating Bar</summary>
+ <p>
  ![MoviePagewithRatingsBar](https://user-images.githubusercontent.com/48163945/71855597-65ab8f00-30d9-11ea-9aa4-9b1b64a7d296.jpg)
- </details>
- 
- <details><summary>Movie Page with User Rating</summary>
+ </p>
  </details>
