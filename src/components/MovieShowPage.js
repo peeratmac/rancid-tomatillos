@@ -129,7 +129,7 @@ export class MovieShowPage extends Component {
         }
       </div>
     );
-  }
+  };
 };
 
 export const mapStateToProps = state => ({
