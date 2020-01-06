@@ -3,13 +3,28 @@ import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
 import './MovieContainer.css';
+import { addMovies } from '../actions/index';
 
 export const MovieContainer = props => {
-  const { allMovies } = props;
+  const { allMovies, addMovies } = props;
 
   const loader =
     <img src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
       alt="loading..."/>;
+
+  const sortFilms = () => {
+    const sortedFilms = [...allMovies].sort((a, b) => {
+      if (a.release_date > b.release_date) {
+        return -1
+      }
+
+      if (a.release_date < b.release_date) {
+        return 1
+      }
+    })
+
+    return sortedFilms
+  };
 
   const displayMovies = allMovies.map(movie => {
     return (
@@ -30,6 +45,13 @@ export const MovieContainer = props => {
   <div className='movie-container'>
     {props.loadingStatus === false &&
       <div className='inner-container'>
+      <button
+        className='sort-button'
+        onClick={() => {
+          addMovies(sortFilms())
+        }}>
+        Sort Films by Most Recent
+      </button>
         <h1 className='error-styling'>
           {props.errorMessage}
         </h1>
@@ -51,7 +73,11 @@ export const mapStateToProps = state => ({
   loadingStatus: state.loadingStatus
 });
 
-export default connect(mapStateToProps, null)(MovieContainer);
+export const mapDispatchToProps = dispatch => ({
+  addMovies: movies => dispatch(addMovies(movies))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);
 
 MovieContainer.propTypes = {
   allMovies: PropTypes.array,
