@@ -37,14 +37,11 @@ export class App extends Component {
             render={({ match }) => {
               const { id } = match.params;
               let moviesData = this.props.allMovies.find(
-                movie => movie.id === parseInt(id)
-              );
-              return <MovieShowPage {...moviesData} />;
+                movie => movie.id === parseInt(id));
+              return moviesData ? <MovieShowPage {...moviesData} /> : <NoMatch />
             }}
           />
-          <Route>
-            <NoMatch />
-          </Route>
+          <Route component={NoMatch} />
         </Switch>
       </main>
     );
