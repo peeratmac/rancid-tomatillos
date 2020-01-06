@@ -20,7 +20,7 @@ export class MovieShowPage extends Component {
           updateUser(newRatings);
         });
       })
-      .catch(err => console.log('.catch() error on update'));
+      .catch(error => console.log('.catch() error on update'));
   };
 
   render() {
@@ -151,7 +151,8 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  updateUser: user => dispatch(updateUser(user))
+  updateUser: user => dispatch(updateUser(user)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
