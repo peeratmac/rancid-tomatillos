@@ -14,6 +14,11 @@
   width: 330px;
 }
 
+.poster-title:hover {
+  box-shadow: 0 0 6px white;
+  content: 'View Movie';
+}
+
 .movie-card {
   align-items: center;
   display: flex;
