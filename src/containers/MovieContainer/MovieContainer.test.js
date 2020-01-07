@@ -66,19 +66,16 @@ describe('MovieContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-//Failing Test
-  // it('should invoke addMovies on click',
-  //   () => {
-  //   const wrapper = shallow(<MovieContainer
-  //     allMovies={mockMoviesData}
-  //     errorMessage={''}
-  //     loadingStatus={true}
-  //     addMovies={mockAddMovies}
-  //   />);
-  //
-  //   wrapper.find('.sort-button').simulate('click');
-  //   expect(mockAddMovies).toHaveBeenCalled();
-  // });
+  it('should invoke addMovies on click', () => {
+    const wrapper = shallow(<MovieContainer
+      allMovies={mockMoviesData}
+      errorMessage={''}
+      loadingStatus={false}
+      addMovies={mockAddMovies}
+    />);
+    wrapper.find('.sort-button').simulate('click');
+    expect(mockAddMovies).toHaveBeenCalled();
+  });
 
   describe('mapStateToProps', () => {
     it('should return an object with error, loading, and allMovies \

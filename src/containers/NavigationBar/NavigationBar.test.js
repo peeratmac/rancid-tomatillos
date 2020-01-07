@@ -54,13 +54,11 @@ describe('NavigationBar Container', () => {
 
     // it('should invoke handleError props with empty string when button is clicked',
     //   () => {
-    //     console.log(wrapper.debug())
     //     wrapper.find('.home-button').simulate('click');
     //     expect(mockHandleError).toHaveBeenCalledWith('');
     // });
     // FAILING TEST because home-button can't be found bc its wrapped in <Route>
   });
-
 
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store',
