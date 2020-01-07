@@ -4,6 +4,7 @@ import MovieCard from '../components/MovieCard';
 import PropTypes from 'prop-types';
 import './MovieContainer.css';
 import { addMovies } from '../actions/index';
+import { sortFilms } from '../util';
 
 export const MovieContainer = props => {
   const { allMovies, addMovies } = props;
@@ -11,20 +12,6 @@ export const MovieContainer = props => {
   const loader =
     <img src='https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif'
       alt="loading..."/>;
-
-  const sortFilms = () => {
-    const sortedFilms = [...allMovies].sort((a, b) => {
-      if (a.release_date > b.release_date) {
-        return -1
-      }
-
-      if (a.release_date < b.release_date) {
-        return 1
-      }
-    })
-
-    return sortedFilms
-  };
 
   const displayMovies = allMovies.map(movie => {
     return (
@@ -48,7 +35,7 @@ export const MovieContainer = props => {
       <button
         className='sort-button'
         onClick={() => {
-          addMovies(sortFilms())
+          addMovies(sortFilms(allMovies))
         }}>
         Sort Films by Most Recent
       </button>
