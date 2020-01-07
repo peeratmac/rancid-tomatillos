@@ -1,5 +1,4 @@
-import React from 'react';
-import { findRating, sortFilms} from './util';
+import { findRating, sortFilms } from './util';
 
 describe('Util', () => {
   let mockId;

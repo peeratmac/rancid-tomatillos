@@ -229,7 +229,7 @@ describe('apiCalls', () => {
         return Promise.resolve({
           ok: true,
           json: () => {
-            return Promise.resolve(mockResponse);
+            return Promise.resolve();
           }
         });
       });
@@ -242,6 +242,11 @@ describe('apiCalls', () => {
         `https://rancid-tomatillos.herokuapp.com/api/v1/users/${mockUserId}/ratings/${mockRatingId}`,
         mockOptions
       );
+    });
+
+    it('should return an object with a ratings key with an array of movie_id and rating', () => {
+      expect(deleteRating(mockRatingId, mockUserId))
+        .resolves.toEqual();
     });
 
     it('should return an error for response that is not ok', () => {
