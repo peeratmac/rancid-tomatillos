@@ -56,37 +56,9 @@ describe('MovieShowPage', () => {
           updated_at: "2019-12-25T20:30:21.606Z"
         } ] })
     })
-  })
+  });
 
   it('should invoke updateUser when fetchRatings resolves after handleRatingsUpdates is invoked', async () => {
-    mockUpdateUser = jest.fn();
-    mockHandleError = jest.fn();
-    wrapper = shallow(<MovieShowPage
-      id={2}
-      title="Ad Astra"
-      poster_path="https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
-      backdrop_path="https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg"
-      release_date="2019-09-17"
-      overview="The near future, humanity to look to the stars an....."
-      average_rating={5.142857142857143}
-      isLoggedIn={true}
-      updateUser={mockUpdateUser}
-      handleError={mockHandleError}
-      user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
-        {id:45,
-          user_id:9,
-          movie_id:3,
-          rating:8,
-          created_at:"2019-12-25T20:16:34.893Z",
-          updated_at:"2019-12-25T20:16:34.893Z"},
-        {id:46,
-          user_id:9,
-          movie_id:10,
-          rating:10,
-          created_at:"2019-12-25T20:30:21.606Z",
-          updated_at:"2019-12-25T20:30:21.606Z"}
-        ]} }
-    />);
     let mockEvent = { target: {value: '2'} };
     let mockNewRatings = {id: 9, name: 'Marge', email: 'marge@turing.io',
         ratings: [
@@ -108,9 +80,6 @@ describe('MovieShowPage', () => {
             rating:2,
             created_at:"2019-12-30T20:30:21.606Z",
             updated_at:"2019-12-30T20:30:21.606Z"} ]};
-    updateRatings.mockImplementation(() => {
-      return Promise.resolve({ rating: { user_id: 9, movie_id: 2, rating: 2 } })
-    });
     fetchRatings.mockImplementation(() => {
       return Promise.resolve({ ratings: [
         {id:45,
@@ -298,7 +267,7 @@ describe('MovieShowPage', () => {
     await wrapper.instance().handleRatingsUpdates(mockEvent);
     await wrapper.instance().forceUpdate();
     expect(mockHandleError).toHaveBeenCalledWith('Problem updating your rating, please try again later.');
-  })
+  });
 
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store',
