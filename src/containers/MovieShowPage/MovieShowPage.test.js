@@ -5,7 +5,7 @@ import { MovieShowPage, mapStateToProps, mapDispatchToProps }
 import { updateUser} from '../../actions';
 import { updateRatings, fetchRatings, deleteRating } from '../../apiCalls';
 
-jest.mock('../apiCalls.js');
+jest.mock('../../apiCalls.js');
 
 describe('MovieShowPage', () => {
   let wrapper, mockUpdateUser;

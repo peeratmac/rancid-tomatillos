@@ -4,7 +4,7 @@ import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import { handleError, updateLoggedInStatus, updateUser } from '../../actions';
 import { fetchUserLogin, fetchRatings } from '../../apiCalls';
 
-jest.mock('../apiCalls.js');
+jest.mock('../../apiCalls.js');
 
 describe('LoginForm Container', () => {
   describe('LoginForm component', () => {
