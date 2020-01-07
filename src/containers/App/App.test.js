@@ -1,12 +1,105 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import { addMovies, handleError, isLoading } from '../../actions'
+import { addMovies, handleError, isLoading } from '../../actions';
+import { fetchAllMovies } from './../../apiCalls';
+
+jest.mock('./../../apiCalls.js');
 
 describe('App', () => {
-  let wrapper;
-  const mockMoviesData = [
-    {
+  let wrapper, mockAddMovies, mockHandleError, mockIsLoading, mockMoviesData;
+
+  beforeEach(() => {
+    mockAddMovies = jest.fn();
+    mockHandleError = jest.fn();
+    mockIsLoading = jest.fn();
+
+    mockMoviesData = [
+      {
+        id: 1,
+        title: 'Jumanji: The Next Level',
+        poster_path:
+          'https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg',
+        backdrop_path:
+          'https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg',
+        release_date: '2019-12-04',
+        overview:
+          "In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
+        average_rating: 4
+      },
+      {
+        id: 2,
+        title: 'Ad Astra',
+        poster_path:
+          'https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg',
+        backdrop_path:
+          'https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg',
+        release_date: '2019-09-17',
+        overview:
+          'The near future, a time when both hope and hardships drive humanity to look to the stars and beyond. While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.',
+        average_rating: 7
+      },
+      {
+        id: 3,
+        title: 'Frozen II',
+        poster_path:
+          'https://image.tmdb.org/t/p/original//pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg',
+        backdrop_path:
+          'https://image.tmdb.org/t/p/original//xJWPZIYOEFIjZpBL7SVBGnzRYXp.jpg',
+        release_date: '2019-11-20',
+        overview:
+          'Elsa, Anna, Kristoff and Olaf head far into the forest to learn the truth about an ancient mystery of their kingdom.',
+        average_rating: 8
+      }
+    ];
+
+    fetchAllMovies.mockImplementation(() => {
+      return Promise.resolve({ movies: [
+        {
+          id: 1,
+          title: 'Jumanji: The Next Level',
+          poster_path:
+            'https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg',
+          backdrop_path:
+            'https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg',
+          release_date: '2019-12-04',
+          overview:
+            "In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
+          average_rating: 4
+        },
+        {
+          id: 2,
+          title: 'Ad Astra',
+          poster_path:
+            'https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg',
+          backdrop_path:
+            'https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg',
+          release_date: '2019-09-17',
+          overview:
+            'The near future, a time when both hope and hardships drive humanity to look to the stars and beyond. While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.',
+          average_rating: 7
+        }
+      ] });
+    });
+
+    wrapper = shallow(<App
+      allMovies={mockMoviesData}
+      addMovies={mockAddMovies}
+      handleError={mockHandleError}
+      isLoading={mockIsLoading}
+      />);
+  });
+
+  it('should match the App Snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should invoke fetchAllMovies after mounting', () => {
+    expect(fetchAllMovies).toHaveBeenCalled();
+  })
+
+  it('should invoke addMovies prop when fetchAllMovies resolves', () => {
+    let mockMovieArg = [{
       id: 1,
       title: 'Jumanji: The Next Level',
       poster_path:
@@ -29,25 +122,13 @@ describe('App', () => {
       overview:
         'The near future, a time when both hope and hardships drive humanity to look to the stars and beyond. While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.',
       average_rating: 7
-    },
-    {
-      id: 3,
-      title: 'Frozen II',
-      poster_path:
-        'https://image.tmdb.org/t/p/original//pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg',
-      backdrop_path:
-        'https://image.tmdb.org/t/p/original//xJWPZIYOEFIjZpBL7SVBGnzRYXp.jpg',
-      release_date: '2019-11-20',
-      overview:
-        'Elsa, Anna, Kristoff and Olaf head far into the forest to learn the truth about an ancient mystery of their kingdom.',
-      average_rating: 8
-    }
-  ];
+    }];
+    expect(mockAddMovies).toHaveBeenCalledWith(mockMovieArg);
+  })
 
-  it('should match the App Snapshot', () => {
-    wrapper = shallow(<App />);
-    expect(wrapper).toMatchSnapshot();
-  });
+  it('should invoke isLoading prop when fetchAllMovies resolves', () => {
+    expect(mockIsLoading).toHaveBeenCalledWith(false);
+  })
 
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store', () => {
