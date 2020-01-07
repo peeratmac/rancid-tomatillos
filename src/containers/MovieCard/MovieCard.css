@@ -14,6 +14,11 @@
   width: 330px;
 }
 
+.poster-title:hover {
+  box-shadow: 0 0 6px white;
+  content: 'View Movie';
+}
+
 .movie-card {
   align-items: center;
   display: flex;
@@ -40,8 +45,8 @@
   content: 'Average ';
   font-family: 'Hanalei Fill', cursive;
   font-size: 17px;
-  left: 4px;
-  position: relative;
+  float: left;
+  margin-right: 4px;
 }
 
 .avg-container:after {
@@ -50,8 +55,8 @@
   content: 'Rating';
   font-family: 'Hanalei Fill', cursive;
   font-size: 17px;
-  left: 2px;
-  position: relative;
+  float: right;
+  margin-right: 4px;
 }
 
 .average-img {

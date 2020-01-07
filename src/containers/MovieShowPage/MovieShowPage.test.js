@@ -5,7 +5,7 @@ import { MovieShowPage, mapStateToProps, mapDispatchToProps }
 import { updateUser, handleError } from '../actions';
 import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 
-jest.mock('../apiCalls.js');
+jest.mock('../../apiCalls.js');
 
 describe('MovieShowPage', () => {
   let wrapper, mockUpdateUser, mockHandleError;
@@ -301,7 +301,11 @@ describe('MovieShowPage', () => {
           loadingStatus: false,
         };
         const expected = {
+<<<<<<< HEAD:src/components/MovieShowPage.test.js
           errorMessage: "",
+=======
+          errorMessage: '',
+>>>>>>> master:src/containers/MovieShowPage/MovieShowPage.test.js
           isLoggedIn: true,
           user: {newUser: 'Tron'}
         };

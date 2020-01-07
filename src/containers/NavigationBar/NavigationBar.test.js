@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { NavigationBar, mapStateToProps, mapDispatchToProps }
   from './NavigationBar';
-import { updateUser, updateLoggedInStatus, handleError } from '../actions'
+import { updateUser, updateLoggedInStatus, handleError } from '../../actions'
 
 describe('NavigationBar Container', () => {
   describe('NavigationBar component', () => {

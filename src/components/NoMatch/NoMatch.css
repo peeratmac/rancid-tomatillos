@@ -1,6 +1,6 @@
 .no-match {
   align-items: center;
-  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url("../images/curtains.jpeg");
+  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url("../../images/curtains.jpeg");
   background-blend-mode: lighten saturation;
   background-repeat: no-repeat;
   background-size: 100% 100%;

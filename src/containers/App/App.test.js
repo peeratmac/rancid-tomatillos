@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import { addMovies, handleError, isLoading } from '../actions'
+import { addMovies, handleError, isLoading } from '../../actions'
 
 describe('App', () => {
   let wrapper;

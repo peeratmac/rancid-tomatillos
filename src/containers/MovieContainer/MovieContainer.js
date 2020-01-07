@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MovieCard from '../components/MovieCard';
+import MovieCard from '../MovieCard/MovieCard';
 import PropTypes from 'prop-types';
 import './MovieContainer.css';
-import { addMovies } from '../actions/index';
-import { sortFilms } from '../util';
+import { addMovies } from '../../actions/index';
+import { sortFilms } from '../../util';
 
 export const MovieContainer = props => {
   const { allMovies, addMovies } = props;

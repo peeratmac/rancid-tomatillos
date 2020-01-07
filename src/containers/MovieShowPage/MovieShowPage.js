@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './MovieShowPage.css';
-import { updateUser, handleError } from '../actions/index';
-import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
-import { findRating } from '../util';
+import { updateUser, handleError } from '../../actions/index';
+import { updateRatings, fetchRatings, deleteRating } from '../../apiCalls';
+import { findRating } from '../../util';
 
 export class MovieShowPage extends Component {
   handleRatingsUpdates = event => {
