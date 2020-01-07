@@ -229,7 +229,7 @@ describe('apiCalls', () => {
         return Promise.resolve({
           ok: true,
           json: () => {
-            return Promise.resolve(mockResponse);
+            return Promise.resolve();
           }
         });
       });

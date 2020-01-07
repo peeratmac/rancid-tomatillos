@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MovieCard, mapStateToProps, mapDispatchToProps } from './MovieCard';
+import { MovieCard, mapStateToProps } from './MovieCard';
 
 
 describe('MovieCard', () => {

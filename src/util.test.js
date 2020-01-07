@@ -1,4 +1,3 @@
-import React from 'react';
 import {findRating} from './util';
 
 describe('Util', () => {
