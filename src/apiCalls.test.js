@@ -244,6 +244,11 @@ describe('apiCalls', () => {
       );
     });
 
+    it('should return an object with a ratings key with an array of movie_id and rating', () => {
+      expect(deleteRating(mockRatingId, mockUserId))
+        .resolves.toEqual();
+    });
+
     it('should return an error for response that is not ok', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
