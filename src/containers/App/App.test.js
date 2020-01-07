@@ -130,6 +130,20 @@ describe('App', () => {
     expect(mockIsLoading).toHaveBeenCalledWith(false);
   })
 
+  it('should invoke handleError prop if fetchAllMovies rejects', async () => {
+    fetchAllMovies.mockImplementation(() => {
+      return Promise.reject(Error('error '))
+    });
+    wrapper = await shallow(<App
+      allMovies={mockMoviesData}
+      addMovies={mockAddMovies}
+      handleError={mockHandleError}
+      isLoading={mockIsLoading}
+      />);
+    await wrapper.instance().forceUpdate();
+    expect(mockHandleError).toHaveBeenCalledWith('Data retrieval error - Please refresh the page');
+  })
+
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store', () => {
       const mockState = {
