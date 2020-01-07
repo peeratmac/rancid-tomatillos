@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './MovieCard.css';
-import { findRating } from '../util';
+import { findRating } from '../../util';
 
 export const MovieCard = props => {
   const {

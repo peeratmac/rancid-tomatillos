@@ -2,10 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieShowPage, mapStateToProps, mapDispatchToProps }
   from './MovieShowPage';
-import { updateUser} from '../actions';
-import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
+import { updateUser} from '../../actions';
+import { updateRatings, fetchRatings, deleteRating } from '../../apiCalls';
 
-jest.mock('../apiCalls.js');
+jest.mock('../../apiCalls.js');
 
 describe('MovieShowPage', () => {
   let wrapper, mockUpdateUser;
@@ -238,6 +238,7 @@ describe('MovieShowPage', () => {
           loadingStatus: false,
         };
         const expected = {
+          errorMessage: '',
           isLoggedIn: true,
           user: {newUser: 'Tron'}
         };
