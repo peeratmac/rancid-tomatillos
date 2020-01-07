@@ -289,52 +289,16 @@ describe('MovieShowPage', () => {
     expect(fetchRatings).toHaveBeenCalledWith(9);
   });
 
-  // it('should invoke updateUser when fetchRatings resolves after handleRatingsUpdates is invoked', () => {
-  //   let mockNewRatings = {id: 9, name: 'Marge', email: 'marge@turing.io',
-  //       ratings: [
-  //     {id: 45, user_id: 9, movie_id: 8, rating: 8,
-  //       created_at: "2019-12-25T20:16:34.893Z",
-  //       updated_at: "2019-12-25T20:16:34.893Z"
-  //     },
-  //     {id: 46, user_id: 9, movie_id: 10, rating: 5,
-  //       created_at: "2019-12-25T20:30:21.606Z",
-  //       updated_at: "2019-12-25T20:30:21.606Z"
-  //     } ]};
-  //   updateRatings.mockImplementation(() => {
-  //     return Promise.resolve({ rating: { user_id: 9, movie_id: 2, rating: 2 } })
-  //   });
-  //   fetchRatings.mockImplementation(() => {
-  //     return Promise.resolve({ ratings: [
-  //       {id: 45, user_id: 9, movie_id: 8, rating: 8,
-  //         created_at: "2019-12-25T20:16:34.893Z",
-  //         updated_at: "2019-12-25T20:16:34.893Z"
-  //       },
-  //       {id: 46, user_id: 9, movie_id: 10, rating: 5,
-  //         created_at: "2019-12-25T20:30:21.606Z",
-  //         updated_at: "2019-12-25T20:30:21.606Z"
-  //       } ] })
-  //   })
-  //   fetchRatings(9);
-  //   expect(mockUpdateUser).toHaveBeenCalledWith(mockNewRatings);
-  //   // FAILING TEST - NUMBER OF CALLS: 0 - WHY???
-  // });
+  it('should invoke handleError prop if updateRatings rejects', async () => {
+    let mockEvent = { target: {value: '2'} };
 
-  // HOW DO I MAKE THE TEST BELOW DIFFERENT FROM THE IDENTICAL ONE ABOVE SINCE FETCH RATINGS IS INVOKED MORE THAN ONCE?
-  // lines 23-25 are identical to lines 42-44 so maybe we can wrap them in a handler function?
-  // it('should invoke updateUser when fetchRatings resolves', () => {
-  //
-  // });
-
-// FAILING, NUMBER OF CALLS = 0
-  // it('should invoke handleError prop if updateRatings rejects', async () => {
-  //   let mockEvent = { target: {value: '2'} };
-  //
-  //   updateRatings.mockImplementation(() => {
-  //     return Promise.reject(Error('error '));
-  //   });
-  //   await wrapper.instance().handleRatingsUpdates(mockEvent);
-  //   expect(mockHandleError).toHaveBeenCalledWith('Problem updating your rating, please try again later.');
-  // })
+    updateRatings.mockImplementation(() => {
+      return Promise.reject(Error('error '));
+    });
+    await wrapper.instance().handleRatingsUpdates(mockEvent);
+    await wrapper.instance().forceUpdate();
+    expect(mockHandleError).toHaveBeenCalledWith('Problem updating your rating, please try again later.');
+  })
 
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store',
