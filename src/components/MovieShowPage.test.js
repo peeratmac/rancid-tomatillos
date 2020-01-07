@@ -2,16 +2,17 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieShowPage, mapStateToProps, mapDispatchToProps }
   from './MovieShowPage';
-import { updateUser} from '../actions';
+import { updateUser, handleError } from '../actions';
 import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 
 jest.mock('../apiCalls.js');
 
 describe('MovieShowPage', () => {
-  let wrapper, mockUpdateUser;
+  let wrapper, mockUpdateUser, mockHandleError;
 
   beforeEach(() => {
     mockUpdateUser = jest.fn();
+    mockHandleError = jest.fn();
     wrapper = shallow(<MovieShowPage
       id={2}
       title="Ad Astra"
@@ -22,6 +23,7 @@ describe('MovieShowPage', () => {
       average_rating={5.142857142857143}
       isLoggedIn={true}
       updateUser={mockUpdateUser}
+      handleError={mockHandleError}
       user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
         {id:45,
           user_id:9,
@@ -67,6 +69,7 @@ describe('MovieShowPage', () => {
       average_rating={5.142857142857143}
       isLoggedIn={false}
       updateUser={mockUpdateUser}
+      handleError={mockHandleError}
       user={ {} }
       />);
     expect(wrapper).toMatchSnapshot();
@@ -89,6 +92,7 @@ describe('MovieShowPage', () => {
         average_rating={5.142857142857143}
         isLoggedIn={true}
         updateUser={mockUpdateUser}
+        handleError={mockHandleError}
         user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
           {id:45,
             user_id:9,
@@ -118,6 +122,7 @@ describe('MovieShowPage', () => {
       average_rating={5.142857142857143}
       isLoggedIn={true}
       updateUser={mockUpdateUser}
+      handleError={mockHandleError}
       user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: []} }
     />)
     expect(wrapper).toMatchSnapshot();
@@ -135,6 +140,7 @@ describe('MovieShowPage', () => {
       average_rating={5.142857142857143}
       isLoggedIn={true}
       updateUser={mockUpdateUser}
+      handleError={mockHandleError}
       user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
         {id:45,
           user_id:9,
@@ -157,9 +163,7 @@ describe('MovieShowPage', () => {
   it('should invoke fetchRatings when deleteRating is resolved', () => {
     deleteRating(45, 9);
     expect(fetchRatings).toHaveBeenCalledWith(9);
-  })
-
-
+  });
 
   it('should invoke handleRatingsUpdates on click of any rating button (10)', () => {
    let mockEvent = { target: {value: '2'} };
@@ -173,6 +177,7 @@ describe('MovieShowPage', () => {
      average_rating={5.142857142857143}
      isLoggedIn={true}
      updateUser={mockUpdateUser}
+     handleError={mockHandleError}
      user={ {id: 9, name: 'Marge', email: 'marge@turing.io', ratings: [
        {id:45,
          user_id:9,
@@ -256,6 +261,17 @@ describe('MovieShowPage', () => {
         const mappedProps = mapDispatchToProps(mockDispatch);
 
         mappedProps.updateUser({some: 'thing'});
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an handleError action when handleError is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = handleError('clever error message');
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.handleError('clever error message');
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
