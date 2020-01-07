@@ -138,7 +138,7 @@ describe('LoginForm Container', () => {
         expect(mockHandleError).toHaveBeenCalled();
     });
 
-    it('should invoke fetchUserLogin when handleSubmit is called', () => {
+    it('should invoke fetchUserLogin when handleSubmit is called', async () => {
       const mockStartingState = {
         email: 'Marge@turing.io',
         password: 'fakepassword',
@@ -146,7 +146,7 @@ describe('LoginForm Container', () => {
       wrapper.setState(mockStartingState);
 
       const mockEvent = { preventDefault: jest.fn() };
-      wrapper.instance().handleSubmit(mockEvent);
+      await wrapper.instance().handleSubmit(mockEvent);
       expect(fetchUserLogin)
         .toHaveBeenCalledWith('Marge@turing.io', 'fakepassword');
     });
@@ -156,17 +156,20 @@ describe('LoginForm Container', () => {
       expect(fetchRatings).toHaveBeenCalledWith(9);
     });
 
-// FAILING - NUMBER OF CALLS: 0
-//     it('should invoke updateLoggedInStatus with true when fetchRatings has resolved', () => {
-//       fetchRatings(9);
-//       expect(mockUpdateLoggedInStatus).toHaveBeenCalled();
-//     });
+    it('should invoke updateLoggedInStatus when fetchRatings has resolved',
+      async () => {
+        const mockEvent = { preventDefault: jest.fn() };
+        await wrapper.instance().handleSubmit(mockEvent);
+        await wrapper.instance().forceUpdate();
+        expect(mockUpdateLoggedInStatus).toHaveBeenCalledWith(true);
+    });
 
-// FAILING - NUMBER OF CALLS: 0
-//     it('should invoke updateUser with data passed in when fetchRatings has resolved', async () => {
-//       await fetchRatings(9);
-//       expect(mockupdateUser).toHaveBeenCalled();
-//     });
+    it('should invoke updateUser when fetchRatings has resolved', async () => {
+      const mockEvent = { preventDefault: jest.fn() };
+      await wrapper.instance().handleSubmit(mockEvent);
+      await wrapper.instance().forceUpdate();
+      expect(mockUpdateUser).toHaveBeenCalled();
+    });
 
 // HOW WILL WE TEST WHETHER HANDLEERROR IS INVOKED?
 });
