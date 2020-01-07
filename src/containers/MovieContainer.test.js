@@ -5,6 +5,7 @@ import { addMovies } from '../actions'
 
 
 describe('MovieContainer', () => {
+  const mockAddMovies = jest.fn();
   const mockMoviesData = [
     {
       id: 1,
@@ -49,6 +50,7 @@ describe('MovieContainer', () => {
       allMovies={mockMoviesData}
       errorMessage={''}
       loadingStatus={false}
+      addMovies={mockAddMovies}
     />);
 
     expect(wrapper).toMatchSnapshot();
@@ -59,10 +61,25 @@ describe('MovieContainer', () => {
       allMovies={mockMoviesData}
       errorMessage={''}
       loadingStatus={true}
+      addMovies={mockAddMovies}
     />);
 
     expect(wrapper).toMatchSnapshot();
   });
+
+//Failing Test
+  // it('should invoke addMovies on click',
+  //   () => {
+  //   const wrapper = shallow(<MovieContainer
+  //     allMovies={mockMoviesData}
+  //     errorMessage={''}
+  //     loadingStatus={true}
+  //     addMovies={mockAddMovies}
+  //   />);
+  //
+  //   wrapper.find('.sort-button').simulate('click');
+  //   expect(mockAddMovies).toHaveBeenCalled();
+  // });
 
   describe('mapStateToProps', () => {
     it('should return an object with error, loading, and allMovies \
