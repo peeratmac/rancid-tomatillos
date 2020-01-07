@@ -13,7 +13,7 @@ export class MovieShowPage extends Component {
 
   handleRatingsUpdates = event => {
     const { user, id, updateUser } = this.props;
-    updateRatings(id, Number(100), user.id)
+    updateRatings(id, Number(event.target.value), user.id)
       .then(data => {
         fetchRatings(user.id).then(ratingData => {
           const newRatings = { ...user, ratings: ratingData.ratings };
