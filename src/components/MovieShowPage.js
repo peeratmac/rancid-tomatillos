@@ -7,9 +7,9 @@ import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
 import { findRating } from '../util';
 
 export class MovieShowPage extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   handleRatingsUpdates = event => {
     const { user, id, updateUser } = this.props;

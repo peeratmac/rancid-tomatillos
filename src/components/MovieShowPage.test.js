@@ -238,6 +238,7 @@ describe('MovieShowPage', () => {
           loadingStatus: false,
         };
         const expected = {
+          errorMessage: "",
           isLoggedIn: true,
           user: {newUser: 'Tron'}
         };

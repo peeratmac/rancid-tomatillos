@@ -1,4 +1,4 @@
-import {findRating} from './util';
+import { findRating, sortFilms } from './util';
 
 describe('Util', () => {
   let mockId;

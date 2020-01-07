@@ -12,11 +12,9 @@ export const sortFilms = (allMovies) => {
     if (a.release_date > b.release_date) {
       return -1
     }
-
     if (a.release_date < b.release_date) {
       return 1
     }
   })
-
   return sortedFilms
 };
