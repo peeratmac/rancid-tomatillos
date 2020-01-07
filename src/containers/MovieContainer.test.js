@@ -1,9 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieContainer, mapStateToProps } from './MovieContainer';
-
+import { addMovies } from '../actions'
 
 describe('MovieContainer', () => {
+  const mockAddMovies = jest.fn();
   const mockMoviesData = [
     {
       id: 1,
@@ -48,6 +49,7 @@ describe('MovieContainer', () => {
       allMovies={mockMoviesData}
       errorMessage={''}
       loadingStatus={false}
+      addMovies={mockAddMovies}
     />);
 
     expect(wrapper).toMatchSnapshot();
@@ -58,10 +60,25 @@ describe('MovieContainer', () => {
       allMovies={mockMoviesData}
       errorMessage={''}
       loadingStatus={true}
+      addMovies={mockAddMovies}
     />);
 
     expect(wrapper).toMatchSnapshot();
   });
+
+//Failing Test
+  // it('should invoke addMovies on click',
+  //   () => {
+  //   const wrapper = shallow(<MovieContainer
+  //     allMovies={mockMoviesData}
+  //     errorMessage={''}
+  //     loadingStatus={true}
+  //     addMovies={mockAddMovies}
+  //   />);
+  //
+  //   wrapper.find('.sort-button').simulate('click');
+  //   expect(mockAddMovies).toHaveBeenCalled();
+  // });
 
   describe('mapStateToProps', () => {
     it('should return an object with error, loading, and allMovies \
@@ -84,4 +101,16 @@ describe('MovieContainer', () => {
     });
   });
 
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with addMovies action when addMovies is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = addMovies([{}, {}]);
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.addMovies([{}, {}]);
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
 });
