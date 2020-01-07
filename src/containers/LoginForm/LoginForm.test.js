@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
-import { handleError, updateLoggedInStatus, updateUser } from '../actions';
-import { fetchUserLogin, fetchRatings } from '../apiCalls';
+import { handleError, updateLoggedInStatus, updateUser } from '../../actions';
+import { fetchUserLogin, fetchRatings } from '../../apiCalls';
 
 jest.mock('../apiCalls.js');
 

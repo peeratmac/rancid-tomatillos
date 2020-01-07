@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LoginForm.css';
-import { updateUser, updateLoggedInStatus, handleError } from '../actions/index';
-import { fetchUserLogin, fetchRatings } from '../apiCalls';
+import { updateUser, updateLoggedInStatus, handleError } from '../../actions/index';
+import { fetchUserLogin, fetchRatings } from '../../apiCalls';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 

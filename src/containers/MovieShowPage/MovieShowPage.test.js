@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieShowPage, mapStateToProps, mapDispatchToProps }
   from './MovieShowPage';
-import { updateUser} from '../actions';
-import { updateRatings, fetchRatings, deleteRating } from '../apiCalls';
+import { updateUser} from '../../actions';
+import { updateRatings, fetchRatings, deleteRating } from '../../apiCalls';
 
 jest.mock('../apiCalls.js');
 

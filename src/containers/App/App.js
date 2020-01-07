@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAllMovies } from '../apiCalls';
-import { addMovies } from '../actions/index';
+import { fetchAllMovies } from '../../apiCalls';
+import { addMovies } from '../../actions/index';
 import { Route, Switch } from 'react-router-dom';
-import NavigationBar from '../containers/NavigationBar';
-import MovieContainer from '../containers/MovieContainer';
-import MovieShowPage from '../components/MovieShowPage';
-import LoginForm from '../containers/LoginForm';
-import NoMatch from '../components/NoMatch';
-import { handleError, isLoading } from '../actions';
+import NavigationBar from '../NavigationBar/NavigationBar';
+import MovieContainer from '../MovieContainer/MovieContainer';
+import MovieShowPage from '../MovieShowPage/MovieShowPage';
+import LoginForm from '../LoginForm/LoginForm';
+import NoMatch from '../../components/NoMatch/NoMatch';
+import { handleError, isLoading } from '../../actions';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
