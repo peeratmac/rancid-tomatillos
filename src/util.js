@@ -6,3 +6,17 @@ export const findRating = (id, user, type) => {
       return '...';
     }
 }
+
+export const sortFilms = (allMovies) => {
+  const sortedFilms = [...allMovies].sort((a, b) => {
+    if (a.release_date > b.release_date) {
+      return -1
+    }
+
+    if (a.release_date < b.release_date) {
+      return 1
+    }
+  })
+
+  return sortedFilms
+};

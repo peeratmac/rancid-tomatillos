@@ -7,6 +7,12 @@ exports[`MovieContainer should match the snapshot with loadingStatus of false 1`
   <div
     className="inner-container"
   >
+    <button
+      className="sort-button"
+      onClick={[Function]}
+    >
+      Sort Films by Most Recent
+    </button>
     <h1
       className="error-styling"
     />
