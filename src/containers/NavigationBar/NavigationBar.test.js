@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Route, Link } from 'react-router-dom';
+// import { Route, Link } from 'react-router-dom';
 
 import { NavigationBar, mapStateToProps, mapDispatchToProps }
   from './NavigationBar';
