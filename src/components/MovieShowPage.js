@@ -73,7 +73,11 @@ export class MovieShowPage extends Component {
                       updateUser(updatedRatings);
                     });
                   })
-                  .catch(err => console.log('.catch() error on delete'));
+                  .catch(error => {
+                    this.props.handleError(
+                      'Problem deleting your rating, please try again later.'
+                    );
+                  });
               }}>
               Reset Rating
             </button>
