@@ -199,18 +199,18 @@ describe('MovieShowPage', () => {
   });
 
   it('should invoke updateRatings fetch when handleRatingsUpdates is called',
-    () => {
+    async () => {
       let mockEvent = { target: {value: '2'} };
-      wrapper.instance().handleRatingsUpdates(mockEvent);
+      await wrapper.instance().handleRatingsUpdates(mockEvent);
       expect(updateRatings).toHaveBeenCalledWith(2, 2, 9);
   });
 
-  it('should invoke fetchRatings when updateRatings resolves', () => {
-    updateRatings(2, 2, 9);
+  it('should invoke fetchRatings when updateRatings resolves', async () => {
+    await updateRatings(2, 2, 9);
     expect(fetchRatings).toHaveBeenCalledWith(9);
   });
 
-  // it('should invoke updateUser when fetchRatings resolves', () => {
+  // it('should invoke updateUser when fetchRatings resolves after handleRatingsUpdates is invoked', () => {
   //   let mockNewRatings = {id: 9, name: 'Marge', email: 'marge@turing.io',
   //       ratings: [
   //     {id: 45, user_id: 9, movie_id: 8, rating: 8,
@@ -231,6 +231,17 @@ describe('MovieShowPage', () => {
   // it('should invoke updateUser when fetchRatings resolves', () => {
   //
   // });
+
+// FAILING, NUMBER OF CALLS = 0
+  // it('should invoke handleError prop if updateRatings rejects', async () => {
+  //   let mockEvent = { target: {value: '2'} };
+  //
+  //   updateRatings.mockImplementation(() => {
+  //     return Promise.reject(Error('error '));
+  //   });
+  //   await wrapper.instance().handleRatingsUpdates(mockEvent);
+  //   expect(mockHandleError).toHaveBeenCalledWith('Problem updating your rating, please try again later.');
+  // })
 
   describe('mapsStateToProps', () => {
     it('should return only the necessary information from the redux store',
