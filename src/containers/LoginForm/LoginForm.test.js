@@ -171,7 +171,18 @@ describe('LoginForm Container', () => {
       expect(mockUpdateUser).toHaveBeenCalled();
     });
 
-// HOW WILL WE TEST WHETHER HANDLEERROR IS INVOKED?
+    it('should invoke handleError prop if fetchUserLogin rejects', async () => {
+      const mockEvent = { preventDefault: jest.fn() };
+
+      fetchUserLogin.mockImplementation(() => {
+        return Promise.reject(Error('error '));
+      });
+
+      await wrapper.instance().handleSubmit(mockEvent);
+      await wrapper.instance().forceUpdate();
+      expect(mockHandleError).toHaveBeenCalledWith('Invalid login attempt, please try again');
+    });
+
 });
 
   describe('mapStateToProps', () => {
