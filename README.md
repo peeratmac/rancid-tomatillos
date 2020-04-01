@@ -10,6 +10,8 @@ movie information, including average rating. When logged in, users can add their
  own personal rating for each movie.
 
 ## Set Up
+See deployed application - https://rancid--tomatillos.herokuapp.com/
+
 Clone this repo to your local machine.  Run `npm install` to install
 dependencies.  
 
